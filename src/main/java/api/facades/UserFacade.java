@@ -1,7 +1,6 @@
 package api.facades;
 
-import DBAccess.Handlers.UserHandler;
-import DBAccess.Mappers.UserMapper;
+
 import api.factories.UserFactory;
 import domain.User;
 import exeptions.UserExists;
@@ -50,9 +49,9 @@ public class UserFacade {
     It is returned due to the user getting logged in after it is created.
     if the user did not get made, it will throw a UserExists exception.
      */
-    public User createUser(String name, String email, String password) throws UserExists {
+    public User createUser(UserFactory userFactory) throws UserExists {
         byte[] salt = User.generateSalt();
-        byte[] secret = User.calculateSecret(salt, password);
-        return dbUser.createUser(name, email, salt, secret);
+        byte[] secret = User.calculateSecret(salt, userFactory.getPassword());
+        return dbUser.createUser(userFactory, salt, secret);
     }
 }

@@ -1,6 +1,7 @@
 package infrastucture.Database;
 
-import DBAccess.Mappers.UserMapper;
+
+import api.factories.UserFactory;
 import domain.User;
 import exeptions.LoginSampleException;
 import exeptions.UserExists;
@@ -74,7 +75,7 @@ public class DBUser {
     /*
            Creates a user in the database with the objects given from LogicFacade createUser.
        */
-    public User createUser(String name, String email, byte[] salt, byte[] secret) throws UserExists {
+    public User createUser(UserFactory userFactory, byte[] salt, byte[] secret) throws UserExists {
         int id;
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps =
@@ -82,22 +83,22 @@ public class DBUser {
                             "INSERT INTO users (name, email, salt, secret, role) " +
                                     "VALUE (?,?,?,?,?);",
                             Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, name);
-            ps.setString(2, email);
+            ps.setString(1, userFactory.getName());
+            ps.setString(2, userFactory.getEmail());
             ps.setBytes(3, salt);
             ps.setBytes(4, secret);
             ps.setString( 5, "customer");
             try {
                 ps.executeUpdate();
             } catch (SQLIntegrityConstraintViolationException e) {
-                throw new UserExists(name);
+                throw new UserExists(userFactory.getName());
             }
 
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 id = rs.getInt(1);
             } else {
-                throw new UserExists(name);
+                throw new UserExists(userFactory.getName());
             }
         } catch (ClassNotFoundException | LoginSampleException | SQLException e) {
             throw new RuntimeException(e);

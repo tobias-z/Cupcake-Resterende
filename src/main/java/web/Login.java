@@ -21,16 +21,25 @@ public class Login extends Command {
 
         userFactory.setEmail(request.getParameter( "email" ));
         userFactory.setPassword(request.getParameter( "password" ));
-        User user = api.getUserFacade().login(userFactory);
 
-        HttpSession session = request.getSession();
+        if ( userFactory.isValid(userFactory)){
+            User user = api.getUserFacade().login(userFactory);
 
-        session.setAttribute( "user", user );
-        session.setAttribute( "role", user.getRole() );
-        session.setAttribute("email", user.getEmail());  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
+            HttpSession session = request.getSession();
+
+            session.setAttribute( "user", user );
+            session.setAttribute( "role", user.getRole() );
+            session.setAttribute("email", user.getEmail());  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
 
 
-        return user.getRole() + "page";
+            return user.getRole() + "page";
+
+
+        }else {
+            request.setAttribute("error", "hold nu op adam, du helt væk");
+            request.setAttribute("400", "400");
+            return "errorpage";
+        }
     }
 
 }

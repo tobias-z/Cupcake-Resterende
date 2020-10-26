@@ -9,6 +9,7 @@ public class UserFactory {
     private int id;
     private String name;
     private String password;
+    private String password2;
     private String email;
     private LocalDateTime createdAt;
     private byte[] salt;
@@ -17,6 +18,14 @@ public class UserFactory {
     private boolean banned;
     private int ranked;
 
+    public boolean isValid (UserFactory userFactory) {
+        if (userFactory == null) {
+            return false;
+
+        } else {
+            return true;
+        }
+    }
     public void setId(int id) throws ValidationError {
         if(id < 0) throw new ValidationError("Id'en burde ikke være under 0");
         this.id = id;
@@ -36,6 +45,10 @@ public class UserFactory {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
     }
 
     public void setEmail(String email) {
@@ -101,6 +114,10 @@ public class UserFactory {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getPassword2() {
+        return password2;
     }
 
     public String getEmail() {
