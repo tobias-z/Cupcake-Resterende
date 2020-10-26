@@ -1,4 +1,4 @@
-package DBAccess.DBSetup;
+package infrastucture.DBSetup;
 
 import java.sql.*;
 

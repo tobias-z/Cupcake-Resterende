@@ -1,12 +1,10 @@
-package PresentationLayer;
+package web;
 
 
 
-
-import FunctionLayer.LogicFacade;
-import FunctionLayer.LoginSampleException;
-import FunctionLayer.User;
-import FunctionLayer.UserExists;
+import exeptions.LoginSampleException;
+import domain.User;
+import exeptions.UserExists;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +14,6 @@ public class Register extends Command {
 
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        LogicFacade logicFacade = new LogicFacade();
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password1 = request.getParameter("password1");
@@ -24,7 +21,7 @@ public class Register extends Command {
         if (password1.equals(password2)) {
             User user = null;
             try {
-                user = logicFacade.createUser(username, email, password1);
+                user = api.getUserFacade().createUser(username, email, password1);
             } catch (UserExists userExists) {
                 throw new LoginSampleException("User already exists");
             }

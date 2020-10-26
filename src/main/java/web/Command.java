@@ -1,6 +1,8 @@
-package PresentationLayer;
+package web;
 
-import FunctionLayer.LoginSampleException;
+import api.CupCake;
+import api.facades.UserFacade;
+import exeptions.LoginSampleException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +24,16 @@ abstract class Command {
             initCommands();
         }
         return commands.getOrDefault(targetName, new UnknownCommand() );   // unknowncommand er default.
+    }
+
+    protected final static CupCake api;
+
+    static {
+        api = createCupCake();
+    }
+
+    private static CupCake createCupCake(){
+        return new CupCake(UserFacade.getInstance());
     }
 
     abstract String execute( HttpServletRequest request, HttpServletResponse response ) 

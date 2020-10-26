@@ -1,4 +1,4 @@
-package FunctionLayer;
+package domain;
 
 public class CupcakeTop {
     private final int id;

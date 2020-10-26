@@ -1,8 +1,8 @@
-package PresentationLayer;
+package web;
 
-import FunctionLayer.LogicFacade;
-import FunctionLayer.LoginSampleException;
-import FunctionLayer.User;
+import api.factories.UserFactory;
+import exeptions.LoginSampleException;
+import domain.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,10 +16,12 @@ public class Login extends Command {
 
     @Override
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
-        LogicFacade logicFacade = new LogicFacade();
-        String email = request.getParameter( "email" );
-        String password = request.getParameter( "password" );
-        User user = logicFacade.login( email, password );
+
+        UserFactory userFactory = new UserFactory();
+
+        userFactory.setEmail(request.getParameter( "email" ));
+        userFactory.setPassword(request.getParameter( "password" ));
+        User user = api.getUserFacade().login(userFactory);
 
         HttpSession session = request.getSession();
 

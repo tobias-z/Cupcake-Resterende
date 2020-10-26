@@ -1,5 +1,7 @@
-package FunctionLayer;
+package exeptions;
 
+
+import exeptions.LoginSampleException;
 
 public class UserExists extends Exception {
     public UserExists(String name) throws LoginSampleException {
