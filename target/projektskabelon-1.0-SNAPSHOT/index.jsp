@@ -11,6 +11,16 @@
 
 <body>
 
+<%
+    if (request.getServletContext().getAttribute("notloggedin") == null) {
+        request.getServletContext().setAttribute("notloggedin", "notloggedin");
+    }
+%>
+
+<c:forEach var="notloggedin" items="${applicationScope.notloggedin}">
+    <jsp:include page="/WEB-INF/imports/NoUserNav.jsp" flush="true"/>
+</c:forEach>
+
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">

@@ -1,19 +1,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<footer class="page-footer font-small blue" style="background-color: #343a40;">
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
+<footer class="page-footer font-small blue" style="background-color: #D8B9FB;border: 1px solid black;">
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3"><text style="color: #ececec">© 2020 Copyright:</text>
-        <a class="one" href="cars.html">Tobias og Co |</a>
-        <a class="one" href="locations.html"> EliteinsaneCars |</a>
-        <a class="one" href="offers.html"> Even more elite cars </a>
-    </div>
-    <!-- Copyright -->
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <p class="footertext">Adresse: Olskervej 27 2800 Kgs. Lyngby</p>
+            <p class="footertext">Kontakt: Olsker-support@cupcakes.dk</p>
+        </div>
+        <div class="col-md-2">
+            <br>
+            <br>
+            <p class="footertext" style="text-align: right">Copyright © Olskercupcakes</p>
+        </div>
+        <div class="col-md-1">
+        </div>
 
+    <!-- Copyright -->
+    </div>
 </footer>
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
