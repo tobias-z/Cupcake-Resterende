@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(25) NOT NULL UNIQUE,
+    email VARCHAR(70) NOT NULL,
+    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    salt BINARY(16) NOT NULL,
+    secret BINARY(32) NOT NULL,
+    role VARCHAR(25) NOT NULL,
+    bank INT DEFAULT 0,
+    ranked INT DEFAULT 1
+);
+
+UPDATE properties
+SET value = '1'
+WHERE name = "version";

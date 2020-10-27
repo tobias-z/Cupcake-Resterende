@@ -30,18 +30,14 @@ public class UserFacade {
          */
     public User login(UserFactory userFactory) {
         User user = dbUser.findUser(userFactory.getEmail());
-        if(user.isBanned()){
-            user = null;
+        if (user.isPasswordCorrect(userFactory.getPassword())) {
             return user;
         } else {
-            if (user.isPasswordCorrect(userFactory.getPassword())) {
-                return user;
-            } else {
-                user = null;
-                return user;
-            }
+            user = null;
+            return user;
         }
     }
+
 
     /*
     Gets the name and password from Register.

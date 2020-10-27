@@ -1,6 +1,6 @@
 package DBAccess;
 
-import DBAccess.Mappers.UserMapper;
+
 import exeptions.LoginSampleException;
 import domain.User;
 import java.sql.Connection;

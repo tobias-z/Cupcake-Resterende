@@ -24,7 +24,6 @@ public class DBUser {
                 rs.getBytes("users.salt"),
                 rs.getBytes("users.secret"),
                 rs.getString("users.role"),
-                rs.getBoolean("users.banned"),
                 rs.getInt("users.ranked"));
     }
 

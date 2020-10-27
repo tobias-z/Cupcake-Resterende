@@ -7,14 +7,14 @@ public class Connector {
     // JDBC driver name and database URL
     private static Connection singleton;
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost/webapp";
+    private static final String DB_URL = "jdbc:mysql://localhost/cupcake";
 
 
     //  Database credentials
-    private static final String USER = "webapp";
+    private static final String USER = "cupcake";
 
     // Database version
-    private static final int version = 5;
+    private static final int version = 1;
 
     public Connector() throws ClassNotFoundException {
         Class.forName(JDBC_DRIVER);

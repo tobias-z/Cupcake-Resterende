@@ -15,7 +15,6 @@ public class UserFactory {
     private byte[] salt;
     private byte[] secret;
     private String role;
-    private boolean banned;
     private int ranked;
 
     public boolean isValid (UserFactory userFactory) {
@@ -79,18 +78,6 @@ public class UserFactory {
         this.role = role;
     }
 
-    public void setBanned(boolean banned) {
-        this.banned = banned;
-    }
-
-    public void setBanned(String banned) throws ValidationError {
-        try {
-            setBanned(banned.equals("1") || banned.equals("true"));
-        }   catch (IllegalArgumentException e) {
-            throw new ValidationError(e.getMessage());
-        }
-    }
-
     public void setRanked(int ranked) throws ValidationError {
         if(ranked < 0) throw new ValidationError("Tillykke du har formået at få en rank på under 0");
         this.ranked = ranked;
@@ -138,10 +125,6 @@ public class UserFactory {
 
     public String getRole() {
         return role;
-    }
-
-    public boolean isBanned() {
-        return banned;
     }
 
     public int getRanked() {
