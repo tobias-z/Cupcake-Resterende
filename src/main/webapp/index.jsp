@@ -5,26 +5,12 @@
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<jsp:include page="/WEB-INF/imports/header.jsp" flush="true"/>
 
+<title>Home</title>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Cupcake welcome page</title>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS START -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/normalize.css">
-    <!-- Bootstrap CSS END -->
-
-</head>
 <body>
+
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
@@ -57,5 +43,7 @@
         </form>
     </div>
 </div>
+
+<jsp:include page="/WEB-INF/imports/footer.jsp" flush="true"/>
 </body>
 </html>
