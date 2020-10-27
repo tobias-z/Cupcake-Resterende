@@ -17,29 +17,24 @@ public class Login extends Command {
     @Override
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
 
-        UserFactory userFactory = new UserFactory();
+        String email = request.getParameter( "email" );
+        String password = request.getParameter( "password" );
 
-        userFactory.setEmail(request.getParameter( "email" ));
-        userFactory.setPassword(request.getParameter( "password" ));
+        User user = api.getUserFacade().login(email, password);
 
-        if ( userFactory.isValid(userFactory)){
-            User user = api.getUserFacade().login(userFactory);
-
-            HttpSession session = request.getSession();
-
-            session.setAttribute( "user", user );
-            session.setAttribute( "role", user.getRole() );
-            session.setAttribute("email", user.getEmail());  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
-
-
-            return user.getRole() + "page";
-
-
-        }else {
-            request.setAttribute("error", "hold nu op adam, du helt væk");
-            request.setAttribute("400", "400");
-            return "errorpage";
+        if(user == null) {
+            request.setAttribute("loginfail", "Username or password was incorrect");
+            return "Login";
         }
-    }
 
+        HttpSession session = request.getSession();
+
+        session.setAttribute( "user", user );
+        session.setAttribute( "role", user.getRole() );
+        session.setAttribute("email", user.getEmail());  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
+
+        return user.getRole() + "page";
+
+    }
 }
+

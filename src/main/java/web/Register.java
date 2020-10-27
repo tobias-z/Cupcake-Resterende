@@ -10,6 +10,7 @@ import exeptions.UserExists;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Objects;
 
 public class Register extends Command {
 
@@ -18,10 +19,10 @@ public class Register extends Command {
         UserFactory userFactory = new UserFactory();
         userFactory.setName(request.getParameter("username"));
         userFactory.setEmail(request.getParameter("email"));
-        userFactory.setPassword(request.getParameter("password1"));
-        userFactory.setPassword2(request.getParameter("password2"));
-        if (userFactory.isValid(userFactory)) {
-            if (userFactory.getPassword().equals(userFactory.getPassword2())) {
+        String password1 = request.getParameter("password1"), password2 = request.getParameter("password2");
+        userFactory.setPassword(password1);
+        if (userFactory.isValid()) {
+            if (Objects.equals(password1, password2)) {
                 User user = null;
                 try {
                     user = api.getUserFacade().createUser(userFactory);

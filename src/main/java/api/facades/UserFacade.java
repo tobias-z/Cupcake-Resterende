@@ -28,9 +28,9 @@ public class UserFacade {
         Checks if the user is banned, if yes then it returns a string. If the user is not banned then it checks if the password was correct.
         If the password was correct it returns the user, if not correct it throws an InvalidPassword exception.
          */
-    public User login(UserFactory userFactory) {
-        User user = dbUser.findUser(userFactory.getEmail());
-        if (user.isPasswordCorrect(userFactory.getPassword())) {
+    public User login(String email, String password) {
+        User user = dbUser.findUser(email);
+        if (user.isPasswordCorrect(password)) {
             return user;
         } else {
             user = null;
