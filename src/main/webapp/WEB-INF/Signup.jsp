@@ -12,7 +12,7 @@
 
 <div class="backgroundcontainer">
 
-    <div class="row">
+    <div class="row" style="margin-left: 1px">
         <h3>Opret dig som bruger her</h3>
     </div>
 
@@ -23,8 +23,8 @@
                 <input type="hidden" name="target" value="register">
 
                 <div class="form-group">
-                    <label for="exampleInputEmail">Email</label>
-                    <input type="email" class="form-control" id="exampleInputName" name="username" aria-describedby="NameHelp" placeholder="Fulde navn" required>
+                    <label for="exampleInputEmail">Fulde navn</label>
+                    <input type="text" class="form-control" id="exampleInputName" name="username" aria-describedby="NameHelp" placeholder="Fulde navn" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail">Email</label>
@@ -32,11 +32,11 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password1" class="form-control" id="exampleInputPassword1" name="password1" placeholder="Password" required>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password1" placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword2">Gentag Password</label>
-                    <input type="password2" class="form-control" id="exampleInputPassword2" name="password2" placeholder="Gentag password" required>
+                    <input type="password" class="form-control" id="exampleInputPassword2" name="password2" placeholder="Gentag password" required>
                 </div>
                 <a href="FrontController?target=redirect&destination=Signup">
                     <p>Er du ny? Så tryk her for at lave en ny bruger</p></a>

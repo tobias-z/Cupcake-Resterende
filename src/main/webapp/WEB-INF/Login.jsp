@@ -12,9 +12,8 @@
 
 <div class="backgroundcontainer">
 
-    <div class="row">
-        <h3>Velkommen til login siden</h3>
-        <h3>Her kan du indtaste dit login</h3>
+    <div class="row" style="margin-left: 1px">
+        <h3>Velkommen til login siden <br> Her kan du skrive dit login</h3>
     </div>
 
     <div class="row">
@@ -24,11 +23,13 @@
                 <input type="hidden" name="target" value="login">
                 <div class="form-group">
                     <label for="exampleInputEmail">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail" name="email" aria-describedby="EmailHelp" placeholder="Enter Email" required>
+                    <input type="email" class="form-control" id="exampleInputEmail" name="email"
+                           aria-describedby="EmailHelp" placeholder="Enter Email" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" required>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password"
+                           placeholder="Password" required>
                 </div>
                 <a href="FrontController?target=redirect&destination=Signup">
                     <p>Er du ny? Så tryk her for at lave en ny bruger</p></a>
