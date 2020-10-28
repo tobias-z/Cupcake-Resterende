@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <jsp:include page="/WEB-INF/imports/header.jsp" flush="true"/>
 
-<title>Home</title>
+<title>Login</title>
 
 <body>
 

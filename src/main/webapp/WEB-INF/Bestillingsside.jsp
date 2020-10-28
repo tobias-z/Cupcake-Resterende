@@ -1,20 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: tobiaszimmermann
-  Date: 28/10/2020
-  Time: 13.21
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<jsp:include page="/WEB-INF/imports/header.jsp" flush="true"/>
 
+<title>Bestillingsside</title>
 
-
-    <!-- Sende Cupcake top + bottom + antal + userid -->
-</head>
 <body>
 
-</body>
-</html>
+    <!-- Sende cupcaketop + cupcakebottom + antal + userid til target=addcupcaketoorder -->
+
