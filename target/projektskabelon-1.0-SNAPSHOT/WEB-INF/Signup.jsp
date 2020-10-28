@@ -12,7 +12,7 @@
 
 <div class="backgroundcontainer">
 
-    <div class="row">
+    <div class="row" style="margin-left: 1px">
         <h3>Opret dig som bruger her</h3>
     </div>
 
