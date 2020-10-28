@@ -44,6 +44,12 @@ public class Register extends Command {
                     session.setAttribute("norank", ranked);
                 }
 
+                if(user.getRole().equals("admin")){
+                    session.setAttribute("adminrole", user.getRole());
+                } else {
+                    session.setAttribute("customerrole", user.getRole());
+                }
+
 
                 session.setAttribute("email", userFactory.getEmail());
                 session.setAttribute("username", userFactory.getName());

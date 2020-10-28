@@ -42,6 +42,12 @@ public class Login extends Command {
             session.setAttribute("norank", ranked);
         }
 
+        if(user.getRole().equals("admin")){
+            session.setAttribute("adminrole", user.getRole());
+        } else {
+            session.setAttribute("customerrole", user.getRole());
+        }
+
 
         session.setAttribute( "user", user );
         session.setAttribute( "role", user.getRole() );

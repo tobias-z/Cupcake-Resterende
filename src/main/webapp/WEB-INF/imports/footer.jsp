@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
-<footer class="page-footer font-small blue" style="background-color: #D8B9FB;border: 1px solid black;">
+
+<footer class="footer">
     <br>
     <div class="row">
         <div class="col-md-1"></div>
