@@ -11,18 +11,21 @@
         <div class="btn-group" role="group" aria-label="Main menu">
             <a class="nav-link" href="FrontController?target=redirect&destination=index" style="font-size: 20px;color: #4b4c4f">Home</a>
         </div>
-        <div class="btn-group" role="group" aria-label="Main menu">
+        <div class="btn-group" role="group" aria-label="Bestil">
             <a class="nav-link" href="#" style="font-size: 20px;color: #4b4c4f">Bestil</a>
         </div>
-        <div class="btn-group" role="group" aria-label="Main menu">
+        <div class="btn-group" role="group" aria-label="FAQ">
             <a class="nav-link" href="#" style="font-size: 20px;color: #4b4c4f">FAQ</a>
-        </div>
-        <div class="btn-group" role="group" aria-label="Main menu">
-            <a class="nav-link" href="#" style="font-size: 20px;color: #4b4c4f">Adminpage</a>
-        </div>
-        <div class="btn-group" role="group" aria-label="Main menu" >
-            <a class="nav-link" href="FrontController?target=redirect&destination=Login" style="font-size: 20px; color: #4b4c4f"><b>Login</b></a>
         </div>
 
     </div>
+    <div class ="nav-right" align="right">
+        <div class="btn-group" role="group" aria-label="Main menu" >
+            <a class="nav-link" href="FrontController?target=redirect&destination=Login" style=" font-size: 20px; color: #4b4c4f"><b>Login</b></a>
+        </div>
+    <a href="FrontController?target=redirect&destination=index">
+        <img class="navbarlogo" src="${pageContext.request.contextPath}/images/Shoppingbasket.png" style="width: 5%; margin-left: 20px; margin-right: 20px" alt="Shoppingbasket">
+    </a>
+    </div>
+
 </nav>

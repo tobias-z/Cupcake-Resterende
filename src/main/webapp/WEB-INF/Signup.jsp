@@ -24,19 +24,19 @@
 
                 <div class="form-group">
                     <label for="exampleInputEmail">Fulde navn</label>
-                    <input type="text" class="form-control" id="exampleInputName" name="username" aria-describedby="NameHelp" placeholder="Fulde navn" required>
+                    <input type="text" class="form-control" style="width: 30%" id="exampleInputName" name="username" aria-describedby="NameHelp" placeholder="Fulde navn" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail" name="email" aria-describedby="EmailHelp" placeholder="Email address" required>
+                    <input type="email" class="form-control" style="width: 30%"  id="exampleInputEmail" name="email" aria-describedby="EmailHelp" placeholder="Email address" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password1" placeholder="Password" required>
+                    <input type="password" class="form-control" style="width: 30%" id="exampleInputPassword1" name="password1" placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword2">Gentag Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword2" name="password2" placeholder="Gentag password" required>
+                    <input type="password" class="form-control" style="width: 30%" id="exampleInputPassword2" name="password2" placeholder="Gentag password" required>
                 </div>
                 <a href="FrontController?target=redirect&destination=Signup">
                     <p>Er du ny? Så tryk her for at lave en ny bruger</p></a>

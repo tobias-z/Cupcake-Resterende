@@ -23,12 +23,12 @@
                 <input type="hidden" name="target" value="login">
                 <div class="form-group">
                     <label for="exampleInputEmail">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail" name="email"
+                    <input type="email" class="form-control" id="exampleInputEmail" name="email" style="width: 30%"
                            aria-describedby="EmailHelp" placeholder="Enter Email" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password"
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" style="width: 25%"
                            placeholder="Password" required>
                 </div>
                 <a href="FrontController?target=redirect&destination=Signup">

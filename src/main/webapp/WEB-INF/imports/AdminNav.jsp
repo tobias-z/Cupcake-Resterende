@@ -1,16 +1,47 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: tobiaszimmermann
-  Date: 27/10/2020
-  Time: 09.25
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<div class="row">
+    <div class="col-md-12">
+        <img class="d-block w-100" src="${pageContext.request.contextPath}/images/Olskerbanner.png" height="250" ; alt="Headerlogo">
+    </div>
+</div>
+<nav class="navbar navbar-light" style="background-color: #ECEEEF; padding: 10px; margin:20px 20px 30px">
+    <div class="row">
+        <a href="FrontController?target=redirect&destination=index">
+            <img class="navbarlogo" src="${pageContext.request.contextPath}/images/CupcakeLogo.png" style="margin-left: 20px" alt="OlskerLogo">
+        </a>
+        <div class="btn-group" role="group" aria-label="Main menu">
+            <a class="nav-link" href="FrontController?target=redirect&destination=index" style="font-size: 20px;color: #4b4c4f">Home</a>
+        </div>
+        <div class="btn-group" role="group" aria-label="Bestil">
+            <a class="nav-link" href="#" style="font-size: 20px;color: #4b4c4f">Bestil</a>
+        </div>
+        <div class="btn-group" role="group" aria-label="FAQ">
+            <a class="nav-link" href="#" style="font-size: 20px;color: #4b4c4f">FAQ</a>
+        </div>
+        <div class="btn-group" role="group" aria-label="Adminpage">
+            <a class="nav-link" href="#" style="font-size: 20px;color: #4b4c4f">Adminpage</a>
+        </div>
 
-</body>
-</html>
+    </div>
+    <div class ="nav-right" align="right">
+
+        <div class="btn-group" role="group" aria-label="login">
+            <button type="button" class="btn btn-secondary">${sessionScope.user.email}</button>
+            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+            </button>
+            <div class="dropdown-menu">
+                <button class="dropdown-item" style="text-align: center" href="#">Settings</button>
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="target" value="getusersorders">
+                    <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                    <button class="dropdown-item" style="text-align: center;" href="#">Orders</button>
+                </form>
+                <button class="dropdown-item" id="myBtn" style="text-align: center">Logout</button>
+            </div>
+
+            <a href="FrontController?target=redirect&destination=index">
+                <img class="navbarlogo" src="${pageContext.request.contextPath}/images/Shoppingbasket.png" style="width: 45px; height: 50px; margin-left: 20px; margin-right: 20px" alt="Shoppingbasket">
+            </a>
+        </div>
+    </div>
+
+</nav>
