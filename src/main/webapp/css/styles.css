@@ -6,3 +6,9 @@
     width: 50px;
     height: 50px;
 }
+
+.backgroundcontainer {
+    border-radius: 25px;
+    background-color: #ECEEEF;
+    padding: 20px;
+}

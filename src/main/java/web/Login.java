@@ -19,6 +19,7 @@ public class Login extends Command {
 
         String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
+        int getrank;
 
         User user = api.getUserFacade().login(email, password);
 
@@ -28,12 +29,25 @@ public class Login extends Command {
         }
 
         HttpSession session = request.getSession();
+        getrank = user.isRanked();
+        String ranked = Integer.toString(getrank);
+
+        if(getrank == 10){
+            session.setAttribute("rank10", ranked);
+        } else if (getrank == 50) {
+            session.setAttribute("rank50", ranked);
+        } else if (getrank == 99) {
+            session.setAttribute("rank99", ranked);
+        } else {
+            session.setAttribute("norank", ranked);
+        }
+
 
         session.setAttribute( "user", user );
         session.setAttribute( "role", user.getRole() );
         session.setAttribute("email", user.getEmail());  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
 
-        return user.getRole() + "page";
+        return "customerpage";
 
     }
 }

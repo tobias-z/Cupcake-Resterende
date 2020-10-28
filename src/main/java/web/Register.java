@@ -31,12 +31,26 @@ public class Register extends Command {
                 }
                 HttpSession session = request.getSession();
 
+                int getrank = user.isRanked();
+                String ranked = Integer.toString(getrank);
+
+                if(getrank == 10){
+                    session.setAttribute("rank10", ranked);
+                } else if (getrank == 50) {
+                    session.setAttribute("rank50", ranked);
+                } else if (getrank == 99) {
+                    session.setAttribute("rank99", ranked);
+                } else {
+                    session.setAttribute("norank", ranked);
+                }
+
+
                 session.setAttribute("email", userFactory.getEmail());
                 session.setAttribute("username", userFactory.getName());
                 session.setAttribute("user", user);
                 session.setAttribute("role", user.getRole());
 
-                return user.getRole() + "/" + user.getRole() + "page";
+                return "customerpage";
             } else {
                 throw new LoginSampleException("the two passwords did not match");
             }
