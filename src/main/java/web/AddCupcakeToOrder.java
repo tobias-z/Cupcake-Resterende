@@ -20,6 +20,10 @@ public class AddCupcakeToOrder extends Command {
 
         api.getCupcakeFacade().AddCupcakeToOrder(cupcakeFactory);
          */
+        String userid = request.getParameter("userid");
+        String cupcaketop = request.getParameter("cupcaketop");
+        String cupcakebottom = request.getParameter("cupcakebottom");
+        String antal = request.getParameter("antal");
 
 
 
