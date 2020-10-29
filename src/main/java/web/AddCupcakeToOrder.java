@@ -1,6 +1,8 @@
 package web;
 
+import api.factories.CupcakeFactory;
 import exeptions.LoginSampleException;
+import exeptions.ValidationError;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +11,15 @@ public class AddCupcakeToOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         /*
+
+        √ Lav cupcake klasser.
+        Lav cupcake factories
+        Lav facades.
+        Lav DB.
+
+
+
+
         Tag Imod variabler:
         cupcaketop, cupcakebottom, antal, userid
 
@@ -20,10 +31,19 @@ public class AddCupcakeToOrder extends Command {
 
         api.getCupcakeFacade().AddCupcakeToOrder(cupcakeFactory);
          */
-        String userid = request.getParameter("userid");
-        String cupcaketop = request.getParameter("cupcaketop");
-        String cupcakebottom = request.getParameter("cupcakebottom");
-        String antal = request.getParameter("antal");
+
+        CupcakeFactory cupcakeFactory = new CupcakeFactory();
+
+        try {
+            cupcakeFactory.setCupcakeBottomId(request.getParameter("cupcakebottom"));
+            cupcakeFactory.setCupcakeTopId(request.getParameter("cupcaketop"));
+
+        } catch (ValidationError validationError) {
+            validationError.printStackTrace();
+        }
+
+        //String userid = request.getParameter("userid");
+        //String antal = request.getParameter("antal");
 
 
 

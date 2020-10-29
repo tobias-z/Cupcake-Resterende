@@ -4,9 +4,9 @@ public class Cupcake {
     private final int id;
     private final int cupcakeBottomId;
     private final int cupcakeTopId;
-    private final int pris;
+    private final double pris;
 
-    public Cupcake(int id, int cupcakeBottomId, int cupcakeTopId, int pris) {
+    public Cupcake(int id, int cupcakeBottomId, int cupcakeTopId, double pris) {
         this.id = id;
         this.cupcakeBottomId = cupcakeBottomId;
         this.cupcakeTopId = cupcakeTopId;
@@ -25,7 +25,7 @@ public class Cupcake {
         return cupcakeTopId;
     }
 
-    public int getPris() {
+    public double getPris() {
         return pris;
     }
 }
