@@ -1,12 +1,24 @@
 package api.facades;
 
+import api.factories.CupcakeFactory;
+import infrastucture.Database.DBCupcake;
+
 public class OrderFacade {
 
-    /*
-    public static Ordrer createOrder(String cupcakebottom, String cupcaketop) {
-        Ordrer ordrer = OrderHandler.createOrder(cupcakebottom, cupcaketop);
-        return ordrer;
+    private static OrderFacade instance;
+    private final DBCupcake dbCupcake;
 
+    public OrderFacade(DBCupcake dbCupcake) {
+        this.dbCupcake = dbCupcake;
     }
- */
+
+    public static OrderFacade getInstance() {
+        if(instance == null) {
+            instance = new OrderFacade(new DBCupcake());
+        }
+        return instance;
+    }
+
+    public void AddCupcakeToOrder(CupcakeFactory cupcakeFactory) {
+    }
 }

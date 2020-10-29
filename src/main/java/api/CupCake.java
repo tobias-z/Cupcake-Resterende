@@ -1,24 +1,24 @@
 package api;
 
-import api.facades.CupcakeFacade;
+import api.facades.OrderFacade;
 import api.facades.UserFacade;
 
 public class CupCake {
 
     private final UserFacade userFacade;
-    private final CupcakeFacade cupcakeFacade;
+    private final OrderFacade orderFacade;
 
 
-    public CupCake(UserFacade userFacade, CupcakeFacade cupcakeFacade) {
+    public CupCake(UserFacade userFacade, OrderFacade orderFacade) {
         this.userFacade = userFacade;
-        this.cupcakeFacade = cupcakeFacade;
+        this.orderFacade = orderFacade;
     }
 
     public UserFacade getUserFacade() {
         return userFacade;
     }
 
-    public CupcakeFacade getCupcakeFacade() {
-        return cupcakeFacade;
+    public OrderFacade getOrderFacade() {
+        return orderFacade;
     }
 }
