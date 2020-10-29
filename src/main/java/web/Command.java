@@ -1,6 +1,7 @@
 package web;
 
 import api.CupCake;
+import api.facades.CupcakeFacade;
 import api.facades.UserFacade;
 import exeptions.LoginSampleException;
 import java.util.HashMap;
@@ -35,7 +36,7 @@ abstract class Command {
     }
 
     private static CupCake createCupCake(){
-        return new CupCake(UserFacade.getInstance());
+        return new CupCake(UserFacade.getInstance(), CupcakeFacade.getInstance());
     }
 
     abstract String execute( HttpServletRequest request, HttpServletResponse response ) 

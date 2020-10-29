@@ -6,6 +6,7 @@ import exeptions.ValidationError;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 public class AddCupcakeToOrder extends Command {
     @Override
@@ -23,7 +24,7 @@ public class AddCupcakeToOrder extends Command {
         Tag Imod variabler:
         cupcaketop, cupcakebottom, antal, userid
 
-        CupcakeTopFactory, CupCakeBottomFactory.
+        CupcakeTopFactory, CupCakeBottomFactory, CupcakeFactory.
 
         cupcakeTopFactory.getPrice() + cupcakeBottomFactory.getPrice() = cupcake.setPrice();
 
@@ -34,13 +35,33 @@ public class AddCupcakeToOrder extends Command {
 
         CupcakeFactory cupcakeFactory = new CupcakeFactory();
 
-        try {
-            cupcakeFactory.setCupcakeBottomId(request.getParameter("cupcakebottom"));
-            cupcakeFactory.setCupcakeTopId(request.getParameter("cupcaketop"));
+        String cupcakeBottomArray = request.getParameter("cupcakebottom");
+        String cupcakeTopArray = request.getParameter("cupcaketop");
 
+        String[] newCupcakeBottom = cupcakeBottomArray.split(",", 0);
+
+        ArrayList<String> bottoms = new ArrayList<>();
+        for(String a:newCupcakeBottom){
+            bottoms.add(a);
+        }
+        String cupcakeBottom = bottoms.get(0);
+
+        String[] newCupcakeTop = cupcakeBottomArray.split(",", 0);
+
+        ArrayList<String> toppings = new ArrayList<>();
+        for(String a:newCupcakeTop){
+            toppings.add(a);
+        }
+        String cupcakeTop = bottoms.get(0);
+
+        try {
+            cupcakeFactory.setCupcakeBottomId(cupcakeBottom);
+            cupcakeFactory.setCupcakeTopId(cupcakeTop);
         } catch (ValidationError validationError) {
             validationError.printStackTrace();
         }
+
+        api.getOrderFacade().AddCupcakeToOrder(cupcakeFactory);
 
         //String userid = request.getParameter("userid");
         //String antal = request.getParameter("antal");

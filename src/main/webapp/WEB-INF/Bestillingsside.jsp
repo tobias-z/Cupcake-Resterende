@@ -18,8 +18,8 @@
             <div class="form-group">
                 <label for="Cupcaketop">Choose a cupcake top:</label>
                 <select name="cupcaketop" id="Cupcaketop">
-                    <c:forEach var="toppings" items="${requestScope.toppings}">
-                        <option>${toppings.id}, ${toppings.name}</option>
+                    <c:forEach var="toppings" items="${requestScope.cupcaketop}">
+                        <option>${toppings.id}, ${toppings.type}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -27,8 +27,8 @@
 
                 <label for="Cupcakebottom">Choose a cupcake top:</label>
                 <select name="cupcakebottom" id="Cupcakebottom">
-                <c:forEach var="bottoms" items="${requestScope.bottoms}">
-                    <option> ${bottoms.id}, ${bottoms.name}</option>
+                <c:forEach var="bottoms" items="${requestScope.cupcakebottom}">
+                    <option> ${bottoms.id}, ${bottoms.type}</option>
                 </c:forEach>
                 </select>
             </div>
