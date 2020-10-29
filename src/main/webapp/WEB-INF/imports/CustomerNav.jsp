@@ -3,7 +3,7 @@
         <img class="d-block w-100" src="${pageContext.request.contextPath}/images/Olskerbanner.png" height="250" ; alt="Headerlogo">
     </div>
 </div>
-<nav class="navbar navbar-light" style="background-color: #ECEEEF; padding: 10px; margin:20px 20px 30px">
+<nav class="navbar navbar-light" >
     <div class="row">
         <a href="FrontController?target=redirect&destination=index">
             <img class="navbarlogo" src="${pageContext.request.contextPath}/images/CupcakeLogo.png" style="margin-left: 20px" alt="OlskerLogo">

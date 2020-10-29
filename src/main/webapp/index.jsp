@@ -19,33 +19,44 @@
     <jsp:include page="/WEB-INF/imports/NoUserNav.jsp" flush="true"/>
 </c:forEach>
 
-
+<body>
 <div class="backgroundcontainer">
     <div class="row" style="text-align: center">
         <h2>Velkommen til Olsker Cupcakes</h2>
     </div>
 
     <div class="row">
-        <div class="col-md-2"></div>
+        <div class="col-md-4"></div>
 
-        <div class="col-md-8">
+        <div class="col-md-4">
 
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                 </ol>
-                <div class="carousel-inner">
+                <div class="carousel-inner" style="align-content: center">
                     <!-- Insert First picture here -->
                     <div class="carousel-item active">
                         <div class="thumbnail">
-                            <img src="${pageContext.request.contextPath}/images/Olskerbanner.png" alt="First slide">
+                            <img class="PictureSlide" src="${pageContext.request.contextPath}/images/CupcakeFirst.jpg" alt="First slide">
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="thumbnail">
-                            <img src="${pageContext.request.contextPath}/images/CupcakeLogo.png" alt="cupcake1"
-                                 style="height: 500px">
+                            <img class="PictureSlide" src="${pageContext.request.contextPath}/images/CupcakeSecond.jpg" alt="cupcake1">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="thumbnail">
+                            <img class="PictureSlide" src="${pageContext.request.contextPath}/images/CupcakeThird.jpg" alt="cupcake2">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="thumbnail">
+                            <img class="PictureSlide" src="${pageContext.request.contextPath}/images/CupcakeFourth.jpg" alt="cupcake3">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
