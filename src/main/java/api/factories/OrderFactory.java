@@ -9,6 +9,15 @@ public class OrderFactory {
     private String cupcakeId;
     private double price;
 
+
+    public boolean isValid () {
+        if (this.userId < 0) return false;
+        if(this.cupcakeId== null || this.cupcakeId.isBlank()) return false;
+        if(this.price < 0) return false;
+        return true;
+    }
+
+
     public int getUserId() {
         return userId;
     }
