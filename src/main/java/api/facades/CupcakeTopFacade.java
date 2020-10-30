@@ -26,4 +26,11 @@ public class CupcakeTopFacade {
         List<CupcakeTop> cupcakeTop= dbCupcakeTop.findCupcakeTops();
         return cupcakeTop;
     }
+
+
+    public CupcakeTop findCupcakeById(int cupcaketopId) {
+        CupcakeTop cupcakeTop = dbCupcakeTop.findCupcakeTopById(cupcaketopId);
+        return cupcakeTop;
+
+    }
 }

@@ -2,6 +2,7 @@ package infrastucture.Database;
 
 import domain.CupcakeBottom;
 import domain.CupcakeTop;
+import infrastucture.DBSetup.Connector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static infrastucture.DBSetup.Connector.getConnection;
 
@@ -37,5 +39,22 @@ public class DBCupcakeBottom {
             return null;
 
         }
+
+    public CupcakeBottom findCupcakeById(int id) {
+        try(Connection conn = Connector.getConnection()) {
+            PreparedStatement s = conn.prepareStatement(
+                    "SELECT * FROM cupcakeBottom  WHERE id = ?;");
+            s.setInt(1, id);
+            ResultSet rs = s.executeQuery();
+            if(rs.next()) {
+                return loadCupcakeBottom(rs);
+            } else {
+                System.err.println("No version in properties.");
+                throw new NoSuchElementException("findes ikke");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
+}
 

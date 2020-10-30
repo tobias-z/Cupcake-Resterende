@@ -1,7 +1,9 @@
 package api.facades;
 
+import domain.Cupcake;
 import domain.CupcakeBottom;
 import domain.CupcakeTop;
+import infrastucture.Database.DBCupcake;
 import infrastucture.Database.DBCupcakeBottom;
 import infrastucture.Database.DBCupcakeTop;
 
@@ -26,5 +28,10 @@ public class CupcakeBottomFacade {
     public List<CupcakeBottom> findCupcakeBottoms() {
         List<CupcakeBottom> cupcakeBottom= dbCupcakeBottom.findCupcakeBottoms();
         return cupcakeBottom;
+    }
+    public CupcakeBottom findCupcakeById(int id){
+
+
+        return dbCupcakeBottom.findCupcakeById(id);
     }
 }

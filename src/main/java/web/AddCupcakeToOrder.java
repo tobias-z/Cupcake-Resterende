@@ -1,6 +1,8 @@
 package web;
 
 import api.factories.CupcakeFactory;
+import domain.CupcakeBottom;
+import domain.CupcakeTop;
 import exeptions.LoginSampleException;
 import exeptions.ValidationError;
 
@@ -41,6 +43,7 @@ public class AddCupcakeToOrder extends Command {
          * Lav CupcakeFacade:
          * Tag imod cupcaketop + cupcakebottom og antal. return Cupcake
          *
+         *
          * CupcakeTop cupcakeTop = findCupcakeTop(cupcakeTopId)
          * cupcakeTop.getPrice
          * CupcakeBottom cupcakeBottom = findCupcakeBottom(cupcakeBottomId)
@@ -67,7 +70,7 @@ public class AddCupcakeToOrder extends Command {
         for(String a:newCupcakeBottom){
             bottoms.add(a);
         }
-        String cupcakeBottom = bottoms.get(0);
+        String cupcakeBottomStringId = bottoms.get(0);
 
         String[] newCupcakeTop = cupcakeTopArray.split(",", 0);
 
@@ -75,15 +78,29 @@ public class AddCupcakeToOrder extends Command {
         for(String a:newCupcakeTop){
             toppings.add(a);
         }
-        String cupcakeTop = bottoms.get(0);
+        String cupcakeTopStringId = toppings.get(0);
+
+        int CupcaketopId = 0;
+        int CupcakebottomId = 0;
+        try {
+            CupcaketopId = Integer.parseInt(cupcakeTopStringId);
+            CupcakebottomId = Integer.parseInt(cupcakeBottomStringId);
+        }catch (NumberFormatException e){
+            e.printStackTrace();
+        }
+
+        CupcakeTop cupcakeTop = api.getCupcakeTopFacade().findCupcakeById(CupcaketopId);
+        CupcakeBottom cupcakeBottom = api.getCupcakeBottomFacade().findCupcakeById(CupcakebottomId);
+
 
         try {
-            //cupcakeFactory.setPrice(cupcakeBottom.getPrice, cupcakeTop.getPrice)
-            cupcakeFactory.setCupcakeBottomId(cupcakeBottom);
-            cupcakeFactory.setCupcakeTopId(cupcakeTop);
+            cupcakeFactory.setPris(cupcakeBottom.getPris(), cupcakeTop.getPris());
+            cupcakeFactory.setCupcakeBottomId(cupcakeBottom.getId());
+            cupcakeFactory.setCupcakeTopId(cupcakeTop.getId());
         } catch (ValidationError validationError) {
             validationError.printStackTrace();
         }
+
 
         api.getOrderFacade().AddCupcakeToOrder(cupcakeFactory);
 
