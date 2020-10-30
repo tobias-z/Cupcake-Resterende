@@ -106,8 +106,15 @@ public class AddCupcakeToOrder extends Command {
         } catch (ValidationError validationError) {
             validationError.printStackTrace();
         }
+
         try {
             int newUserId = Integer.parseInt(userId);
+            Order order = api.getOrderFacade().getOrderById(newUserId);
+
+            if(order == null) {
+                api.getOrderFacade().createOrder(newUserId);
+            }
+
             Order oldOrder = api.getOrderFacade().getOrderById(newUserId);
             double cupcakePrice = cupcakeFactory.getPris();
 

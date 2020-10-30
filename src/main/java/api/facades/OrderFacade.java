@@ -33,4 +33,8 @@ public class OrderFacade {
         Order order = dbOrder.getOrderById(newUserId);
         return order;
     }
+
+    public void createOrder(int newUserId) {
+        dbOrder.createOrder(newUserId);
+    }
 }
