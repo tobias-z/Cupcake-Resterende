@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <img class="d-block w-100" src="${pageContext.request.contextPath}/images/Olskerbanner.png" height="250" ; alt="Headerlogo">
+        <img class="d-block w-100" src="${pageContext.request.contextPath}/images/Olskerheadergraphic.png" height="250" ; alt="Headerlogo">
     </div>
 </div>
 <nav class="navbar navbar-light" >
@@ -12,7 +12,7 @@
             <a class="nav-link" href="FrontController?target=redirect&destination=index" style="font-size: 20px;color: #4b4c4f">Home</a>
         </div>
         <div class="btn-group" role="group" aria-label="Bestil">
-            <a class="nav-link" href="FrontController?target=findcupcakes" style="font-size: 20px;color: #4b4c4f">Bestil</a>
+            <a class="nav-link" href="FrontController?target=redirect&destination=findcupcakes" style="font-size: 20px;color: #4b4c4f">Bestil</a>
         </div>
         <div class="btn-group" role="group" aria-label="FAQ">
             <a class="nav-link" href="#" style="font-size: 20px;color: #4b4c4f">FAQ</a>

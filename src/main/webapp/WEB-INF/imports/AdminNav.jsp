@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <img class="d-block w-100" src="${pageContext.request.contextPath}/images/Olskerbanner.png" height="250" ; alt="Headerlogo">
+        <img class="d-block w-100" src="${pageContext.request.contextPath}/images/Olskerheadergraphic.png" height="250" ; alt="Headerlogo">
     </div>
 </div>
 <nav class="navbar navbar-light" style="background-color: #ECEEEF; padding: 10px; margin:20px 20px 30px">

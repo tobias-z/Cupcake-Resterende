@@ -19,6 +19,8 @@ public class Login extends Command {
 
         String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
+        request.getServletContext().setAttribute("notloggedin", null );
+
         int getrank;
 
         User user = api.getUserFacade().login(email, password);

@@ -5,6 +5,15 @@
 <title>Bestillingsside</title>
 
     <body>
+    <c:forEach var="notloggedin" items="${applicationScope.notloggedin}">
+        <jsp:include page="/WEB-INF/imports/NoUserNav.jsp" flush="true"/>
+    </c:forEach>
+    <c:forEach var="adminrole" items="${sessionScope.adminrole}">
+        <jsp:include page="/WEB-INF/imports/AdminNav.jsp" flush="true"/>
+    </c:forEach>
+    <c:forEach var="customerrole" items="${sessionScope.customerrole}">
+        <jsp:include page="/WEB-INF/imports/CustomerNav.jsp" flush="true"/>
+    </c:forEach>
 
     <!-- Sende cupcaketop + cupcakebottom + antal + userid til target=addcupcaketoorder -->
 <div class="row">
@@ -18,7 +27,7 @@
             <div class="form-group">
                 <label for="Cupcaketop">Choose a cupcake top:</label>
                 <select name="cupcaketop" id="Cupcaketop">
-                    <c:forEach var="toppings" items="${requestScope.cupcaketop}">
+                    <c:forEach var="toppings" items="${requestScope.toppings}">
                         <option>${toppings.id}, ${toppings.type}</option>
                     </c:forEach>
                 </select>
@@ -27,7 +36,7 @@
 
                 <label for="Cupcakebottom">Choose a cupcake top:</label>
                 <select name="cupcakebottom" id="Cupcakebottom">
-                <c:forEach var="bottoms" items="${requestScope.cupcakebottom}">
+                <c:forEach var="bottoms" items="${requestScope.bottoms}">
                     <option> ${bottoms.id}, ${bottoms.type}</option>
                 </c:forEach>
                 </select>

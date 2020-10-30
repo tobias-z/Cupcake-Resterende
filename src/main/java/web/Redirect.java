@@ -1,11 +1,15 @@
 package web;
 
+import domain.CupcakeBottom;
+import domain.CupcakeTop;
 import domain.User;
 import exeptions.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Redirect extends Command {
     @Override
@@ -42,6 +46,24 @@ public class Redirect extends Command {
                 break;
             case "Signup":
                 break;
+
+            case "findcupcakes":
+                /*
+                Lavet 2 lister
+                1 med cupcake bottoms
+                1 med cupcake tops
+                Og de skal tages fra databasen med en select
+                 */
+                List<CupcakeTop> toppings = api.getCupcakeTopFacade().findCupcakeTops();
+                List<CupcakeBottom> bottoms = api.getCupcakeBottomFacade().findCupcakeBottoms();
+                request.setAttribute("toppings", toppings);
+                request.setAttribute("bottoms", bottoms);
+
+
+
+                return "Bestillingsside";
+
+
             default:
                 request.setAttribute("message", "Denne side findes ikke");
                 break;

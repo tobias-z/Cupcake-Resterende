@@ -1,6 +1,8 @@
 package web;
 
 import api.CupCake;
+import api.facades.CupcakeBottomFacade;
+import api.facades.CupcakeTopFacade;
 import api.facades.OrderFacade;
 import api.facades.UserFacade;
 import exeptions.LoginSampleException;
@@ -19,7 +21,6 @@ abstract class Command {
         commands.put( "createcupcake", new CreateCupcake() );
         commands.put("redirect", new Redirect());
         commands.put("addcupcaketoorder", new AddCupcakeToOrder());
-        commands.put("findcupcakes", new FindCupcakes());
     }
 
     static Command from( HttpServletRequest request ) {
@@ -37,7 +38,7 @@ abstract class Command {
     }
 
     private static CupCake createCupCake(){
-        return new CupCake(UserFacade.getInstance(), OrderFacade.getInstance());
+        return new CupCake(UserFacade.getInstance(), OrderFacade.getInstance(), CupcakeTopFacade.getInstance(), CupcakeBottomFacade.getInstance());
     }
 
     abstract String execute( HttpServletRequest request, HttpServletResponse response ) 
