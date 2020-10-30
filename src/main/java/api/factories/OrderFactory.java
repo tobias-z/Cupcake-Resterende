@@ -12,7 +12,7 @@ public class OrderFactory {
 
     public boolean isValid () {
         if (this.userId < 0) return false;
-        if(this.cupcakeId== null || this.cupcakeId.isBlank()) return false;
+        if(this.cupcakeId == null || this.cupcakeId.isBlank()) return false;
         if(this.price < 0) return false;
         return true;
     }

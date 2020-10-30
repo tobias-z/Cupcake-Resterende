@@ -83,11 +83,11 @@ public class AddCupcakeToOrder extends Command {
             validationError.printStackTrace();
         }
 
-
+        /*
         if(cupcakeFactory.isValid()){
             //Cupcake cupcake = createCupcake(cupcakeFactory)
         }
-
+        */
 
         try {
             int newUserId = Integer.parseInt(userId);
