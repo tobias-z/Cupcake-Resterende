@@ -2,11 +2,14 @@ package api.factories;
 
 import exeptions.ValidationError;
 
+import java.util.regex.Pattern;
+
 public class CupcakeFactory {
 
     private int cupcakeBottomId;
     private int cupcakeTopId;
     private double pris;
+    private int antal;
 
 
     /**
@@ -58,6 +61,24 @@ public class CupcakeFactory {
         }
     }
 
+    public void setAntal(int antal) throws ValidationError {
+        if(antal < 0) throw new ValidationError("Antal kan ikke være mindre end 0");
+        this.antal = antal;
+    }
+
+    public void setAntal(String number) throws ValidationError {
+        try {
+            if (!Pattern.matches("[a-zA-Z]+", number) && number.length() > 2) {
+                setAntal(Integer.parseInt(number));
+            }
+        } catch (NumberFormatException e){
+            throw new ValidationError(e.toString());
+        }
+    }
+
+    public int getAntal() {
+        return antal;
+    }
 
     public int getCupcakeBottomId() {
         return cupcakeBottomId;

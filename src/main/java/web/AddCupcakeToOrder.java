@@ -38,6 +38,21 @@ public class AddCupcakeToOrder extends Command {
          * Vi skal generere vores cupcake via vores create cupcake som er en kombination af cupcaketopID og cupcakebottomID
          * Så skal vi bruge den Cupcake, og den cupcake bruger vi så til at blive puttet ind i en ordre.
          *
+         * Lav CupcakeFacade:
+         * Tag imod cupcaketop + cupcakebottom og antal. return Cupcake
+         *
+         * CupcakeTop cupcakeTop = findCupcakeTop(cupcakeTopId)
+         * cupcakeTop.getPrice
+         * CupcakeBottom cupcakeBottom = findCupcakeBottom(cupcakeBottomId)
+         * cupcakeBottom.getPrice
+         *
+         * Lav DBCupcake:
+         * CreateCupcake(cupcakeFactory) return Cupcake
+         *
+         * Brug Cupcake til at lave en ny Ordre:
+         * OrdreFacade(cupcake, userid)
+         *
+         *
          */
 
         CupcakeFactory cupcakeFactory = new CupcakeFactory();
@@ -63,6 +78,7 @@ public class AddCupcakeToOrder extends Command {
         String cupcakeTop = bottoms.get(0);
 
         try {
+            //cupcakeFactory.setPrice(cupcakeBottom.getPrice, cupcakeTop.getPrice)
             cupcakeFactory.setCupcakeBottomId(cupcakeBottom);
             cupcakeFactory.setCupcakeTopId(cupcakeTop);
         } catch (ValidationError validationError) {
