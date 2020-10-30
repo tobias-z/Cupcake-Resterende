@@ -33,8 +33,16 @@ public class AddCupcakeToOrder extends Command {
         api.getCupcakeFacade().AddCupcakeToOrder(cupcakeFactory);
          */
 
-        CupcakeFactory cupcakeFactory = new CupcakeFactory();
 
+        /**
+         * Vi skal generere vores cupcake via vores create cupcake som er en kombination af cupcaketopID og cupcakebottomID
+         * Så skal vi bruge den Cupcake, og den cupcake bruger vi så til at blive puttet ind i en ordre.
+         *
+         */
+
+        CupcakeFactory cupcakeFactory = new CupcakeFactory();
+        String antal = request.getParameter("antal");
+        String userId = request.getParameter("userid");
         String cupcakeBottomArray = request.getParameter("cupcakebottom");
         String cupcakeTopArray = request.getParameter("cupcaketop");
 
@@ -46,7 +54,7 @@ public class AddCupcakeToOrder extends Command {
         }
         String cupcakeBottom = bottoms.get(0);
 
-        String[] newCupcakeTop = cupcakeBottomArray.split(",", 0);
+        String[] newCupcakeTop = cupcakeTopArray.split(",", 0);
 
         ArrayList<String> toppings = new ArrayList<>();
         for(String a:newCupcakeTop){
