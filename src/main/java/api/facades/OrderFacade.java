@@ -1,24 +1,36 @@
 package api.facades;
 
 import api.factories.CupcakeFactory;
-import infrastucture.Database.DBCupcake;
+import api.factories.OrderFactory;
+import infrastucture.Database.DBOrder;
+import domain.Order;
+
 
 public class OrderFacade {
 
     private static OrderFacade instance;
-    private final DBCupcake dbCupcake;
+    private final DBOrder dbOrder;
 
-    public OrderFacade(DBCupcake dbCupcake) {
-        this.dbCupcake = dbCupcake;
+    public OrderFacade(DBOrder dbOrder) {
+        this.dbOrder = dbOrder;
     }
 
     public static OrderFacade getInstance() {
         if(instance == null) {
-            instance = new OrderFacade(new DBCupcake());
+            instance = new OrderFacade(new DBOrder());
         }
         return instance;
     }
 
-    public void AddCupcakeToOrder(CupcakeFactory cupcakeFactory) {
+
+
+    public void AddCupcakeToOrder(OrderFactory orderFactory) {
+        dbOrder.addCupcakeToOrder(orderFactory);
+    }
+
+
+    public Order getOrderById(int newUserId) {
+        Order order = dbOrder.getOrderById(newUserId);
+        return order;
     }
 }

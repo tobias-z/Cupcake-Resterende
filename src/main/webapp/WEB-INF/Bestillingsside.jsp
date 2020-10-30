@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
 
-                <label for="Cupcakebottom">Choose a cupcake top:</label>
+                <label for="Cupcakebottom">Choose a cupcake bottom:</label>
                 <select name="cupcakebottom" id="Cupcakebottom">
                 <c:forEach var="bottoms" items="${requestScope.bottoms}">
                     <option> ${bottoms.id}, ${bottoms.type}</option>
@@ -45,6 +45,11 @@
                 <label for="exampleInputAntal">Antal</label>
                 <input type="text" class="form-control" id="exampleInputAntal" name="antal" aria-describedby="AntalHelp" placeholder="Antal cupcakes" required>
             </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-sm">Bestil</button>
+
+            </div>
+
         </form>
 
     </div>

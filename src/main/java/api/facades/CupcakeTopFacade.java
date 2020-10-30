@@ -1,7 +1,6 @@
 package api.facades;
 
 import domain.CupcakeTop;
-import infrastucture.Database.DBCupcake;
 import infrastucture.Database.DBCupcakeTop;
 
 import java.util.List;

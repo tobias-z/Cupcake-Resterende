@@ -1,10 +1,13 @@
 package web;
 
 import api.factories.CupcakeFactory;
+import api.factories.OrderFactory;
 import domain.CupcakeBottom;
 import domain.CupcakeTop;
+import domain.Order;
 import exeptions.LoginSampleException;
 import exeptions.ValidationError;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,6 +62,8 @@ public class AddCupcakeToOrder extends Command {
          */
 
         CupcakeFactory cupcakeFactory = new CupcakeFactory();
+        OrderFactory orderFactory = new OrderFactory();
+
         String antal = request.getParameter("antal");
         String userId = request.getParameter("userid");
         String cupcakeBottomArray = request.getParameter("cupcakebottom");
@@ -71,6 +76,7 @@ public class AddCupcakeToOrder extends Command {
             bottoms.add(a);
         }
         String cupcakeBottomStringId = bottoms.get(0);
+
 
         String[] newCupcakeTop = cupcakeTopArray.split(",", 0);
 
@@ -94,15 +100,26 @@ public class AddCupcakeToOrder extends Command {
 
 
         try {
-            cupcakeFactory.setPris(cupcakeBottom.getPris(), cupcakeTop.getPris());
+            cupcakeFactory.setPris(cupcakeBottom.getPris(), cupcakeTop.getPris(), antal);
             cupcakeFactory.setCupcakeBottomId(cupcakeBottom.getId());
             cupcakeFactory.setCupcakeTopId(cupcakeTop.getId());
         } catch (ValidationError validationError) {
             validationError.printStackTrace();
         }
+        try {
+            int newUserId = Integer.parseInt(userId);
+            Order oldOrder = api.getOrderFacade().getOrderById(newUserId);
+            double cupcakePrice = cupcakeFactory.getPris();
+
+            orderFactory.setUserId(oldOrder.getUserId());
+            orderFactory.setPrice(oldOrder.getPrice(), cupcakePrice);
+        } catch (ValidationError validationError) {
+            validationError.printStackTrace();
+        }
 
 
-        api.getOrderFacade().AddCupcakeToOrder(cupcakeFactory);
+        api.getOrderFacade().AddCupcakeToOrder(orderFactory);
+
 
         //String userid = request.getParameter("userid");
         //String antal = request.getParameter("antal");

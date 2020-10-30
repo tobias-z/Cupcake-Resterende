@@ -52,6 +52,12 @@ public class CupcakeFactory {
         if(pris < 0) throw new ValidationError("prisen er på en eller anden måde blevet mindre end 0");
         this.pris = pris;
     }
+    public void setPris(double topPris, double bottomPris, String antal) throws ValidationError {
+        int newAntal = Integer.parseInt(antal);
+        double calculatePrice = topPris + bottomPris;
+
+        setPris(calculatePrice*newAntal);
+    }
 
     public void setPris(String number) throws ValidationError {
         try {
