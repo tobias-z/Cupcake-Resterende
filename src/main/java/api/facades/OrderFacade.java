@@ -30,11 +30,10 @@ public class OrderFacade {
 
 
     public Order getOrderById(int newUserId) {
-        Order order = dbOrder.getOrderById(newUserId);
-        return order;
+        return dbOrder.getOrderById(newUserId);
     }
 
-    public void createOrder(int newUserId) {
-        dbOrder.createOrder(newUserId);
+    public Order createOrder(int newUserId) {
+        return dbOrder.createOrder(newUserId);
     }
 }
