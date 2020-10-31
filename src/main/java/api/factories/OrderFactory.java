@@ -1,5 +1,6 @@
 package api.factories;
 
+import domain.Order;
 import exeptions.ValidationError;
 
 import java.time.LocalDateTime;
@@ -39,8 +40,17 @@ public class OrderFactory {
         return cupcakeId;
     }
 
-    public void setCupcakeId(String cupcakeId) {
-        this.cupcakeId = cupcakeId;
+    public void setCupcakeId(String cupcakeId, String oldCupcakes) {
+        cupcakeId = oldCupcakes + cupcakeId + ", ";
+;        this.cupcakeId = cupcakeId;
+    }
+
+    public void setCupcakeId(int cupcakeId, Order oldOrder) throws ValidationError {
+        try {
+            setCupcakeId(String.valueOf(cupcakeId), oldOrder.getCupcakeId());
+        } catch (NumberFormatException e) {
+            throw new ValidationError(e.toString());
+        }
     }
 
     public double getPrice() {

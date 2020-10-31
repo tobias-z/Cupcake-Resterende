@@ -1,9 +1,6 @@
 package api;
 
-import api.facades.CupcakeBottomFacade;
-import api.facades.CupcakeTopFacade;
-import api.facades.OrderFacade;
-import api.facades.UserFacade;
+import api.facades.*;
 
 public class CupCake {
 
@@ -11,13 +8,20 @@ public class CupCake {
     private final OrderFacade orderFacade;
     private final CupcakeTopFacade cupcakeTopFacade;
     private final CupcakeBottomFacade cupcakeBottomFacade;
+    private final CupcakeFacade cupcakeFacade;
 
 
-    public CupCake(UserFacade userFacade, OrderFacade orderFacade, CupcakeTopFacade cupcakeTopFacade, CupcakeBottomFacade cupcakeBottomFacade) {
+    public CupCake(UserFacade userFacade,
+                   OrderFacade orderFacade,
+                   CupcakeTopFacade cupcakeTopFacade,
+                   CupcakeBottomFacade cupcakeBottomFacade,
+                   CupcakeFacade cupcakeFacade) {
+
         this.userFacade = userFacade;
         this.orderFacade = orderFacade;
         this.cupcakeTopFacade = cupcakeTopFacade;
         this.cupcakeBottomFacade = cupcakeBottomFacade;
+        this.cupcakeFacade = cupcakeFacade;
     }
 
     public CupcakeTopFacade getCupcakeTopFacade() {
@@ -34,5 +38,9 @@ public class CupCake {
 
     public OrderFacade getOrderFacade() {
         return orderFacade;
+    }
+
+    public CupcakeFacade getCupcakeFacade() {
+        return cupcakeFacade;
     }
 }

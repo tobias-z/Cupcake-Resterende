@@ -3,7 +3,7 @@ CREATE TABLE orders
 (
     id            INT PRIMARY KEY AUTO_INCREMENT,
     userid        INT NOT NULL,
-    cupcakeid     varchar(225) NOT NULL,
+    cupcakeid     varchar(225) DEFAULT NULL,
     price         DOUBLE DEFAULT 0,
     paydate       TIMESTAMP NOT NULL,
     paid          BOOLEAN DEFAULT FALSE

@@ -77,11 +77,12 @@ public class DBOrder {
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps =
                     conn.prepareStatement(
-                            "INSERT INTO orders (userid, paydate) " +
-                                    "VALUE (?,?);",
+                            "INSERT INTO orders (userid, cupcakeid, paydate) " +
+                                    "VALUE (?,?,?);",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, newUserId);
-            ps.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            ps.setString(2, "");
+            ps.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
             try {
                 ps.executeUpdate();
             } catch (SQLIntegrityConstraintViolationException e) {
