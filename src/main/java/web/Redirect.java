@@ -32,7 +32,7 @@ public class Redirect extends Command {
                     request.setAttribute("nicetry", "Nice try :)");
                     return "errorpage";
                 }
-                destination = "customer/customerpage";
+                destination = "customerpage";
                 break;
             case "FAQ":
                 break;
@@ -42,7 +42,7 @@ public class Redirect extends Command {
                     request.setAttribute("nicetry", "Nice try :)");
                     return "errorpage";
                 }
-                destination = "admin/adminpage";
+                destination = "adminpage";
                 break;
             case "Signup":
                 break;
