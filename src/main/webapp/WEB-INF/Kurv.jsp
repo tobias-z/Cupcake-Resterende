@@ -30,12 +30,9 @@
                 <td><c:out value="Pris"/></td>
                 <td><c:out value="Fjern cupcake"/></td>
             </tr>
-            <c:forEach var="bucket" items="${requestScope.allpreorders}">
+            <c:forEach var="bucket" items="${requestScope.allcupcakes}">
                 <form action="FrontController" method="post">
                     <input type="hidden" name="target" value="removecarid">
-                    <input type="hidden" name="preordercarid" value="${requestScope.preorder.carID}">
-                    <input type="hidden" name="preorderuserid" value="${requestScope.preorder.userID}">
-                    <input type="hidden" name="carid" value="${bucket.id}">
                     <div style="text-align: justify">
                         <tr style="background-color: #999999; border:1px solid black">
                             <td><c:out value="${bucket.cupcakeTop}"/></td>
