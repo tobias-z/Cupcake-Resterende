@@ -17,12 +17,15 @@ public class CupcakeFactory {
      */
 
     public boolean isValid(){
-        return false;
+        if(this.cupcakeBottomId < 0) return false;
+        if(this.cupcakeTopId < 0) return false;
+        if(this.pris < 0) return false;
+        if(this.antal < 0) return false;
+        return true;
     }
 
 
-    public void setCupcakeBottomId(int cupcakeBottomId) throws ValidationError {
-        if(cupcakeBottomId < 0) throw new ValidationError("The Cupcake bottom id was less than 0");
+    public void setCupcakeBottomId(int cupcakeBottomId) {
         this.cupcakeBottomId = cupcakeBottomId;
     }
 
@@ -48,11 +51,10 @@ public class CupcakeFactory {
     }
 
 
-    public void setPris(double pris) throws ValidationError {
-        if(pris < 0) throw new ValidationError("prisen er på en eller anden måde blevet mindre end 0");
+    public void setPris(double pris) {
         this.pris = pris;
     }
-    public void setPris(double topPris, double bottomPris, String antal) throws ValidationError {
+    public void setPris(double topPris, double bottomPris, String antal){
         int newAntal = Integer.parseInt(antal);
         double calculatePrice = topPris + bottomPris;
 
@@ -67,8 +69,7 @@ public class CupcakeFactory {
         }
     }
 
-    public void setAntal(int antal) throws ValidationError {
-        if(antal < 0) throw new ValidationError("Antal kan ikke være mindre end 0");
+    public void setAntal(int antal) {
         this.antal = antal;
     }
 

@@ -2,6 +2,7 @@ package web;
 
 import api.factories.CupcakeFactory;
 import api.factories.OrderFactory;
+import domain.Cupcake;
 import domain.CupcakeBottom;
 import domain.CupcakeTop;
 import domain.Order;
@@ -69,14 +70,60 @@ public class AddCupcakeToOrder extends Command {
         String cupcakeBottomArray = request.getParameter("cupcakebottom");
         String cupcakeTopArray = request.getParameter("cupcaketop");
 
-        String[] newCupcakeBottom = cupcakeBottomArray.split(",", 0);
 
-        ArrayList<String> bottoms = new ArrayList<>();
-        for(String a:newCupcakeBottom){
-            bottoms.add(a);
+        int CupcakebottomId = findCupcakeBottomId(cupcakeBottomArray);
+        int CupcakeTopId = findCupcakeTopId(cupcakeTopArray);
+
+        CupcakeTop cupcakeTop = api.getCupcakeTopFacade().findCupcakeById(CupcakeTopId);
+        CupcakeBottom cupcakeBottom = api.getCupcakeBottomFacade().findCupcakeById(CupcakebottomId);
+
+        try {
+            cupcakeFactory.setPris(cupcakeBottom.getPris(), cupcakeTop.getPris(), antal);
+            cupcakeFactory.setCupcakeBottomId(cupcakeBottom.getId());
+            cupcakeFactory.setCupcakeTopId(cupcakeTop.getId());
+        } catch (ValidationError validationError) {
+            validationError.printStackTrace();
         }
-        String cupcakeBottomStringId = bottoms.get(0);
 
+        Cupcake cupcake = null;
+        if(cupcakeFactory.isValid()){
+            cupcake = api.getCupcakeFacade().createCupcake(cupcakeFactory);
+        }
+
+
+        try {
+            int newUserId = Integer.parseInt(userId);
+
+            Order order = null;
+            if(newUserId < 0) {
+                order = api.getOrderFacade().getOrderById(newUserId);
+            }
+
+            if(order == null) {
+                api.getOrderFacade().createOrder(newUserId);
+            }
+
+            Order oldOrder = api.getOrderFacade().getOrderById(newUserId);
+            double cupcakePrice = cupcakeFactory.getPris();
+
+            if(cupcake != null) {
+                orderFactory.setCupcakeId(cupcake.getId(), oldOrder);
+            }
+            
+            orderFactory.setUserId(oldOrder.getUserId());
+            orderFactory.setPrice(oldOrder.getPrice(), cupcakePrice);
+        } catch (ValidationError validationError) {
+            validationError.printStackTrace();
+        }
+
+        if(orderFactory.isValid()) {
+            api.getOrderFacade().AddCupcakeToOrder(orderFactory);
+        }
+
+        return "Bestillingsside";
+    }
+
+    private int findCupcakeTopId(String cupcakeTopArray) {
 
         String[] newCupcakeTop = cupcakeTopArray.split(",", 0);
 
@@ -87,46 +134,30 @@ public class AddCupcakeToOrder extends Command {
         String cupcakeTopStringId = toppings.get(0);
 
         int CupcaketopId = 0;
-        int CupcakebottomId = 0;
         try {
             CupcaketopId = Integer.parseInt(cupcakeTopStringId);
-            CupcakebottomId = Integer.parseInt(cupcakeBottomStringId);
         }catch (NumberFormatException e){
             e.printStackTrace();
         }
+        return CupcaketopId;
+    }
 
-        CupcakeTop cupcakeTop = api.getCupcakeTopFacade().findCupcakeById(CupcaketopId);
-        CupcakeBottom cupcakeBottom = api.getCupcakeBottomFacade().findCupcakeById(CupcakebottomId);
+    private int findCupcakeBottomId(String cupcakeBottomArray) {
 
+        String[] newCupcakeBottom = cupcakeBottomArray.split(",", 0);
 
-        try {
-            cupcakeFactory.setPris(cupcakeBottom.getPris(), cupcakeTop.getPris(), antal);
-            cupcakeFactory.setCupcakeBottomId(cupcakeBottom.getId());
-            cupcakeFactory.setCupcakeTopId(cupcakeTop.getId());
-        } catch (ValidationError validationError) {
-            validationError.printStackTrace();
+        ArrayList<String> bottoms = new ArrayList<>();
+        for(String a:newCupcakeBottom){
+            bottoms.add(a);
         }
+        String cupcakeBottomStringId = bottoms.get(0);
+
+        int CupcakebottomId = 0;
         try {
-            int newUserId = Integer.parseInt(userId);
-            Order oldOrder = api.getOrderFacade().getOrderById(newUserId);
-            double cupcakePrice = cupcakeFactory.getPris();
-
-            orderFactory.setUserId(oldOrder.getUserId());
-            orderFactory.setPrice(oldOrder.getPrice(), cupcakePrice);
-        } catch (ValidationError validationError) {
-            validationError.printStackTrace();
+            CupcakebottomId = Integer.parseInt(cupcakeBottomStringId);
+        } catch (NumberFormatException e){
+            e.printStackTrace();
         }
-
-
-        api.getOrderFacade().AddCupcakeToOrder(orderFactory);
-
-
-        //String userid = request.getParameter("userid");
-        //String antal = request.getParameter("antal");
-
-
-
-
-        return "Bestillingsside";
+        return CupcakebottomId;
     }
 }
