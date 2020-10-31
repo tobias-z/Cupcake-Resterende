@@ -12,7 +12,7 @@
             <a class="nav-link" href="FrontController?target=redirect&destination=index" >Home</a>
         </div>
         <div class="btn-group" role="group" aria-label="Bestil">
-            <a class="nav-link" href="#" >Bestil</a>
+            <a class="nav-link" href="FrontController?target=redirect&destination=findcupcakes" >Bestil</a>
         </div>
         <div class="btn-group" role="group" aria-label="FAQ">
             <a class="nav-link" href="#" >FAQ</a>
