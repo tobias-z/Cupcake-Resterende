@@ -36,7 +36,7 @@
                 <button class="dropdown-item" id="myBtn" style="text-align: center">Logout</button>
             </div>
 
-            <a href="FrontController?target=redirect&destination=index">
+            <a href="FrontController?target=redirect&destination=findkurv">
                 <img class="navbarlogo" src="${pageContext.request.contextPath}/images/Shoppingbasket.png" style="width: 45px; height: 50px; margin-left: 20px; margin-right: 20px" alt="Shoppingbasket">
             </a>
         </div>

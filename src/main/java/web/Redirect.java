@@ -32,17 +32,19 @@ public class Redirect extends Command {
                     request.setAttribute("nicetry", "Nice try :)");
                     return "errorpage";
                 }
-                destination = "customer/customerpage";
+                destination = "customerpage";
                 break;
             case "FAQ":
                 break;
             case "adminpage":
                 user = (User) session.getAttribute("user");
+                /*
                 if(!user.getRole().equals("admin")) {
                     request.setAttribute("nicetry", "Nice try :)");
                     return "errorpage";
                 }
-                destination = "admin/adminpage";
+
+                 */
                 break;
             case "Signup":
                 break;
