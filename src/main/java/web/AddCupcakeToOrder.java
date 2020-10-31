@@ -107,7 +107,7 @@ public class AddCupcakeToOrder extends Command {
 
             //Try to find an order with the users id
             Order order = null;
-            if(newUserId < 0) {
+            if(newUserId > 0) {
                 order = api.getOrderFacade().getOrderById(newUserId);
             }
 

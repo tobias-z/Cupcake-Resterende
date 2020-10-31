@@ -77,7 +77,7 @@ public class Redirect extends Command {
                     request.setAttribute("allcupcakes", cupcakesInOrder);
                     request.setAttribute("order", order);
                 }
-                break;
+                return "Kurv";
             default:
                 request.setAttribute("message", "Denne side findes ikke");
                 break;

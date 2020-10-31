@@ -26,7 +26,6 @@
             <tr style="font-weight:bold">
                 <td><c:out value="Cupcake top"/></td>
                 <td><c:out value="Cupcake bund"/></td>
-                <td><c:out value="Antal"/></td>
                 <td><c:out value="Pris"/></td>
                 <td><c:out value="Fjern cupcake"/></td>
             </tr>
@@ -35,9 +34,8 @@
                     <input type="hidden" name="target" value="removecarid">
                     <div style="text-align: justify">
                         <tr style="background-color: #999999; border:1px solid black">
-                            <td><c:out value="${bucket.cupcakeTop}"/></td>
-                            <td><c:out value="${bucket.cupcakeBottom}"/></td>
-                            <td><c:out value="${bucket.antal}"/></td>
+                            <td><c:out value="${bucket.cupcakeTopId}"/></td>
+                            <td><c:out value="${bucket.cupcakeBottomId}"/></td>
                             <td><c:out value="${bucket.pris}"/></td>
                             <td><button type="submit" class="btn btn-secondary btn-sm">Remove Item</button></td>
                         </tr>

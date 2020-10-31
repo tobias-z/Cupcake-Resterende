@@ -41,8 +41,8 @@ public class OrderFactory {
     }
 
     public void setCupcakeId(String cupcakeId, String oldCupcakes) {
-        cupcakeId = oldCupcakes + cupcakeId + ", ";
-;        this.cupcakeId = cupcakeId;
+        cupcakeId = oldCupcakes + cupcakeId + ",";
+        this.cupcakeId = cupcakeId;
     }
 
     public void setCupcakeId(int cupcakeId, Order oldOrder) throws ValidationError {
