@@ -1,8 +1,6 @@
 package web;
 
-import domain.CupcakeBottom;
-import domain.CupcakeTop;
-import domain.User;
+import domain.*;
 import exeptions.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -60,12 +58,26 @@ public class Redirect extends Command {
                 List<CupcakeBottom> bottoms = api.getCupcakeBottomFacade().findCupcakeBottoms();
                 request.setAttribute("toppings", toppings);
                 request.setAttribute("bottoms", bottoms);
-
-
-
                 return "Bestillingsside";
+            case "findkurv":
+                user = (User) session.getAttribute("user");
+                if(user == null){
+                    request.setAttribute("error", "You are currently not logged in");
+                    return "errorpage";
+                } else {
+                    Order order = api.getOrderFacade().getOrderById(user.getId());
 
+                    if(order == null){
+                        return "Kurv";
+                    }
 
+                    ArrayList<Cupcake> cupcakesInOrder = api.getCupcakeFacade().getCupcakesInOrder(order);
+
+                    request.setAttribute("orderprice", order.getPrice());
+                    request.setAttribute("allcupcakes", cupcakesInOrder);
+                    request.setAttribute("order", order);
+                }
+                break;
             default:
                 request.setAttribute("message", "Denne side findes ikke");
                 break;

@@ -41,7 +41,7 @@ public class DBCupcake {
         return findCupcake(id);
     }
 
-    private Cupcake findCupcake(int id) {
+    public Cupcake findCupcake(int id) {
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement s = conn.prepareStatement(
                     "SELECT * FROM cupcake WHERE id = ?;");
