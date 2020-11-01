@@ -45,7 +45,8 @@
                                 <td><c:out value="${bucket.antal}"/></td>
                                 <td><c:out value="${bucket.pris}"/></td>
                                 <td>
-                                    <button type="submit" class="button-sm" style="width: auto">Slet (Ikke færdig)</button>
+                                    <button type="submit" class="button-sm" style="width: auto">Slet (Ikke færdig)
+                                    </button>
                                 </td>
                             </tr>
                         </div>
@@ -58,19 +59,21 @@
 
     <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-7">
-            <form action="FrontController" method="post">
-                <input type="hidden" name="target" value="buyorder">
-                <input type="hidden" name="userbank" value="${sessionScope.user.bank}">
-                <input type="hidden" name="orderprice" value="${requestScope.orderprice}">
-                <input type="hidden" name="userid" value="${sessionScope.user.id}">
-                <!-- Values to buy order, maybe userid -->
-                <br>
-                <h4 style="text-align: right">Pris: ${requestScope.orderprice}$ -
-                    <button type="submit" class="button" style="width: auto;">Betal ordre</button>
-                </h4>
+        <div class="col-md-6">
+            <div style="width: 1000px;">
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="target" value="buyorder">
+                    <input type="hidden" name="userbank" value="${sessionScope.user.bank}">
+                    <input type="hidden" name="orderprice" value="${requestScope.orderprice}">
+                    <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                    <!-- Values to buy order, maybe userid -->
+                    <br>
+                    <h4 style="text-align: right">Pris: ${requestScope.orderprice}$ -
+                        <button type="submit" class="button" style="width: auto;">Betal ordre</button>
+                    </h4>
 
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 
