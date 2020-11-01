@@ -4,7 +4,10 @@ CREATE TABLE cupcake
     id            INT PRIMARY KEY AUTO_INCREMENT,
     cupcakeBottom INT NOT NULL,
     cupcakeTop    INT NOT NULL,
+    cupcakeBottomType VARCHAR(50),
+    cupcakeTopType VARCHAR(50),
     pris          DOUBLE NOT NULL,
+    antal         INT NOT NULL,
     FOREIGN KEY (cupcakeBottom) REFERENCES cupcakeBottom(id),
     FOREIGN KEY (cupcakeTop) REFERENCES cupcakeTop(id)
 );

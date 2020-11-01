@@ -10,10 +10,21 @@
     <jsp:include page="/WEB-INF/imports/NoUserNav.jsp" flush="true"/>
 </c:forEach>
 
+<c:forEach var="loginfailnav" items="${requestScope.notloggedin}">
+    <jsp:include page="/WEB-INF/imports/NoUserNav.jsp" flush="true"/>
+</c:forEach>
+
 <div class="backgroundcontainer">
 
     <div class="row" style="margin-left: 1px">
         <h3>Velkommen til login siden <br> Her kan du skrive dit login</h3>
+    </div>
+
+    <div class="row" style="margin-left: 1px">
+        <br>
+        <c:forEach var="loginfail" items="${requestScope.loginfail}">
+            <c:out value="${loginfail}"/>
+        </c:forEach>
     </div>
 
     <div class="row">

@@ -26,6 +26,7 @@ public class Login extends Command {
         User user = api.getUserFacade().login(email, password);
 
         if(user == null) {
+            request.setAttribute("notloggedin", "notloggedin");
             request.setAttribute("loginfail", "Username or password was incorrect");
             return "Login";
         }

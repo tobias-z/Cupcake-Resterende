@@ -84,6 +84,9 @@ public class AddCupcakeToOrder extends Command {
 
         //Create the actual cupcake with the given top and bottom START
         try {
+            cupcakeFactory.setAntal(antal);
+            cupcakeFactory.setCupcakeTopType(cupcakeTop.getType());
+            cupcakeFactory.setCupcakeBottomType(cupcakeBottom.getType());
             cupcakeFactory.setPris(cupcakeBottom.getPris(), cupcakeTop.getPris(), antal);
             cupcakeFactory.setCupcakeBottomId(cupcakeBottom.getId());
             cupcakeFactory.setCupcakeTopId(cupcakeTop.getId());
@@ -138,6 +141,7 @@ public class AddCupcakeToOrder extends Command {
             request.setAttribute("bottoms", bottoms);
         } else {
             request.setAttribute("error", "Your order could not be created");
+            return "errorpage";
         }
 
 

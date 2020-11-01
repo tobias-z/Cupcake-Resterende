@@ -17,12 +17,15 @@ public class DBCupcake {
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps =
                     conn.prepareStatement(
-                            "INSERT INTO cupcake (cupcakeBottom, cupcakeTop, pris) " +
-                                    "VALUE (?,?,?);",
+                            "INSERT INTO cupcake (cupcakeBottom, cupcakeTop, cupcakeBottomType, cupcakeTopType, pris, antal) " +
+                                    "VALUE (?,?,?,?,?,?);",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, cupcakeFactory.getCupcakeBottomId());
             ps.setInt(2, cupcakeFactory.getCupcakeTopId());
-            ps.setDouble(3, cupcakeFactory.getPris());
+            ps.setString(3, cupcakeFactory.getCupcakeBottomType());
+            ps.setString(4, cupcakeFactory.getCupcakeTopType());
+            ps.setDouble(5, cupcakeFactory.getPris());
+            ps.setInt(6, cupcakeFactory.getAntal());
             try {
                 ps.executeUpdate();
             } catch (SQLIntegrityConstraintViolationException e) {
@@ -51,7 +54,7 @@ public class DBCupcake {
                 return loadCupcake(rs);
             } else {
                 System.err.println("No version in properties.");
-                throw new NoSuchElementException("Cupcake findes ikke");
+                throw new NoSuchElementException("Cupcake" + id + " findes ikke");
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -63,7 +66,10 @@ public class DBCupcake {
                 rs.getInt("cupcake.id"),
                 rs.getInt("cupcake.cupcakeBottom"),
                 rs.getInt("cupcake.cupcakeTop"),
-                rs.getDouble("cupcake.pris")
-        );
+                rs.getString("cupcake.cupcakeBottomType"),
+                rs.getString("cupcake.cupcakeTopType"),
+                rs.getDouble("cupcake.pris"),
+                rs.getInt("cupcake.antal"));
+
     }
 }

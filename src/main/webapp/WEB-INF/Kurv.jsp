@@ -17,42 +17,53 @@
 
 <!-- Sende cupcaketop + cupcakebottom + antal + userid til target=addcupcaketoorder -->
 <div class="backgroundcontainer">
-<div class="row">
-    <div class="col-md-3">
+    <div class="row">
+        <div class="col-md-3">
 
-    </div>
-    <div class="col-md-6">
-        <table class="comonfield1" colspan="3%" align="center" width="1000">
-            <tr style="font-weight:bold">
-                <td><c:out value="Cupcake top"/></td>
-                <td><c:out value="Cupcake bund"/></td>
-                <td><c:out value="Pris"/></td>
-                <td><c:out value="Fjern cupcake"/></td>
-            </tr>
-            <c:forEach var="bucket" items="${requestScope.allcupcakes}">
-                <form action="FrontController" method="post">
-                    <input type="hidden" name="target" value="removecarid">
-                    <div style="text-align: justify">
-                        <tr style="background-color: #999999; border:1px solid black">
-                            <td><c:out value="${bucket.cupcakeTopId}"/></td>
-                            <td><c:out value="${bucket.cupcakeBottomId}"/></td>
-                            <td><c:out value="${bucket.pris}"/></td>
-                            <td><button type="submit" class="btn btn-secondary btn-sm">Remove Item</button></td>
-                        </tr>
-                    </div>
-                </form>
+        </div>
+        <div class="col-md-6">
+            <table class="comonfield1" colspan="3%" align="center" width="1000">
+                <tr style="font-weight:bold">
+                    <td><c:out value="Cupcake top"/></td>
+                    <td><c:out value="Cupcake bund"/></td>
+                    <td><c:out value="Antal"/></td>
+                    <td><c:out value="Pris"/></td>
+                    <td><c:out value="TBA (Fjern cupcake)"/></td>
+                </tr>
+                <c:forEach var="bucket" items="${requestScope.allcupcakes}">
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="target" value="removecarid">
+                        <div style="text-align: justify">
+                            <tr style="background-color: #999999; border:1px solid black">
+                                <td><c:out value="${bucket.cupcakeTopType}"/></td>
+                                <td><c:out value="${bucket.cupcakeBottomType}"/></td>
+                                <td><c:out value="${bucket.antal}"/></td>
+                                <td><c:out value="${bucket.pris}"/></td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary btn-sm">Slet (Ikke færdig)</button>
+                                </td>
+                            </tr>
+                        </div>
+                    </form>
+                    <br>
+                </c:forEach>
+            </table>
+
+
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="buyorder">
+                <input type="hidden" name="userid" value="${sessionScope.user}">
+                <input type="hidden" name="order" value="${requestScope.order}">
+                <!-- Values to buy order, maybe userid -->
                 <br>
-            </c:forEach>
-        </table>
+                <h4 style="text-align: right">Pris: ${requestScope.orderprice}$ -
+                    <button type="submit" class="btn btn-primary">Betal ordre</button>
+                </h4>
 
-
-            </div>
-
-        </form>
-
+            </form>
+        </div>
     </div>
 
-</div>
 </div>
 
 

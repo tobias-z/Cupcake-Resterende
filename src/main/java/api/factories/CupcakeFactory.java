@@ -10,6 +10,8 @@ public class CupcakeFactory {
     private int cupcakeTopId;
     private double pris;
     private int antal;
+    private String cupcakeBottomType;
+    private String cupcakeTopType;
 
 
     /**
@@ -21,6 +23,8 @@ public class CupcakeFactory {
         if(this.cupcakeTopId < 0) return false;
         if(this.pris < 0) return false;
         if(this.antal < 0) return false;
+        if(this.cupcakeBottomType == null || this.cupcakeBottomType.isBlank()) return false;
+        if(this.cupcakeTopType == null || this.cupcakeTopType.isBlank()) return false;
         return true;
     }
 
@@ -75,12 +79,26 @@ public class CupcakeFactory {
 
     public void setAntal(String number) throws ValidationError {
         try {
-            if (!Pattern.matches("[a-zA-Z]+", number) && number.length() > 2) {
-                setAntal(Integer.parseInt(number));
-            }
+            setAntal(Integer.parseInt(number));
         } catch (NumberFormatException e){
             throw new ValidationError(e.toString());
         }
+    }
+
+    public void setCupcakeBottomType(String cupcakeBottomType) {
+        this.cupcakeBottomType = cupcakeBottomType;
+    }
+
+    public void setCupcakeTopType(String cupcakeTopType) {
+        this.cupcakeTopType = cupcakeTopType;
+    }
+
+    public String getCupcakeTopType() {
+        return cupcakeTopType;
+    }
+
+    public String getCupcakeBottomType() {
+        return cupcakeBottomType;
     }
 
     public int getAntal() {
