@@ -50,4 +50,12 @@ public class UserFacade {
         byte[] secret = User.calculateSecret(salt, userFactory.getPassword());
         return dbUser.createUser(userFactory, salt, secret);
     }
+
+    public User findUser(int newUserId) {
+        return dbUser.findUser(newUserId);
+    }
+
+    public void updateUserBank(int newUserId, double newBank) {
+        dbUser.updateUserBank(newUserId, newBank);
+    }
 }

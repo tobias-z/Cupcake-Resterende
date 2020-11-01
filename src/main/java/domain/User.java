@@ -34,9 +34,10 @@ public class User {
     private final byte[] salt;
     private final byte[] secret;
     private String role;
+    private final double bank;
     private int ranked;
 
-    public User(int id, String name, String email, LocalDateTime createdAt, byte[] salt, byte[] secret, String role, int ranked) {
+    public User(int id, String name, String email, LocalDateTime createdAt, byte[] salt, byte[] secret, String role,double bank, int ranked) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -44,6 +45,7 @@ public class User {
         this.salt = salt;
         this.secret = secret;
         this.role = role;
+        this.bank = bank;
         this.ranked = ranked;
     }
 
@@ -106,6 +108,10 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public double getBank() {
+        return bank;
     }
 
     public int isRanked() {

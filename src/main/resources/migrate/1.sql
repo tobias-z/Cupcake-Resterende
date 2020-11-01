@@ -7,7 +7,7 @@ CREATE TABLE users (
     salt BINARY(16) NOT NULL,
     secret BINARY(32) NOT NULL,
     role VARCHAR(25) NOT NULL,
-    bank INT DEFAULT 0,
+    bank DOUBLE DEFAULT 0,
     ranked INT DEFAULT 1
 );
 

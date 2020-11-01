@@ -17,6 +17,11 @@
 
 <!-- Sende cupcaketop + cupcakebottom + antal + userid til target=addcupcaketoorder -->
 <div class="backgroundcontainer">
+
+    <c:forEach var="nomoney" items="${requestScope.nomoney}">
+        <h3 style="text-align: center; color: red">${nomoney}</h3>
+    </c:forEach>
+
     <div class="row">
         <div class="col-md-3">
 
@@ -56,8 +61,9 @@
         <div class="col-md-7">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="buyorder">
-                <input type="hidden" name="userid" value="${sessionScope.user}">
-                <input type="hidden" name="order" value="${requestScope.order}">
+                <input type="hidden" name="userbank" value="${sessionScope.user.bank}">
+                <input type="hidden" name="orderprice" value="${requestScope.orderprice}">
+                <input type="hidden" name="userid" value="${sessionScope.user.id}">
                 <!-- Values to buy order, maybe userid -->
                 <br>
                 <h4 style="text-align: right">Pris: ${requestScope.orderprice}$ -

@@ -2,6 +2,7 @@ package infrastucture.Database;
 
 
 import api.factories.UserFactory;
+import domain.Order;
 import domain.User;
 import exeptions.LoginSampleException;
 import exeptions.UserExists;
@@ -24,6 +25,7 @@ public class DBUser {
                 rs.getBytes("users.salt"),
                 rs.getBytes("users.secret"),
                 rs.getString("users.role"),
+                rs.getDouble("users.bank"),
                 rs.getInt("users.ranked"));
     }
 
@@ -103,5 +105,21 @@ public class DBUser {
             throw new RuntimeException(e);
         }
         return findUser(id);
+    }
+
+    public User updateUserBank(int newUserId, double newBank) {
+        int id;
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement ps =
+                    conn.prepareStatement(
+                            "UPDATE users SET bank = ? WHERE userid = ?;");
+            ps.setDouble(1, newBank);
+            ps.setInt(2, newUserId);
+            ps.executeUpdate();
+            ps.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return findUser(newUserId);
     }
 }

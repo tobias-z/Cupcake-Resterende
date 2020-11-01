@@ -55,7 +55,7 @@ public class DBOrder {
         return findOrder(order.getId());
     }
 
-    private Order findOrder(int id) {
+    Order findOrder(int id) {
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement s = conn.prepareStatement(
                     "SELECT * FROM orders WHERE id = ? AND paid = 0;");
@@ -111,5 +111,19 @@ public class DBOrder {
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public Order orderPurchased(Order order) {
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement ps =
+                    conn.prepareStatement(
+                            "UPDATE orders SET paid = 1 WHERE userid = ?;");
+            ps.setInt(1, order.getUserId());
+            ps.executeUpdate();
+            ps.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return findOrder(order.getId());
     }
 }

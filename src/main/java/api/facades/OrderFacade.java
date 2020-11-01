@@ -40,4 +40,8 @@ public class OrderFacade {
     public void deleteOrder(int newUserId) {
         dbOrder.deleteOrder(newUserId);
     }
+
+    public Order orderPurchased(Order order) {
+        return dbOrder.orderPurchased(order);
+    }
 }
