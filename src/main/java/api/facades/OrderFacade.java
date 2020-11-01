@@ -36,4 +36,8 @@ public class OrderFacade {
     public Order createOrder(int newUserId) {
         return dbOrder.createOrder(newUserId);
     }
+
+    public void deleteOrder(int newUserId) {
+        dbOrder.deleteOrder(newUserId);
+    }
 }
