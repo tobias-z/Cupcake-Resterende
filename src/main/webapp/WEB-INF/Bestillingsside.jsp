@@ -44,7 +44,7 @@
                    aria-describedby="AntalHelp" placeholder="Antal cupcakes" required style="width: 350px">
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-lg btn-primary btn-block" style="width: 350px">Bestil</button>
+            <button type="submit" class="button" style="width: 350px">Bestil</button>
 
         </div>
 
