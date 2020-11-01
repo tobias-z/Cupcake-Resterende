@@ -8,6 +8,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShowUsersOrders extends Command {
     @Override
@@ -30,6 +32,7 @@ public class ShowUsersOrders extends Command {
         }
 
         ArrayList<Cupcake> cupcakes = new ArrayList<>();
+
 
         for (Order o: orders) {
             cupcakes = api.getCupcakeFacade().getCupcakesInOrder(o);

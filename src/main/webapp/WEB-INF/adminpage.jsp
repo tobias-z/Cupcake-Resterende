@@ -98,9 +98,13 @@
         </c:forEach>
 
         <c:set var="count" value="0" scope="page"/>
+        <c:forEach var="cupcakenames" items="${requestScope.cupcakenames}">
+            <c:out value="${cupcakenames}"/>
+        </c:forEach>
+
+
         <c:forEach var="userorders" items="${requestScope.userorders}">
             <!-- List of all the users orders -->
-            <c:out value="${requestScope.cupcakenames}"/>
             <c:set var="count" value="${count + 1}" scope="page"/>
             <br>
             <c:out value="${userorders.cupcakeId}"/>
