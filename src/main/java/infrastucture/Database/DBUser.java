@@ -9,6 +9,7 @@ import exeptions.UserExists;
 import infrastucture.DBSetup.Connector;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class DBUser {
@@ -112,7 +113,7 @@ public class DBUser {
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps =
                     conn.prepareStatement(
-                            "UPDATE users SET bank = ? WHERE userid = ?;");
+                            "UPDATE users SET bank = ? WHERE id = ?;");
             ps.setDouble(1, newBank);
             ps.setInt(2, newUserId);
             ps.executeUpdate();
@@ -121,5 +122,22 @@ public class DBUser {
             throw new RuntimeException(e);
         }
         return findUser(newUserId);
+    }
+
+    public ArrayList<User> findAllUsers() {
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement s = conn.prepareStatement("SELECT * FROM users;");
+            ResultSet rs = s.executeQuery();
+            ArrayList<User> users = new ArrayList<>();
+            while(rs.next()) {
+                users.add(loadUser(rs));
+            }
+            return users;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -47,4 +47,8 @@ public class CupcakeFacade {
         }
         return cupcakesInOrder;
     }
+
+    public Cupcake getCupcakeById(int id) {
+        return dbCupcake.findCupcake(id);
+    }
 }

@@ -5,6 +5,8 @@ import api.factories.OrderFactory;
 import infrastucture.Database.DBOrder;
 import domain.Order;
 
+import java.util.ArrayList;
+
 
 public class OrderFacade {
 
@@ -43,5 +45,9 @@ public class OrderFacade {
 
     public Order orderPurchased(Order order) {
         return dbOrder.orderPurchased(order);
+    }
+
+    public ArrayList<Order> getAllUserOrders(int newUserId) {
+        return dbOrder.getAllUserOrders(newUserId);
     }
 }

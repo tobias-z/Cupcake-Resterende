@@ -6,6 +6,8 @@ import domain.User;
 import exeptions.UserExists;
 import infrastucture.Database.DBUser;
 
+import java.util.ArrayList;
+
 public class UserFacade {
 
     private static UserFacade instance;
@@ -55,7 +57,15 @@ public class UserFacade {
         return dbUser.findUser(newUserId);
     }
 
+    public User findUser(String email) {
+        return dbUser.findUser(email);
+    }
+
     public void updateUserBank(int newUserId, double newBank) {
         dbUser.updateUserBank(newUserId, newBank);
+    }
+
+    public ArrayList<User> findAllUsers() {
+        return dbUser.findAllUsers();
     }
 }

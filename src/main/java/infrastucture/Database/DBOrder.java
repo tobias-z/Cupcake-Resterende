@@ -2,10 +2,12 @@ package infrastucture.Database;
 
 import api.factories.OrderFactory;
 import domain.Order;
+import domain.User;
 import infrastucture.DBSetup.Connector;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class DBOrder {
@@ -42,7 +44,7 @@ public class DBOrder {
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps =
                     conn.prepareStatement(
-                            "UPDATE orders SET cupcakeid = ?, price = ? WHERE userid = ?;");
+                            "UPDATE orders SET cupcakeid = ?, price = ? WHERE userid = ? AND paid = 0;");
             ps.setString(1, orderFactory.getCupcakeId());
             ps.setDouble(2, orderFactory.getPrice());
             ps.setInt(3, orderFactory.getUserId());
@@ -124,6 +126,41 @@ public class DBOrder {
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
-        return findOrder(order.getId());
+        return findPaidOrder(order.getId());
+    }
+
+    Order findPaidOrder(int id) {
+        try(Connection conn = Connector.getConnection()) {
+            PreparedStatement s = conn.prepareStatement(
+                    "SELECT * FROM orders WHERE id = ? AND paid = 1;");
+            s.setInt(1, id);
+            ResultSet rs = s.executeQuery();
+            if(rs.next()) {
+                return loadOrder(rs);
+            } else {
+                System.err.println("No version in properties.");
+                throw new NoSuchElementException("findes ikke");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<Order> getAllUserOrders(int newUserId) {
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement s = conn.prepareStatement("SELECT * FROM orders WHERE paid = 1 AND userid = ?;");
+            s.setInt(1, newUserId);
+            ResultSet rs = s.executeQuery();
+            ArrayList<Order> orders = new ArrayList<>();
+            while(rs.next()) {
+                orders.add(loadOrder(rs));
+            }
+            return orders;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

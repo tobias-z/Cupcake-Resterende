@@ -20,7 +20,9 @@ abstract class Command {
         commands.put("addcupcaketoorder", new AddCupcakeToOrder());
         commands.put("buyorder", new BuyOrder());
         commands.put("logoutuser", new Logout());
-        commands.put("adminselect", new AdminSelect());
+        commands.put("adminoptions", new AdminSelect());
+        commands.put("managemoney", new ManageMoney());
+        commands.put("showuserorders", new ShowUsersOrders());
     }
 
     static Command from( HttpServletRequest request ) {

@@ -7,12 +7,12 @@ function getUsers() {
     }
 }
 
-function getMessages() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
+function chooseUser() {
+    var x = document.getElementById("myChosenUser");
+    if (x.style.display === "none") {
         x.style.display = "block";
+    } else {
+        x.style.display = "none";
     }
 }
 
