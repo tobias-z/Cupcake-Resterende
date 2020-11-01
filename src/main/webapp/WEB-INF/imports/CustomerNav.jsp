@@ -36,6 +36,23 @@
                 <button class="dropdown-item" id="myBtn" style="text-align: center">Logout</button>
             </div>
 
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h4 class="form-text" style="text-align: center">Vil du gerne gemme din ordre?</h4>
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="target" value="logoutuser">
+                        <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                        <br>
+                        <br>
+                        <div style="text-align: center">
+                            <button style="margin:5px;" name="logoutans" value="Yes" type="submit" class="btn btn-secondary">Ja</button>
+                            <button style="margin:5px;" name="logoutans" value="No" type="submit" class="btn btn-secondary">Nej</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <a href="FrontController?target=redirect&destination=findkurv">
                 <img class="navbarlogo" src="${pageContext.request.contextPath}/images/Shoppingbasket.png" style="width: 45px; height: 50px; margin-left: 20px; margin-right: 20px" alt="Shoppingbasket">
             </a>

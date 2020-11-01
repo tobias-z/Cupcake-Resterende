@@ -48,8 +48,12 @@
                     <br>
                 </c:forEach>
             </table>
+        </div>
+    </div>
 
-
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-7">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="buyorder">
                 <input type="hidden" name="userid" value="${sessionScope.user}">
