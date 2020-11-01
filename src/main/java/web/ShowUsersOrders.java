@@ -32,13 +32,16 @@ public class ShowUsersOrders extends Command {
         }
 
         ArrayList<Cupcake> cupcakes = new ArrayList<>();
+        ArrayList<ArrayList<Cupcake>> allCupcakes = new ArrayList<>();
+
 
 
         for (Order o: orders) {
             cupcakes = api.getCupcakeFacade().getCupcakesInOrder(o);
+            allCupcakes.add(cupcakes);
         }
 
-        request.setAttribute("cupcakenames", cupcakes);
+        request.setAttribute("cupcakenames", allCupcakes);
         request.setAttribute("userorders", orders);
 
 

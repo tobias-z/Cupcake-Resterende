@@ -99,7 +99,10 @@
 
         <c:set var="count" value="0" scope="page"/>
         <c:forEach var="cupcakenames" items="${requestScope.cupcakenames}">
+            <c:set var="count" value="${count + 1}" scope="page"/>
+            <c:out value="Order: ${count}."/>
             <c:out value="${cupcakenames}"/>
+            <br>
         </c:forEach>
 
 
