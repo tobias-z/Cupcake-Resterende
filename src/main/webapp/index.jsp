@@ -32,31 +32,6 @@
         </div>
     </div>
 
-
-    <!-- Hover #1 -->
-    <div class="box-1">
-        <div class="btn btn-one">
-            <span>HOVER ME</span>
-        </div>
-    </div>
-
-    <!-- Hover #2 -->
-    <div class="box-2">
-        <div class="btn btn-two">
-            <span>HOVER ME</span>
-        </div>
-    </div>
-
-    <!-- Hover #3 -->
-    <div class="box-3">
-        <div class="btn btn-three">
-            <span>HOVER ME</span>
-        </div>
-    </div>
-
-
-
-
     <div class="row">
         <div class="col-md-4"></div>
 
