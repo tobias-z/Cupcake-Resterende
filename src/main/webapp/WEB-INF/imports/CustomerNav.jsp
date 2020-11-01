@@ -28,20 +28,20 @@
 
         <div class="btn-group" role="group" aria-label="login">
             <button type="button" class="button"
-                    style="width: 320px; text-align: center">${sessionScope.user.email}: ${sessionScope.user.bank}</button>
+                    style="width: auto; text-align: center">${sessionScope.user.email}: ${sessionScope.user.bank}</button>
             <button type="button" class="button dropdown-toggle dropdown-toggle-split" style="width: 50px"
                     data-toggle="dropdown">
                 <img class="d-block w-100" src="${pageContext.request.contextPath}/images/dropdownArrow.png" height="30"
                      width="20" alt="DropdownArrow">
             </button>
-            <div class="dropdown-menu">
-                <button class="dropdown-item" style="text-align: center; width: 370px" href="#">Settings</button>
+            <div class="dropdown-menu" style="width: 300px; text-align: center">
+                <button class="dropdown-item" href="#">Settings</button>
                 <form action="FrontController" method="post">
                     <input type="hidden" name="target" value="getusersorders">
                     <input type="hidden" name="userid" value="${sessionScope.user.id}">
-                    <button class="dropdown-item" style="text-align: center;" href="#">Orders</button>
+                    <button class="dropdown-item" href="#">Orders</button>
                 </form>
-                <button class="dropdown-item" id="myBtn" style="text-align: center">Logout</button>
+                <button class="dropdown-item" id="myBtn">Logout</button>
             </div>
 
             <div class="row">

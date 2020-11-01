@@ -107,14 +107,15 @@
     border: none;
     font-size: 18px;
     color: #ffffff;
-    padding: 4px;
+    padding: 15px;
     width: 130px;
-    height: 60px;
+    height: 55px;
     text-align: center;
     transition-duration: 0.4s;
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
+
 }
 
 .button:after {

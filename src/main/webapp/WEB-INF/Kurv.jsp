@@ -45,7 +45,7 @@
                                 <td><c:out value="${bucket.antal}"/></td>
                                 <td><c:out value="${bucket.pris}"/></td>
                                 <td>
-                                    <button type="submit" class="btn btn-primary btn-sm">Slet (Ikke færdig)</button>
+                                    <button type="submit" class="button-sm" style="width: auto">Slet (Ikke færdig)</button>
                                 </td>
                             </tr>
                         </div>
@@ -67,7 +67,7 @@
                 <!-- Values to buy order, maybe userid -->
                 <br>
                 <h4 style="text-align: right">Pris: ${requestScope.orderprice}$ -
-                    <button type="submit" class="btn btn-primary">Betal ordre</button>
+                    <button type="submit" class="button" style="width: auto;">Betal ordre</button>
                 </h4>
 
             </form>
