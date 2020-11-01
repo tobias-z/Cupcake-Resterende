@@ -100,4 +100,16 @@ public class DBOrder {
         }
         return findOrder(id);
     }
+
+    public void deleteOrder(int newUserId) {
+        try(Connection conn = Connector.getConnection()) {
+            PreparedStatement ps2 = conn.prepareStatement(
+                    "DELETE FROM orders WHERE userid = ? AND paid = 0;");
+            ps2.setInt(1, newUserId);
+            ps2.executeUpdate();
+            ps2.close();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }
