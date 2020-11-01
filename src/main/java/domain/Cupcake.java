@@ -19,6 +19,13 @@ public class Cupcake {
         this.antal = antal;
     }
 
+    @Override
+    public String toString() {
+        return  "Bottom: " + cupcakeBottomType +
+                " - Topping: " + cupcakeTopType +
+                "\nAntal: " + antal;
+    }
+
     public int getId() {
         return id;
     }

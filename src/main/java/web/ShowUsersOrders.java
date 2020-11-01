@@ -29,17 +29,13 @@ public class ShowUsersOrders extends Command {
             request.setAttribute("noorder", "Denne bruger har ikke nogen ordre");
         }
 
-        ArrayList<String> cupcakeStrings = new ArrayList<>();
-        int count = 1;
+        ArrayList<Cupcake> cupcakes = new ArrayList<>();
+
         for (Order o: orders) {
-            ArrayList<Cupcake> cupcakes = api.getCupcakeFacade().getCupcakesInOrder(o);
-            for (Cupcake c: cupcakes) {
-                cupcakeStrings = new ArrayList<>();
-                cupcakeStrings.add("Bottom: " + c.getCupcakeBottomType() + " - Topping: " +  c.getCupcakeTopType());
-            }
+            cupcakes = api.getCupcakeFacade().getCupcakesInOrder(o);
         }
 
-        request.setAttribute("cupcakenames", cupcakeStrings);
+        request.setAttribute("cupcakenames", cupcakes);
         request.setAttribute("userorders", orders);
 
 
