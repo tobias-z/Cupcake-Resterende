@@ -4,12 +4,9 @@ import domain.Cupcake;
 import domain.Order;
 import exeptions.LoginSampleException;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ShowUsersOrders extends Command {
     @Override
@@ -29,16 +26,16 @@ public class ShowUsersOrders extends Command {
 
         if(orders == null) {
             request.setAttribute("noorder", "Denne bruger har ikke nogen ordre");
+            return "adminpage";
         }
 
-        ArrayList<Cupcake> cupcakes = new ArrayList<>();
+        ArrayList<Cupcake> cupcakes;
         ArrayList<ArrayList<Cupcake>> allCupcakes = new ArrayList<>();
-
-
 
         for (Order o: orders) {
             cupcakes = api.getCupcakeFacade().getCupcakesInOrder(o);
             allCupcakes.add(cupcakes);
+
         }
 
         request.setAttribute("cupcakenames", allCupcakes);
