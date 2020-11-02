@@ -7,6 +7,7 @@ import exeptions.LoginSampleException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShowUsersOrders extends Command {
     @Override
@@ -29,19 +30,34 @@ public class ShowUsersOrders extends Command {
             return "adminpage";
         }
 
-        ArrayList<Cupcake> cupcakes;
-        ArrayList<ArrayList<Cupcake>> allCupcakes = new ArrayList<>();
+        List<OrderDTO> allCupcakes = new ArrayList<>();
 
         for (Order o: orders) {
-            cupcakes = api.getCupcakeFacade().getCupcakesInOrder(o);
-            allCupcakes.add(cupcakes);
-
+            allCupcakes.add(new OrderDTO(o, api.getCupcakeFacade().getCupcakesInOrder(o)));
         }
 
-        request.setAttribute("cupcakenames", allCupcakes);
-        request.setAttribute("userorders", orders);
+        ///request.setAttribute("cupcakenames", allCupcakes);
+        request.setAttribute("userorders", allCupcakes);
 
 
         return "adminpage";
+    }
+
+    public static class OrderDTO {
+        private final Order order;
+        private final List<Cupcake> cupcakes;
+
+        public OrderDTO(Order order, List<Cupcake> cupcakes) {
+            this.order = order;
+            this.cupcakes = cupcakes;
+        }
+
+        public Order getOrder() {
+            return order;
+        }
+
+        public List<Cupcake> getCupcakes() {
+            return cupcakes;
+        }
     }
 }

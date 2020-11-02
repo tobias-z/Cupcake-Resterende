@@ -21,10 +21,10 @@
         <div>
             <h3 class="title">Your Receipt for Order: ORD00${requestScope.order.id}</h3>
             <br>
-            <p>Ordre Betailt: ${requestScope.order.paid}</p>
+            <p>Ordre Betalt: ${requestScope.order.paid}</p>
             <p>Ordre Nummer: ORD00${requestScope.order.id}</p>
             <p>Ordre Dato: ${requestScope.order.paydate}</p>
-            <p>Betalings Metode: Server Penge</p>
+            <p>Betalings Metode: Olsker Pung</p>
             <p>Total Pris ${requestScope.orderprice}</p>
             <br>
 
@@ -46,7 +46,7 @@
                             <c:set var="count" value="${count + 1}" scope="page"/>
                             <td><c:out value="${count}"/> </td>
                             <td><c:out value="Topping: ${bucket.cupcakeTopType} - Bottom: ${bucket.cupcakeBottomType}"/></td>
-                            <td><c:out value="$${bucket.pris}"/></td>
+                            <td><c:out value="${bucket.pris} Kr."/></td>
                         </tr>
                     </div>
                     <br>

@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <jsp:include page="/WEB-INF/imports/header.jsp" flush="true"/>
 
@@ -98,23 +99,22 @@
         </c:forEach>
 
         <c:set var="count" value="0" scope="page"/>
-        <c:forEach var="cupcakenames" items="${requestScope.cupcakenames}">
-            <c:set var="count" value="${count + 1}" scope="page"/>
-            <c:out value="Order: ${count}."/>
-            <c:out value="${cupcakenames}"/>
-            <br>
-        </c:forEach>
 
-
-        <c:forEach var="userorders" items="${requestScope.userorders}">
+        <c:forEach var="order" items="${requestScope.userorders}">
             <!-- List of all the users orders -->
             <c:set var="count" value="${count + 1}" scope="page"/>
             <br>
-            <c:out value="${userorders.cupcakeId}"/>
+            <c:out value="${order.order.cupcakeId}"/>
             <br>
-            <c:out value="Betalt tidspungt: ${userorders.paydate}"/>
+            <c:out value="Betalt tidspungt: ${order.order.paydate}"/>
             <br>
-            <c:out value="Pris: ${userorders.price}"/>
+            <c:set var="price" value="${order.order.price}"/>
+            Pris: ${order.order.price}
+            <br>
+            <c:set var="count" value="${count + 1}" scope="page"/>
+            <c:out value="Order: ${order.order.id}."/>
+            <c:out value="${order.cupcakes}"/>
+            <!-- https://www.javatpoint.com/jstl-fmt-formatnumber-tag -->
             <br>
         </c:forEach>
     </div>
