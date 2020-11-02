@@ -2,16 +2,14 @@ package web;
 
 import api.factories.CupcakeFactory;
 import api.factories.OrderFactory;
-import domain.Cupcake;
-import domain.CupcakeBottom;
-import domain.CupcakeTop;
-import domain.Order;
+import domain.*;
 import exeptions.LoginSampleException;
 import exeptions.ValidationError;
 
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,6 +65,15 @@ public class AddCupcakeToOrder extends Command {
         //Initialice Factories
         CupcakeFactory cupcakeFactory = new CupcakeFactory();
         OrderFactory orderFactory = new OrderFactory();
+        HttpSession session = request.getSession();
+
+        User user = (User) session.getAttribute("user");
+
+        if(user == null){
+            request.setAttribute("loginfail", "You must login before putting a cupcake in your order");
+            return "Login";
+        }
+
 
         //Get the parameters from jsp sites
         String antal = request.getParameter("antal");
