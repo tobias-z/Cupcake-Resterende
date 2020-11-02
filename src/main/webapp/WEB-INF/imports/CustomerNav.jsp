@@ -6,12 +6,12 @@
 </div>
 <nav class="navbar navbar-light">
     <div class="row">
-        <a href="FrontController?target=redirect&destination=index">
+        <a href="FrontController?target=redirect&destination=customerpage">
             <img class="navbarlogo" src="${pageContext.request.contextPath}/images/CupcakeLogo.png"
                  style="margin-left: 20px" alt="OlskerLogo">
         </a>
         <div class="btn-group" role="group" aria-label="Main menu">
-            <a class="nav-link" href="FrontController?target=redirect&destination=index"
+            <a class="nav-link" href="FrontController?target=redirect&destination=customerpage"
                style="font-size: 20px;color: #4b4c4f">Home</a>
         </div>
         <div class="btn-group" role="group" aria-label="Bestil">
@@ -28,19 +28,14 @@
 
         <div class="btn-group" role="group" aria-label="login">
             <button type="button" class="button"
-                    style="width: auto; text-align: center">${sessionScope.user.email}: ${sessionScope.user.bank}</button>
+                    style="width: auto; padding-left: 20px; padding-right: 20px; text-align: center">${sessionScope.user.email}: ${sessionScope.user.bank}</button>
             <button type="button" class="button dropdown-toggle dropdown-toggle-split" style="width: 50px"
                     data-toggle="dropdown">
-                <img class="d-block w-100" src="${pageContext.request.contextPath}/images/dropdownArrow.png" height="30"
-                     width="20" alt="DropdownArrow">
+                <img src="${pageContext.request.contextPath}/images/dropdownArrow.png" style="height: 20px; width: 23px;" alt="DropdownArrow">
             </button>
             <div class="dropdown-menu" style="width: 300px; text-align: center">
-                <button class="dropdown-item" href="#">Settings</button>
-                <form action="FrontController" method="post">
-                    <input type="hidden" name="target" value="getusersorders">
-                    <input type="hidden" name="userid" value="${sessionScope.user.id}">
-                    <button class="dropdown-item" href="#">Orders</button>
-                </form>
+                <button class="dropdown-item" href="FrontController?target=redirect&destination=customerpage">Settings</button>
+                <a class="dropdown-item" href="FrontController?target=redirect&destination=findkurv">Orders</a>
                 <button class="dropdown-item" id="myBtn">Logout</button>
             </div>
 
