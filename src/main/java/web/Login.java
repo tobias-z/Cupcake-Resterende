@@ -19,17 +19,17 @@ public class Login extends Command {
 
         String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
-        request.getServletContext().setAttribute("notloggedin", null );
+
 
         int getrank;
 
         User user = api.getUserFacade().login(email, password);
 
         if(user == null) {
-            request.setAttribute("notloggedin", "notloggedin");
             request.setAttribute("loginfail", "Username or password was incorrect");
             return "Login";
         }
+        request.getServletContext().setAttribute("notloggedin", null );
 
         HttpSession session = request.getSession();
         getrank = user.isRanked();
