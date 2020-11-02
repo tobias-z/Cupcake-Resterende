@@ -2,53 +2,36 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <jsp:include page="/WEB-INF/imports/header.jsp" flush="true"/>
 
-<title>Home</title>
+<title>Opret bruger</title>
 
-<body>
+<body class="text-center">
 
 <c:forEach var="notloggedin" items="${applicationScope.notloggedin}">
     <jsp:include page="/WEB-INF/imports/NoUserNav.jsp" flush="true"/>
 </c:forEach>
 
-<div class="backgroundcontainer">
+<br>
 
-    <div class="row" style="margin-left: 1px">
-        <h3>Opret dig som bruger her</h3>
-    </div>
+<form class="form-signin" action="FrontController" method="POST">
+    <input type="hidden" name="target" value="register">
+    <img class="mb-4" src="${pageContext.request.contextPath}/images/CupcakeLogo.png" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Opret din bruger her</h1>
 
-    <div class="row">
-        <div class="col-md-8">
-            <br>
-            <form action="FrontController" method="POST">
-                <input type="hidden" name="target" value="register">
+    <label for="inputName" class="sr-only">Fulde navn</label>
+    <input type="text" id="inputName" class="form-control" name="username" placeholder="Fulde navn" required=""
+           autofocus="">
 
-                <div class="form-group">
-                    <label for="exampleInputEmail">Fulde navn</label>
-                    <input type="text" class="form-control" style="width: 30%" id="exampleInputName" name="username" aria-describedby="NameHelp" placeholder="Fulde navn" required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail">Email</label>
-                    <input type="email" class="form-control" style="width: 30%"  id="exampleInputEmail" name="email" aria-describedby="EmailHelp" placeholder="Email address" required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" style="width: 30%" id="exampleInputPassword1" name="password1" placeholder="Password" required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword2">Gentag Password</label>
-                    <input type="password" class="form-control" style="width: 30%" id="exampleInputPassword2" name="password2" placeholder="Gentag password" required>
-                </div>
-                <a href="FrontController?target=redirect&destination=Signup">
-                    <p>Er du ny? Så tryk her for at lave en ny bruger</p></a>
-                <button type="submit" class="btn btn-primary btn-sm">Opret</button>
-            </form>
+    <label for="inputEmail" class="sr-only">Email adresse</label>
+    <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email adresse" required="">
 
-        </div>
-        <div class="col-md-4"></div>
-    </div>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" name="password1" placeholder="Password" required="">
 
-</div>
-
+    <label for="inputPassword2" class="sr-only">Gentag password</label>
+    <input type="password" id="inputPassword2" class="form-control" name="password2" placeholder="Gentag password" required="">
+    <button class="btn btn-lg button btn-block" style="width: 300px" type="submit">Opret</button>
+    <p class="mt-5 mb-3 text-muted">© 2020-2020</p>
+</form>
 
 <jsp:include page="/WEB-INF/imports/footer.jsp" flush="true"/>
 

@@ -26,14 +26,11 @@
     </div>
     <div class="nav-right" align="right">
 
-        <div class="btn-group" role="group" aria-label="login">
-            <button type="button" class="button"
-                    style="width: auto; padding-left: 20px; padding-right: 20px; text-align: center">${sessionScope.user.email} - Pung: ${sessionScope.user.bank} Kr.</button>
-            <button type="button" class="button dropdown-toggle dropdown-toggle-split" style="width: 50px"
-                    data-toggle="dropdown">
-                <img src="${pageContext.request.contextPath}/images/dropdownArrow.png" style="height: 20px; width: 23px;" alt="DropdownArrow">
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ${sessionScope.user.email} - Pung: ${sessionScope.user.bank} Kr.
             </button>
-            <div class="dropdown-menu" style="width: 300px; text-align: center">
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="width:;text-align: center">
                 <button class="dropdown-item" href="FrontController?target=redirect&destination=customerpage">Settings</button>
                 <a class="dropdown-item" href="FrontController?target=redirect&destination=findkurv">Orders</a>
                 <button class="dropdown-item" id="myBtn">Logout</button>

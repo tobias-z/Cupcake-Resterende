@@ -31,7 +31,7 @@
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required="">
     <button class="btn btn-lg button btn-block" style="width: 300px" type="submit">Login</button>
-    <a href="FrontController?target=redirect&destination=Signup">
+    <a class="purple" href="FrontController?target=redirect&destination=Signup">
         <p>Klik her for at lave en ny bruger</p></a>
     <p class="mt-5 mb-3 text-muted">© 2020-2020</p>
 </form>
