@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <jsp:include page="/WEB-INF/imports/header.jsp" flush="true"/>
 
@@ -60,6 +61,7 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
+
             <div style="width: 1000px;">
                 <form action="FrontController" method="post">
                     <input type="hidden" name="target" value="buyorder">
@@ -74,6 +76,7 @@
 
                 </form>
             </div>
+
         </div>
     </div>
 

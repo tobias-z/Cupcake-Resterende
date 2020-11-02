@@ -45,8 +45,7 @@ public class DBUser {
             if(rs.next()) {
                 return loadUser(rs);
             } else {
-                System.err.println("No version in properties.");
-                throw new NoSuchElementException(email);
+                return null;
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);

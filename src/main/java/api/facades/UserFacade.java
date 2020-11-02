@@ -32,6 +32,10 @@ public class UserFacade {
          */
     public User login(String email, String password) {
         User user = dbUser.findUser(email);
+        if(user == null){
+            return null;
+        }
+        
         if (user.isPasswordCorrect(password)) {
             return user;
         } else {

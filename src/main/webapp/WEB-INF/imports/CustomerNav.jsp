@@ -30,7 +30,7 @@
             <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ${sessionScope.user.email} - Pung: ${sessionScope.user.bank} Kr.
             </button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="width:;text-align: center">
+            <div class="dropdown-menu w-75" aria-labelledby="btnGroupDrop1" style="text-align: center">
                 <button class="dropdown-item" href="FrontController?target=redirect&destination=customerpage">Settings</button>
                 <a class="dropdown-item" href="FrontController?target=redirect&destination=findkurv">Orders</a>
                 <button class="dropdown-item" id="myBtn">Logout</button>
