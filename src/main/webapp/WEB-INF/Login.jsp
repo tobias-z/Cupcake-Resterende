@@ -4,7 +4,7 @@
 
 <title>Login</title>
 
-<body>
+<body class="text-center">
 
 <c:forEach var="notloggedin" items="${applicationScope.notloggedin}">
     <jsp:include page="/WEB-INF/imports/NoUserNav.jsp" flush="true"/>
@@ -14,48 +14,27 @@
     <jsp:include page="/WEB-INF/imports/NoUserNav.jsp" flush="true"/>
 </c:forEach>
 
-<div class="backgroundcontainer">
-
-    <div class="row" style="margin-left: 1px">
-        <h3>Velkommen til login siden <br> Her kan du skrive dit login</h3>
-    </div>
-
-    <div class="row" style="margin-left: 1px">
-        <br>
-        <c:forEach var="loginfail" items="${requestScope.loginfail}">
-            <c:out value="${loginfail}"/>
-        </c:forEach>
-    </div>
-
-    <div class="row">
-        <div class="col-md-8">
-            <br>
-            <form action="FrontController" method="POST">
-                <input type="hidden" name="target" value="login">
-                <div class="form-group">
-                    <label for="exampleInputEmail">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail" name="email" style="width: 30%"
-                           aria-describedby="EmailHelp" placeholder="Enter Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" style="width: 25%"
-                           placeholder="Password" required>
-                </div>
-                <a href="FrontController?target=redirect&destination=Signup">
-                    <p>Er du ny? Så tryk her for at lave en ny bruger</p></a>
-                <button type="submit" class="btn btn-primary btn-sm">Login</button>
-                <br>
-                <br>
-                <br>
-            </form>
-
-        </div>
-        <div class="col-md-4"></div>
-    </div>
-
+<div class="row">
+    <br>
+    <c:forEach var="loginfail" items="${requestScope.loginfail}">
+        <h3 style="text-align: center;">${loginfail}</h3>
+    </c:forEach>
 </div>
 
+<form class="form-signin" action="FrontController" method="POST">
+    <input type="hidden" name="target" value="login">
+    <img class="mb-4" src="${pageContext.request.contextPath}/images/CupcakeLogo.png" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Venligst Login</h1>
+
+    <label for="inputEmail" class="sr-only">Email adresse</label>
+    <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email adresse" required="" autofocus="">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required="">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    <a href="FrontController?target=redirect&destination=Signup">
+        <p>Klik her for at lave en ny bruger</p></a>
+    <p class="mt-5 mb-3 text-muted">© 2020-2020</p>
+</form>
 
 <jsp:include page="/WEB-INF/imports/footer.jsp" flush="true"/>
 

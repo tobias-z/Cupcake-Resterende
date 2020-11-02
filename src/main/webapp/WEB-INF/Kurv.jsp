@@ -68,7 +68,7 @@
                     <input type="hidden" name="userid" value="${sessionScope.user.id}">
                     <!-- Values to buy order, maybe userid -->
                     <br>
-                    <h4 style="text-align: right">Pris: ${requestScope.orderprice}$ -
+                    <h4 style="text-align: right">Pris: ${requestScope.orderprice} Kr. -
                         <button type="submit" class="button" style="width: auto;">Betal ordre</button>
                     </h4>
 

@@ -25,7 +25,7 @@
     <div class ="nav-right" align="right">
 
         <div class="btn-group" role="group" aria-label="login">
-            <button type="button" class="btn btn-secondary">${sessionScope.user.email}</button>
+            <button type="button" class="btn btn-secondary">${sessionScope.user.email} - Pung: ${sessionScope.user.bank} Kr.</button>
             <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
             </button>
             <div class="dropdown-menu">

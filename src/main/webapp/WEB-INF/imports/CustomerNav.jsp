@@ -28,7 +28,7 @@
 
         <div class="btn-group" role="group" aria-label="login">
             <button type="button" class="button"
-                    style="width: auto; padding-left: 20px; padding-right: 20px; text-align: center">${sessionScope.user.email}: ${sessionScope.user.bank}</button>
+                    style="width: auto; padding-left: 20px; padding-right: 20px; text-align: center">${sessionScope.user.email} - Pung: ${sessionScope.user.bank} Kr.</button>
             <button type="button" class="button dropdown-toggle dropdown-toggle-split" style="width: 50px"
                     data-toggle="dropdown">
                 <img src="${pageContext.request.contextPath}/images/dropdownArrow.png" style="height: 20px; width: 23px;" alt="DropdownArrow">
