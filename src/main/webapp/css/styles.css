@@ -132,6 +132,10 @@
     transition: all 0.8s
 }
 
+.button:hover {
+    color: #ffffff;
+}
+
 .button:active:after {
     padding: 0;
     margin: 0;
