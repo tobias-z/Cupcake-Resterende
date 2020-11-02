@@ -26,7 +26,7 @@ public class Login extends Command {
         User user = api.getUserFacade().login(email, password);
 
         if(user == null) {
-            request.setAttribute("loginfail", "Username or password was incorrect");
+            request.setAttribute("loginfail", "Email adresse eller password var forkert");
             return "Login";
         }
         request.getServletContext().setAttribute("notloggedin", null );

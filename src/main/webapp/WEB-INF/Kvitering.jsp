@@ -19,7 +19,7 @@
     <div class="col-md-8">
         <br>
         <div>
-            <h3 class="title">Your Receipt for Order: ORD00${requestScope.order.id}</h3>
+            <h3 class="title">Din regning for order: ORD00${requestScope.order.id}</h3>
             <br>
             <p>Ordre Betalt: ${requestScope.order.paid}</p>
             <p>Ordre Nummer: ORD00${requestScope.order.id}</p>
@@ -31,7 +31,7 @@
             <hr>
 
             <br>
-            <h3>Order Summary</h3>
+            <h3>Ordreoversigt</h3>
             <table class="comonfield1" colspan="3%" align="center" width="1000" style="top: -20px">
                 <tr style="font-weight:bold">
                     <td><c:out value="#"/></td>
@@ -55,8 +55,7 @@
             <br>
             <hr>
             <br>
-            <p>You can always see all of your orders at: "youruser" - Dropdown</p>
-            <p>If you have any questions, feel free to drop a message to our support</p>
+            <p>Hvis du har nogle spørgsmål, kan du altid kontakte support</p>
         </div>
         <br>
     </div>

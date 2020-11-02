@@ -35,7 +35,7 @@ public class UserFacade {
         if(user == null){
             return null;
         }
-        
+
         if (user.isPasswordCorrect(password)) {
             return user;
         } else {

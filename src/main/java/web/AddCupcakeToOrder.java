@@ -70,7 +70,7 @@ public class AddCupcakeToOrder extends Command {
         User user = (User) session.getAttribute("user");
 
         if(user == null){
-            request.setAttribute("loginfail", "You must login before putting a cupcake in your order");
+            request.setAttribute("loginfail", "Du skal være logget ind før du laver din ordre");
             return "Login";
         }
 
