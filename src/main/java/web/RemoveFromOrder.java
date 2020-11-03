@@ -20,6 +20,7 @@ public class RemoveFromOrder extends Command {
         double newCupcakePrice = 0;
         int newUserId = 0;
 
+        //Parse to numbers
         try {
             newCupcakePrice = Double.parseDouble(cupcakePrice);
             newUserId = Integer.parseInt(userid);
@@ -27,11 +28,19 @@ public class RemoveFromOrder extends Command {
             e.printStackTrace();
         }
 
+        //Create a string that replaces the chosen number with nothing
         String replace = allcupcakes.replaceFirst(cupcakeId, "");
+
+        //Split the new string into a stringarray
         String[] splitCupcakes = replace.split(",");
+
+        //create a new string that will be the one we put our cupcakes in
         String cupcakes = "";
         ArrayList<String> newCupcakes = new ArrayList<>();
 
+        //For each element in the string array of our cupcake ids it will add that number to the string.
+        //If a cupcake was removed it will still have the comma which means we have to check for if the s starts with a comma
+        //If it does it will just skip it and not add it to the ArrayLis of Strings.
         for(String s: splitCupcakes) {
             String oldCupcake = s + ",";
             if(!oldCupcake.startsWith(",")) {
@@ -39,6 +48,7 @@ public class RemoveFromOrder extends Command {
             }
         }
 
+        //We now check for the elements in the ArrayList newCupcakes, and add them to the string we created earlier.
         for(String s: newCupcakes) {
             cupcakes = cupcakes + s;
         }
