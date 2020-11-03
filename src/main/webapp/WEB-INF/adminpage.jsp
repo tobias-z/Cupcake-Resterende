@@ -213,7 +213,7 @@ HVIS ALLE ORDER HVIS VALGT-->
 
         <!-- User has no order -->
         <c:forEach var="noorder" items="${requestScope.noorder}">
-            <c:out value="${noorder}"/>
+            <h3 style="text-align: center">${noorder}</h3>
         </c:forEach>
 
         <c:forEach var="order" items="${requestScope.userorders}">

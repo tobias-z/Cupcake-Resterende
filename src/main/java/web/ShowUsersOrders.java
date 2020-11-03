@@ -25,7 +25,7 @@ public class ShowUsersOrders extends Command {
         //This is the users orders
         List<Order> orders =  api.getOrderFacade().getAllUserOrders(newUserId);
 
-        if(orders == null) {
+        if(orders == null || orders.isEmpty()) {
             request.setAttribute("noorder", "Denne bruger har ikke nogen ordre");
             return "adminpage";
         }
