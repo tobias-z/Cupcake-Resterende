@@ -6,6 +6,7 @@ import infrastucture.Database.DBOrder;
 import domain.Order;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class OrderFacade {
@@ -53,5 +54,13 @@ public class OrderFacade {
 
     public Order updateOrder(String cupcakes, double newPrice, int newUserId) {
         return dbOrder.updateOrder(cupcakes,newPrice, newUserId);
+    }
+
+    public void orderDelivered(int newOrderId) {
+        dbOrder.orderDelivered(newOrderId);
+    }
+
+    public List<Order> getAllPaidOrders() {
+        return dbOrder.getAllPaidOrders();
     }
 }

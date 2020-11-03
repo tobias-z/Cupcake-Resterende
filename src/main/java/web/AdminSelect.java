@@ -15,10 +15,10 @@ public class AdminSelect extends Command {
         String select = request.getParameter("adminselect");
 
         switch (select) {
-            //case "Vis ordre":
-                //ArrayList<Order> orders = api.getOrderFacade().getAllPaidOrders();
-                //request.setAttribute("allorders", orders);
-                //break;
+            case "Vis alle ordre":
+                List<Order> orders = api.getOrderFacade().getAllPaidOrders();
+                request.setAttribute("allorders", orders);
+                break;
             case "Vis brugere":
                 ArrayList<User> users = api.getUserFacade().findAllUsers();
                 request.setAttribute("showusers",users);

@@ -8,6 +8,7 @@ import infrastucture.DBSetup.Connector;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class DBOrder {
@@ -177,5 +178,34 @@ public class DBOrder {
             throwables.printStackTrace();
         }
         return getOrderById(newUserId);
+    }
+
+    public void orderDelivered(int newOrderId) {
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement ps2 = conn.prepareStatement(
+                    "DELETE FROM orders WHERE id = ?;");
+            ps2.setInt(1, newOrderId);
+            ps2.executeUpdate();
+            ps2.close();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public List<Order> getAllPaidOrders() {
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement s = conn.prepareStatement("SELECT * FROM orders;");
+            ResultSet rs = s.executeQuery();
+            ArrayList<Order> orders = new ArrayList<>();
+            while (rs.next()) {
+                orders.add(loadOrder(rs));
+            }
+            return orders;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -3,7 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <jsp:include page="/WEB-INF/imports/header.jsp" flush="true"/>
 
-<title>${sessionScope.user.name}: Home</title>
+<title>${sessionScope.user.name}: Admin</title>
 
 
 <c:forEach var="adminrole" items="${sessionScope.adminrole}">
@@ -14,24 +14,24 @@
 </c:forEach>
 <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="text-align: center">
 
+        <div class="btn-group" role="group" aria-label="Users">
+            <button class="button" onclick="getUsers()">Administrer brugere</button>
+        </div>
 
-        <button class="button" onclick="getUsers()">Administrer brugere</button>
-
-        <span style="display:inline-block; width: 300px;"></span>
-
-        <button class="button" onclick="getOrders()">Administrer Ordre</button>
-
+        <div class="btn-group" role="group" aria-label="Orders">
+            <button class="button" onclick="getOrders()">Administrer Ordre</button>
+        </div>
 
     </div>
 </div>
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <div id="myUSER" style="display:none">
+        <div id="myUSER" style="display:none; text-align: center;">
             <br>
-            <h3 class="title">User Options</h3>
+            <h3 class="title">Bruger valgmuligheder</h3>
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="adminoptions">
                 <div class="form-group">
@@ -40,45 +40,85 @@
                         <option>Administrer bruger saldo</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-secondary">Submit</button>
+                <button type="submit" class="btn button" style="width: 250px">Send</button>
             </form>
         </div>
+
+        <div id="myORDER" style="display:none; text-align: center;">
+            <br>
+            <h3 class="title">Ordre valgmuligheder</h3>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="adminoptions">
+                <div class="form-group">
+                    <select class="form-control" name="adminselect" id="orderoptionselect">
+                        <option>Vis alle ordre</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn button" style="width: 250px">Send</button>
+            </form>
+        </div>
+
+        <script>
+            function getOrders() {
+                var x = document.getElementById("myORDER");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
+
+
     </div>
 </div>
 
 
 <!-- LAV ORDER MENU
-     HVIS ALLE ORDER HVIS VALGT-->
+HVIS ALLE ORDER HVIS VALGT-->
 
 
 <div class="row">
 
     <div class="col-md-4"></div>
     <div class="col-md-4">
+        <br>
+        <c:forEach var="allorders" items="${requestScope.allorders}">
+            <div style="text-align: center">
+                <p>Ordre nr. ${allorders.id} - Bruger nr. ${allorders.userId}</p>
+                <p>Cupcake nr. ${allorders.cupcakeId}</p>
+                <p>Købt: ${allorders.paydate}</p>
+                <p>Pris: ${allorders.price}</p>
+            </div>
+            <hr>
+        </c:forEach>
+
         <c:forEach var="managemoney" items="${requestScope.managemoney}">
             <br>
-            <h3 class="title">Add Money</h3>
-            <form action="FrontController" method="post">
-                <input type="hidden" name="target" value="managemoney">
-                <div class="form-group">
-                    <label for="InputName">Email</label>
-                    <input type="email" name="email" class="form-control" id="InputName" placeholder="email">
-                </div>
+            <div style="text-align: center">
+                <h3 class="title">Add Money</h3>
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="target" value="managemoney">
+                    <div class="form-group">
+                        <label for="InputName">Email</label>
+                        <input type="email" name="email" class="form-control" id="InputName" placeholder="email">
+                    </div>
 
-                <div class="form-group">
-                    <label for="InputMoney">Amount - Kr.</label>
-                    <input type="text" name="amount" class="form-control" id="InputMoney" placeholder="Kr.">
-                </div>
+                    <div class="form-group">
+                        <label for="InputMoney">Mængde - Kr.</label>
+                        <input type="text" name="amount" class="form-control" id="InputMoney" placeholder="Kr.">
+                    </div>
 
-                <div class="form-group">
-                    <button style="margin:5px;" name="moneyans" value="add" type="submit" class="btn btn-primary">Tilføj
-                        Penge
-                    </button>
-                    <button style="margin:5px;" name="moneyans" value="take" type="submit" class="btn btn-primary">
-                        Træk Penge
-                    </button>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <button style="margin:5px;" name="moneyans" value="add" type="submit" class="btn button">Tilføj
+                            Penge
+                        </button>
+                        <button style="margin:5px;" name="moneyans" value="take" type="submit" class="btn button">
+                            Træk Penge
+                        </button>
+                    </div>
+                </form>
+            </div>
         </c:forEach>
 
         <c:forEach var="showusers" items="${requestScope.showusers}">
@@ -93,7 +133,7 @@
                 <c:out value="${showusers.email}"/>
                 <br>
                 <button class="button-sm" type="submit">Vis bruger</button>
-                <br>
+                <hr>
             </form>
         </c:forEach>
 
@@ -102,24 +142,19 @@
             <c:out value="${noorder}"/>
         </c:forEach>
 
-        <c:set var="count" value="0" scope="page"/>
-
         <c:forEach var="order" items="${requestScope.userorders}">
             <!-- List of all the users orders -->
-            <c:set var="count" value="${count + 1}" scope="page"/>
-            <br>
-            <c:out value="${order.order.cupcakeId}"/>
-            <br>
-            <c:out value="Betalt tidspungt: ${order.order.paydate}"/>
-            <br>
-            <c:set var="price" value="${order.order.price}"/>
-            Pris: ${order.order.price}
-            <br>
-            <c:set var="count" value="${count + 1}" scope="page"/>
-            <c:out value="Order: ${order.order.id}."/>
-            <c:out value="${order.cupcakes}"/>
-            <!-- https://www.javatpoint.com/jstl-fmt-formatnumber-tag -->
-            <br>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="orderdelivered">
+                <input type="hidden" name="orderid" value="${order.order.id}">
+                <br>
+                <p>Order: ${order.order.id} - Cupcake nr. ${order.order.cupcakeId}</p>
+                <p>Betalt tidspungt: ${order.order.paydate}</p>
+                <p>Pris: ${order.order.price}</p>
+                <p>${order.cupcakes}</p>
+                <button class="button-sm" style="height: 40px" type="submit">Ordre afleveret</button>
+                <hr>
+            </form>
         </c:forEach>
     </div>
 </div>

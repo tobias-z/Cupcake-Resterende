@@ -82,15 +82,15 @@ a.purple:hover {
 
 /* button */
 .button-sm {
-    border-radius: 3px;
+    border-radius: 6px;
     position: relative;
     background-color: #3c1460;
     border: none;
     font-size: 12px;
     color: #ffffff;
-    padding: 3px;
+    padding: 6px;
     width: 75px;
-    height: 30px;
+    height: auto;
     text-align: center;
     transition-duration: 0.4s;
     text-decoration: none;
