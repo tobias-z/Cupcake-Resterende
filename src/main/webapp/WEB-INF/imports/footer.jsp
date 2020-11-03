@@ -3,22 +3,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
 
 <footer class="footer">
-    <br>
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-8">
-            <p class="footertext">Adresse: Olskervej 27 2800 Kgs. Lyngby</p>
-            <p class="footertext">Kontakt: Olsker-support@cupcakes.dk</p>
-        </div>
-        <div class="col-md-2">
-            <br>
-            <br>
-            <p class="footertext" style="text-align: right">Copyright © Olskercupcakes</p>
-        </div>
-        <div class="col-md-1">
-        </div>
-
-    <!-- Copyright -->
+    <div class="container">
+        <span class="text-muted">Adresse: Olskervej 27 2800 Kgs. Lyngby - Kontakt: Olsker-support@cupcakes.dk</span>
+        <br>
+        <span class="text-muted">Copyright © Olskercupcakes</span>
     </div>
 </footer>
 

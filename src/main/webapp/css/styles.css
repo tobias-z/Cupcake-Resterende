@@ -50,11 +50,7 @@ a.purple:hover {
     padding: 20px;
 }
 
-.footer {
-    background-color: #D8B9FB;
-    border: 1px solid black;
-    width: 100%;
-}
+
 .PictureSlide {
     display: block;
     margin-left: auto;
@@ -215,9 +211,24 @@ LOGOUT BUTTON END
 LOGIN START
  */
 
-html,
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #D8B9FB;
+    border: 1px solid black;
+    text-align: center;
+}
+
 body {
-    height: 100%;
+    margin-bottom: 120px; /* Margin bottom by footer height */
 }
 
 .form-signin {
