@@ -62,12 +62,12 @@ public class Redirect extends Command {
             case "findkurv":
                 user = (User) session.getAttribute("user");
                 if(user == null){
-                    request.setAttribute("error", "You are currently not logged in");
-                    return "errorpage";
+                    request.setAttribute("loginfail", "You are currently not logged in");
+                    return "Login";
                 } else {
                     Order order = api.getOrderFacade().getOrderById(user.getId());
 
-                    if(order == null){
+                    if(order == null || order.getCupcakeId().equals("")){
                         return "Kurv";
                     }
 

@@ -32,7 +32,7 @@ public class CupcakeFacade {
 
     public ArrayList<Cupcake> getCupcakesInOrder(Order order) {
         ArrayList<Cupcake> cupcakesInOrder = new ArrayList<>();
-        if(order == null){
+        if(order == null || order.getCupcakeId().equals("")){
             return null;
         } else {
             String[] splitCupcakes = order.getCupcakeId().split(",");

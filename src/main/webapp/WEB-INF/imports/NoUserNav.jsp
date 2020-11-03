@@ -23,7 +23,7 @@
         <div class="btn-group" role="group" aria-label="Main menu" >
             <a class="nav-link" href="FrontController?target=redirect&destination=Login"><b>Login</b></a>
         </div>
-    <a href="FrontController?target=redirect&destination=Login">
+    <a href="FrontController?target=redirect&destination=findkurv">
         <img class="navbarlogo" src="${pageContext.request.contextPath}/images/Shoppingbasket.png" alt="Shoppingbasket">
     </a>
     </div>

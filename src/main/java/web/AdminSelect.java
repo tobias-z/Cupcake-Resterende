@@ -28,6 +28,7 @@ public class AdminSelect extends Command {
                 request.setAttribute("managemoney", select);
                 break;
             default: break;
+
         }
 
         return "adminpage";

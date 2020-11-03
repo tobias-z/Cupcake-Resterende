@@ -1,0 +1,10 @@
+
+g	java:S117¨"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊÙ½
+k	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É½Ãÿÿÿÿÿ
+u
+java:S3012¤"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(‰õ¦Æşÿÿÿÿ
+V	java:S125""<This block of commented-out lines of code should be removed.(“©«†øÿÿÿÿ
+g	java:S117»"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ã«
+u
+java:S3012·"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(ÜÉ”¡úÿÿÿÿ
+k	java:S117U"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È ®úÿÿÿÿ

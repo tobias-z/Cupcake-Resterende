@@ -1,0 +1,33 @@
+
+Œ
+java:S1319•"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¬ó˜³úÿÿÿÿ
+j
+java:S2095>"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìãëƒùÿÿÿÿ
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìãëƒùÿÿÿÿ
+k
+java:S2095†"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìãëƒùÿÿÿÿ
+f
+java:S2095—"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÅáôÕ
+d
+java:S2095l"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿°şs
+e
+java:S2095Q"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Õ¬ø¼
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S1126"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112I"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112e"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112‘"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+P
+java:S1141X"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(µñÚ¬
+>
+java:S1128"(Remove this unused import 'domain.User'.(ÑÛé
+S	java:S106E"9Replace this use of System.out or System.err by a logger.(Ò¿éğüÿÿÿÿ
+T	java:S106"9Replace this use of System.out or System.err by a logger.(Ò¿éğüÿÿÿÿ
+B
+java:S1168¤"+Return an empty collection instead of null.(¥¹ï
+B
+java:S1481+"'Remove this unused "id" local variable.(ùç–—ûÿÿÿÿ

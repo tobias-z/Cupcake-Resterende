@@ -50,4 +50,8 @@ public class OrderFacade {
     public ArrayList<Order> getAllUserOrders(int newUserId) {
         return dbOrder.getAllUserOrders(newUserId);
     }
+
+    public Order updateOrder(String cupcakes, double newPrice, int newUserId) {
+        return dbOrder.updateOrder(cupcakes,newPrice, newUserId);
+    }
 }

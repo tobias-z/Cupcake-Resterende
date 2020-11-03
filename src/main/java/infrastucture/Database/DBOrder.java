@@ -13,12 +13,12 @@ import java.util.NoSuchElementException;
 public class DBOrder {
     public Order getOrderById(int newUserId) {
 
-        try(Connection conn = Connector.getConnection()) {
+        try (Connection conn = Connector.getConnection()) {
             PreparedStatement s = conn.prepareStatement(
                     "SELECT * FROM orders WHERE userid = ? AND paid = 0;");
             s.setInt(1, newUserId);
             ResultSet rs = s.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 return loadOrder(rs);
             } else {
                 return null;
@@ -36,7 +36,7 @@ public class DBOrder {
                 rs.getInt("orders.price"),
                 rs.getTimestamp("orders.paydate").toLocalDateTime(),
                 rs.getBoolean("orders.paid")
-                );
+        );
     }
 
     public Order addCupcakeToOrder(OrderFactory orderFactory) {
@@ -58,12 +58,12 @@ public class DBOrder {
     }
 
     Order findOrder(int id) {
-        try(Connection conn = Connector.getConnection()) {
+        try (Connection conn = Connector.getConnection()) {
             PreparedStatement s = conn.prepareStatement(
                     "SELECT * FROM orders WHERE id = ? AND paid = 0;");
             s.setInt(1, id);
             ResultSet rs = s.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 return loadOrder(rs);
             } else {
                 System.err.println("No version in properties.");
@@ -104,7 +104,7 @@ public class DBOrder {
     }
 
     public void deleteOrder(int newUserId) {
-        try(Connection conn = Connector.getConnection()) {
+        try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps2 = conn.prepareStatement(
                     "DELETE FROM orders WHERE userid = ? AND paid = 0;");
             ps2.setInt(1, newUserId);
@@ -130,12 +130,12 @@ public class DBOrder {
     }
 
     Order findPaidOrder(int id) {
-        try(Connection conn = Connector.getConnection()) {
+        try (Connection conn = Connector.getConnection()) {
             PreparedStatement s = conn.prepareStatement(
                     "SELECT * FROM orders WHERE id = ? AND paid = 1;");
             s.setInt(1, id);
             ResultSet rs = s.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 return loadOrder(rs);
             } else {
                 System.err.println("No version in properties.");
@@ -152,7 +152,7 @@ public class DBOrder {
             s.setInt(1, newUserId);
             ResultSet rs = s.executeQuery();
             ArrayList<Order> orders = new ArrayList<>();
-            while(rs.next()) {
+            while (rs.next()) {
                 orders.add(loadOrder(rs));
             }
             return orders;
@@ -162,5 +162,20 @@ public class DBOrder {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public Order updateOrder(String cupcakes, double newPrice, int newUserId) {
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement ps2 = conn.prepareStatement(
+                    "UPDATE orders SET cupcakeid = ?, price = ? WHERE userid = ? AND paid = 0;");
+            ps2.setString(1, cupcakes);
+            ps2.setDouble(2, newPrice);
+            ps2.setInt(3, newUserId);
+            ps2.executeUpdate();
+            ps2.close();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return getOrderById(newUserId);
     }
 }

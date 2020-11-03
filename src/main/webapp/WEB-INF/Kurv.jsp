@@ -30,17 +30,26 @@
         <div class="col-md-6">
             <table class="comonfield1" colspan="3%" align="center" width="1000">
                 <tr style="font-weight:bold">
+                    <td><c:out value="#"/></td>
                     <td><c:out value="Cupcake top"/></td>
                     <td><c:out value="Cupcake bund"/></td>
                     <td><c:out value="Antal"/></td>
                     <td><c:out value="Pris"/></td>
                     <td><c:out value="TBA (Fjern cupcake)"/></td>
                 </tr>
+
+                <c:set var="count" value="0" scope="page"/>
                 <c:forEach var="bucket" items="${requestScope.allcupcakes}">
                     <form action="FrontController" method="post">
-                        <input type="hidden" name="target" value="removecarid">
+                        <input type="hidden" name="target" value="removefromorder">
+                        <input type="hidden" name="allcupcakes" value="${requestScope.order.cupcakeId}">
+                        <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                        <input type="hidden" name="cupcakeid" value="${bucket.id}">
+                        <input type="hidden" name="cupcakeprice" value="${bucket.pris}">
                         <div style="text-align: justify">
                             <tr style="background-color: #999999; border:1px solid black">
+                                <c:set var="count" value="${count + 1}" scope="page"/>
+                                <td><c:out value="${count}"/></td>
                                 <td><c:out value="${bucket.cupcakeTopType}"/></td>
                                 <td><c:out value="${bucket.cupcakeBottomType}"/></td>
                                 <td><c:out value="${bucket.antal}"/></td>

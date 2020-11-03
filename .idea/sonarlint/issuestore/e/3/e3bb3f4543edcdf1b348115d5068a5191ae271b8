@@ -1,0 +1,5 @@
+
+Q
+java:S1128"6Remove this unused import 'api.factories.UserFactory'.(ï«­¡üÿÿÿÿ
+U
+java:S24417":Make "User" serializable or don't store it in the session.(£™Õàûÿÿÿÿ

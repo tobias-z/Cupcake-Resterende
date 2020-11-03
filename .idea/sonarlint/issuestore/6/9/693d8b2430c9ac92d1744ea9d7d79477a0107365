@@ -1,0 +1,11 @@
+
+b
+java:S2095 "GUse try-with-resources or close this "Statement" in a "finally" clause.(¬ÿÂìøÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(†å’Öýÿÿÿÿ
+n
+java:S1450"XRemove the "singleton" field and declare it as a local variable in the relevant methods.(ŽŒ…Ô
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ÿ‚“Šùÿÿÿÿ
+8
+java:S1118"Hide this public constructor.(ïÐ Àþÿÿÿÿ
+S	java:S106&"9Replace this use of System.out or System.err by a logger.(Ò¿éðüÿÿÿÿ
+S	java:S106*"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ
