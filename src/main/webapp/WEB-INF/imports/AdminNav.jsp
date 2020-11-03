@@ -59,9 +59,12 @@
                     </div>
                 </div>
             </div>
+
             <a href="FrontController?target=redirect&destination=findkurv">
-                <img class="navbarlogo" src="${pageContext.request.contextPath}/images/Shoppingbasket.png" style="width: 45px; height: 50px; margin-left: 20px; margin-right: 20px" alt="Shoppingbasket">
+                <img class="navbarlogo" src="${pageContext.request.contextPath}/images/Shoppingbasket.png"
+                     style="width: 45px; height: 50px; margin-left: 20px; margin-right: 20px" alt="Shoppingbasket">
             </a>
+
         </div>
     </div>
 

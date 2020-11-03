@@ -19,11 +19,11 @@ public class ShowUsersOrders extends Command {
         try {
             newUserId = Integer.parseInt(userid);
         } catch (NumberFormatException e){
-            e.getMessage();
+            e.printStackTrace();
         }
 
         //This is the users orders
-        ArrayList<Order> orders =  api.getOrderFacade().getAllUserOrders(newUserId);
+        List<Order> orders =  api.getOrderFacade().getAllUserOrders(newUserId);
 
         if(orders == null) {
             request.setAttribute("noorder", "Denne bruger har ikke nogen ordre");
@@ -36,10 +36,7 @@ public class ShowUsersOrders extends Command {
             allCupcakes.add(new OrderDTO(o, api.getCupcakeFacade().getCupcakesInOrder(o)));
         }
 
-        ///request.setAttribute("cupcakenames", allCupcakes);
         request.setAttribute("userorders", allCupcakes);
-
-
         return "adminpage";
     }
 

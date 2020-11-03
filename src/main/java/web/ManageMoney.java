@@ -19,7 +19,7 @@ public class ManageMoney extends Command {
         try {
             newAmount = Double.parseDouble(amount);
         } catch (NumberFormatException e){
-            e.getMessage();
+            e.printStackTrace();
         }
 
         User user = api.getUserFacade().findUser(email);

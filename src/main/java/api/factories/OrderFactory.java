@@ -3,8 +3,6 @@ package api.factories;
 import domain.Order;
 import exeptions.ValidationError;
 
-import java.time.LocalDateTime;
-
 public class OrderFactory {
     private int userId;
     private String cupcakeId;
@@ -64,12 +62,7 @@ public class OrderFactory {
     public void setPrice(double price, double cupcakePrice) {
         setPrice(price+cupcakePrice);
     }
-/*
-    public void setPris(double topPris, double bottomPris, double oldPrice) throws ValidationError {
-        double newPrice = topPris + bottomPris;
-        double calculatePrice = newPrice + oldPrice;
-        setPris(calculatePrice);
-    */
+
 
 
 }

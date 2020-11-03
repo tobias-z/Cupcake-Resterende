@@ -6,7 +6,6 @@ import exeptions.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdminSelect extends Command {
@@ -20,7 +19,7 @@ public class AdminSelect extends Command {
                 request.setAttribute("allorders", orders);
                 break;
             case "Vis brugere":
-                ArrayList<User> users = api.getUserFacade().findAllUsers();
+                List<User> users = api.getUserFacade().findAllUsers();
                 request.setAttribute("showusers",users);
                 break;
 

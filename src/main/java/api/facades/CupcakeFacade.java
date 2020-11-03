@@ -4,9 +4,9 @@ import api.factories.CupcakeFactory;
 import domain.Cupcake;
 import domain.Order;
 import infrastucture.Database.DBCupcake;
-import infrastucture.Database.DBCupcakeTop;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CupcakeFacade {
 
@@ -30,15 +30,14 @@ public class CupcakeFacade {
         return dbCupcake.createCupcake(cupcakeFactory);
     }
 
-    public ArrayList<Cupcake> getCupcakesInOrder(Order order) {
-        ArrayList<Cupcake> cupcakesInOrder = new ArrayList<>();
+    public List<Cupcake> getCupcakesInOrder(Order order) {
+        List<Cupcake> cupcakesInOrder = new ArrayList<>();
         if(order == null || order.getCupcakeId().equals("")){
-            return null;
+            return cupcakesInOrder;
         } else {
             String[] splitCupcakes = order.getCupcakeId().split(",");
             int cupcakeId;
 
-            //String[] splitCupcakes = {'6','7','8'};
             for(String s: splitCupcakes){
                 cupcakeId = Integer.parseInt(s);
                 Cupcake cupcake = dbCupcake.findCupcake(cupcakeId);

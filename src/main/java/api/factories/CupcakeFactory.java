@@ -2,8 +2,6 @@ package api.factories;
 
 import exeptions.ValidationError;
 
-import java.util.regex.Pattern;
-
 public class CupcakeFactory {
 
     private int cupcakeBottomId;

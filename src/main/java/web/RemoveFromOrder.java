@@ -7,6 +7,7 @@ import exeptions.LoginSampleException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RemoveFromOrder extends Command {
     @Override
@@ -58,7 +59,7 @@ public class RemoveFromOrder extends Command {
 
         Order newOrder = api.getOrderFacade().updateOrder(cupcakes,newPrice, newUserId);
 
-        ArrayList<Cupcake> allCupcakes;
+        List<Cupcake> allCupcakes;
         allCupcakes = api.getCupcakeFacade().getCupcakesInOrder(newOrder);
 
         if(allCupcakes == null){

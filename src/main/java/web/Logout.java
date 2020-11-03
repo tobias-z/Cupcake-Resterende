@@ -25,10 +25,8 @@ public class Logout extends Command {
             e.getMessage();
         }
 
-        if(answer.equals("No")){
-            if(newUserId > 0) {
-                api.getOrderFacade().deleteOrder(newUserId);
-            }
+        if (answer.equals("No") && newUserId > 0) {
+            api.getOrderFacade().deleteOrder(newUserId);
         }
 
         HttpSession session = request.getSession();

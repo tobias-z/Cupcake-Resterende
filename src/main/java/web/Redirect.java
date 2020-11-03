@@ -6,7 +6,6 @@ import exeptions.LoginSampleException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Redirect extends Command {
@@ -69,7 +68,7 @@ public class Redirect extends Command {
                         return "Kurv";
                     }
 
-                    ArrayList<Cupcake> cupcakesInOrder = api.getCupcakeFacade().getCupcakesInOrder(order);
+                    List<Cupcake> cupcakesInOrder = api.getCupcakeFacade().getCupcakesInOrder(order);
 
                     request.setAttribute("orderprice", order.getPrice());
                     request.setAttribute("allcupcakes", cupcakesInOrder);

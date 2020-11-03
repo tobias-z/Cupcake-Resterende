@@ -1,5 +1,7 @@
 package domain;
 
+import exeptions.ValidationError;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;
@@ -35,7 +37,7 @@ public class User {
     private final byte[] secret;
     private String role;
     private final double bank;
-    private int ranked;
+    private final int ranked;
 
     public User(int id, String name, String email, LocalDateTime createdAt, byte[] salt, byte[] secret, String role,double bank, int ranked) {
         this.id = id;
@@ -56,18 +58,18 @@ public class User {
         return salt;
     }
 
-    public static byte[] calculateSecret(byte[] salt, String password) {
+    public static byte[] calculateSecret(byte[] salt, String password) throws ValidationError {
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt,
                 PASSWORD_ITERATIONS,
                 PASSWORD_LENGTH);
         try {
             return PASSWORD_FACTORY.generateSecret(spec).getEncoded();
         } catch (InvalidKeySpecException e) {
-            throw new RuntimeException(e);
+            throw new ValidationError(e.getMessage());
         }
     }
 
-    public boolean isPasswordCorrect(String password) {
+    public boolean isPasswordCorrect(String password) throws ValidationError {
         return Arrays.equals(this.secret, calculateSecret(salt, password));
     }
 

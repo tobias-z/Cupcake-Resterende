@@ -19,7 +19,8 @@ public class Register extends Command {
         UserFactory userFactory = new UserFactory();
         userFactory.setName(request.getParameter("username"));
         userFactory.setEmail(request.getParameter("email"));
-        String password1 = request.getParameter("password1"), password2 = request.getParameter("password2");
+        String password1 = request.getParameter("password1");
+        String password2 = request.getParameter("password2");
         userFactory.setPassword(password1);
         if (userFactory.isValid()) {
             if (Objects.equals(password1, password2)) {
@@ -63,7 +64,6 @@ public class Register extends Command {
 
         } else{
             request.setAttribute("error", "hold nu op adam, du helt væk");
-            request.setAttribute("400","400");
             return "errorpage" ;
         }
     }

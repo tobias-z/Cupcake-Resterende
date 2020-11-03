@@ -13,8 +13,8 @@
     <jsp:include page="/WEB-INF/imports/CustomerNav.jsp" flush="true"/>
 </c:forEach>
 <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4" style="text-align: center">
+
+    <div class="col-md-12" style="text-align: center">
 
         <div class="btn-group" role="group" aria-label="Users">
             <button class="button" onclick="getUsers()">Administrer brugere</button>

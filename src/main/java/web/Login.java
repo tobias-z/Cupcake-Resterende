@@ -1,8 +1,8 @@
 package web;
 
-import api.factories.UserFactory;
-import exeptions.LoginSampleException;
 import domain.User;
+import exeptions.LoginSampleException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;

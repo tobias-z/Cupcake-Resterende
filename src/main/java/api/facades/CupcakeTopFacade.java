@@ -22,14 +22,12 @@ public class CupcakeTopFacade {
     }
 
     public List<CupcakeTop> findCupcakeTops() {
-        List<CupcakeTop> cupcakeTop= dbCupcakeTop.findCupcakeTops();
-        return cupcakeTop;
+        return dbCupcakeTop.findCupcakeTops();
     }
 
 
     public CupcakeTop findCupcakeById(int cupcaketopId) {
-        CupcakeTop cupcakeTop = dbCupcakeTop.findCupcakeTopById(cupcaketopId);
-        return cupcakeTop;
+        return dbCupcakeTop.findCupcakeTopById(cupcaketopId);
 
     }
 

@@ -22,8 +22,7 @@ public class CupcakeBottomFacade {
     }
 
     public List<CupcakeBottom> findCupcakeBottoms() {
-        List<CupcakeBottom> cupcakeBottom= dbCupcakeBottom.findCupcakeBottoms();
-        return cupcakeBottom;
+        return dbCupcakeBottom.findCupcakeBottoms();
     }
     public CupcakeBottom findCupcakeById(int id){
 

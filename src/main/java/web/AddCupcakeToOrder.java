@@ -16,29 +16,6 @@ import java.util.List;
 public class AddCupcakeToOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        /*
-
-        √ Lav cupcake klasser.
-        Lav cupcake factories
-        Lav facades.
-        Lav DB.
-
-
-
-
-        Tag Imod variabler:
-        cupcaketop, cupcakebottom, antal, userid
-
-        CupcakeTopFactory, CupCakeBottomFactory, CupcakeFactory.
-
-        cupcakeTopFactory.getPrice() + cupcakeBottomFactory.getPrice() = cupcake.setPrice();
-
-        Send igennem CupcakeFactory: cupcakeTopId - cupcakeBottomId: CalculatedPrice
-
-        api.getCupcakeFacade().AddCupcakeToOrder(cupcakeFactory);
-         */
-
-
         /**
          * Vi skal generere vores cupcake via vores create cupcake som er en kombination af cupcaketopID og cupcakebottomID
          * Så skal vi bruge den Cupcake, og den cupcake bruger vi så til at blive puttet ind i en ordre.
@@ -82,12 +59,12 @@ public class AddCupcakeToOrder extends Command {
         String cupcakeTopArray = request.getParameter("cupcaketop");
 
         //Call methods to generate the integers for us
-        int CupcakebottomId = findCupcakeBottomId(cupcakeBottomArray);
-        int CupcakeTopId = findCupcakeTopId(cupcakeTopArray);
+        int cupcakebottomId = findCupcakeBottomId(cupcakeBottomArray);
+        int cupcakeTopId = findCupcakeTopId(cupcakeTopArray);
 
         //Find the chosen CupcakeTopping and CupcakeBottom.
-        CupcakeTop cupcakeTop = api.getCupcakeTopFacade().findCupcakeById(CupcakeTopId);
-        CupcakeBottom cupcakeBottom = api.getCupcakeBottomFacade().findCupcakeById(CupcakebottomId);
+        CupcakeTop cupcakeTop = api.getCupcakeTopFacade().findCupcakeById(cupcakeTopId);
+        CupcakeBottom cupcakeBottom = api.getCupcakeBottomFacade().findCupcakeById(cupcakebottomId);
 
         //Create the actual cupcake with the given top and bottom START
         try {
@@ -138,10 +115,10 @@ public class AddCupcakeToOrder extends Command {
             validationError.printStackTrace();
         }
 
-        //See if the something went wrong with the OrderFactory. If nothing went wrong it will call AddCupcakeToOrder
+        //See if the something went wrong with the OrderFactory. If nothing went wrong it will call addCupcakeToOrder
         //Then it will regenerate the toppings and bottoms and set them as attributes
         if(orderFactory.isValid()) {
-            api.getOrderFacade().AddCupcakeToOrder(orderFactory);
+            api.getOrderFacade().addCupcakeToOrder(orderFactory);
             List<CupcakeTop> toppings = api.getCupcakeTopFacade().findCupcakeTops();
             List<CupcakeBottom> bottoms = api.getCupcakeBottomFacade().findCupcakeBottoms();
             request.setAttribute("toppings", toppings);
@@ -165,13 +142,13 @@ public class AddCupcakeToOrder extends Command {
         }
         String cupcakeTopStringId = toppings.get(0);
 
-        int CupcaketopId = 0;
+        int cupcaketopId = 0;
         try {
-            CupcaketopId = Integer.parseInt(cupcakeTopStringId);
+            cupcaketopId = Integer.parseInt(cupcakeTopStringId);
         }catch (NumberFormatException e){
             e.printStackTrace();
         }
-        return CupcaketopId;
+        return cupcaketopId;
     }
 
     private int findCupcakeBottomId(String cupcakeBottomArray) {
@@ -184,12 +161,12 @@ public class AddCupcakeToOrder extends Command {
         }
         String cupcakeBottomStringId = bottoms.get(0);
 
-        int CupcakebottomId = 0;
+        int cupcakebottomId = 0;
         try {
-            CupcakebottomId = Integer.parseInt(cupcakeBottomStringId);
+            cupcakebottomId = Integer.parseInt(cupcakeBottomStringId);
         } catch (NumberFormatException e){
             e.printStackTrace();
         }
-        return CupcakebottomId;
+        return cupcakebottomId;
     }
 }

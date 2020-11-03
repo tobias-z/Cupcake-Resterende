@@ -1,11 +1,9 @@
 package api.facades;
 
-import api.factories.CupcakeFactory;
 import api.factories.OrderFactory;
-import infrastucture.Database.DBOrder;
 import domain.Order;
+import infrastucture.Database.DBOrder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,7 +25,7 @@ public class OrderFacade {
 
 
 
-    public void AddCupcakeToOrder(OrderFactory orderFactory) {
+    public void addCupcakeToOrder(OrderFactory orderFactory) {
         dbOrder.addCupcakeToOrder(orderFactory);
     }
 
@@ -48,7 +46,7 @@ public class OrderFacade {
         return dbOrder.orderPurchased(order);
     }
 
-    public ArrayList<Order> getAllUserOrders(int newUserId) {
+    public List<Order> getAllUserOrders(int newUserId) {
         return dbOrder.getAllUserOrders(newUserId);
     }
 

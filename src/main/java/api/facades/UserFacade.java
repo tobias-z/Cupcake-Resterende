@@ -4,9 +4,10 @@ package api.facades;
 import api.factories.UserFactory;
 import domain.User;
 import exeptions.UserExists;
+import exeptions.ValidationError;
 import infrastucture.Database.DBUser;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class UserFacade {
 
@@ -30,18 +31,23 @@ public class UserFacade {
         Checks if the user is banned, if yes then it returns a string. If the user is not banned then it checks if the password was correct.
         If the password was correct it returns the user, if not correct it throws an InvalidPassword exception.
          */
-    public User login(String email, String password) {
+    public User login(String email, String password){
         User user = dbUser.findUser(email);
         if(user == null){
             return null;
         }
 
-        if (user.isPasswordCorrect(password)) {
-            return user;
-        } else {
-            user = null;
-            return user;
+        try {
+            if (user.isPasswordCorrect(password)) {
+                return user;
+            } else {
+                user = null;
+                return user;
+            }
+        } catch (ValidationError validationError) {
+            validationError.printStackTrace();
         }
+        return null;
     }
 
 
@@ -53,7 +59,12 @@ public class UserFacade {
      */
     public User createUser(UserFactory userFactory) throws UserExists {
         byte[] salt = User.generateSalt();
-        byte[] secret = User.calculateSecret(salt, userFactory.getPassword());
+        byte[] secret = new byte[0];
+        try {
+            secret = User.calculateSecret(salt, userFactory.getPassword());
+        } catch (ValidationError validationError) {
+            validationError.printStackTrace();
+        }
         return dbUser.createUser(userFactory, salt, secret);
     }
 
@@ -69,7 +80,7 @@ public class UserFacade {
         dbUser.updateUserBank(newUserId, newBank);
     }
 
-    public ArrayList<User> findAllUsers() {
+    public List<User> findAllUsers() {
         return dbUser.findAllUsers();
     }
 }

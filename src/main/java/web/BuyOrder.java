@@ -9,7 +9,7 @@ import exeptions.ValidationError;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
+import java.util.List;
 
 public class BuyOrder extends Command {
     @Override
@@ -33,7 +33,7 @@ public class BuyOrder extends Command {
         }
 
         Order order = api.getOrderFacade().getOrderById(newUserId);
-        ArrayList<Cupcake> allCupcakes = api.getCupcakeFacade().getCupcakesInOrder(order);
+        List<Cupcake> allCupcakes = api.getCupcakeFacade().getCupcakesInOrder(order);
 
         if(calculateOrder < 0) {
             request.setAttribute("nomoney", "Du har ikke nok penge på din konto");
