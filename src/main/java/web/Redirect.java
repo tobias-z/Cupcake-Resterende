@@ -26,7 +26,7 @@ public class Redirect extends Command {
             case "customerpage":
                 user = (User) session.getAttribute("user");
                 if(user == null) {
-                    request.setAttribute("nicetry", "Nice try :)");
+                    request.setAttribute("nicetry", "Godt forsøgt :)");
                     return "errorpage";
                 }
                 destination = "customerpage";
@@ -37,7 +37,7 @@ public class Redirect extends Command {
                 user = (User) session.getAttribute("user");
 
                 if(user == null || !user.getRole().equals("admin")) {
-                    request.setAttribute("nicetry", "Nice try :)");
+                    request.setAttribute("nicetry", "Godt forsøgt :)");
                     return "errorpage";
                 }
                 break;
@@ -59,7 +59,7 @@ public class Redirect extends Command {
             case "findkurv":
                 user = (User) session.getAttribute("user");
                 if(user == null){
-                    request.setAttribute("loginfail", "You are currently not logged in");
+                    request.setAttribute("loginfail", "Du er ikke logget ind");
                     return "Login";
                 } else {
                     Order order = api.getOrderFacade().getOrderById(user.getId());
