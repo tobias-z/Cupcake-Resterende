@@ -32,4 +32,8 @@ public class CupcakeTopFacade {
         return cupcakeTop;
 
     }
+
+    public void addTopping(String type, double newAmount) {
+        dbCupcakeTop.addTopping(type, newAmount);
+    }
 }

@@ -30,4 +30,8 @@ public class CupcakeBottomFacade {
 
         return dbCupcakeBottom.findCupcakeById(id);
     }
+
+    public void addBottom(String type, double newAmount) {
+        dbCupcakeBottom.addBottom(type, newAmount);
+    }
 }

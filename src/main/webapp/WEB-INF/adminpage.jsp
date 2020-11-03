@@ -24,11 +24,16 @@
             <button class="button" onclick="getOrders()">Administrer Ordre</button>
         </div>
 
+        <div class="btn-group" role="group" aria-label="Orders">
+            <button class="button" onclick="getCupcakes()">Administrer Cupcakes</button>
+        </div>
+
     </div>
 </div>
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
+        <br>
         <div id="myUSER" style="display:none; text-align: center;">
             <br>
             <h3 class="title">Bruger valgmuligheder</h3>
@@ -58,9 +63,33 @@
             </form>
         </div>
 
+        <div id="myCUPCAKE" style="display:none; text-align: center;">
+            <br>
+            <h3 class="title">Cupcake valgmuligheder</h3>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="adminoptions">
+                <div class="form-group">
+                    <select class="form-control" name="adminselect" id="cupcakeoptionselect">
+                        <option>Tilføj topping</option>
+                        <option>Tilføj bund</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn button" style="width: 250px">Send</button>
+            </form>
+        </div>
+
         <script>
             function getOrders() {
                 var x = document.getElementById("myORDER");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+
+            function getCupcakes() {
+                var x = document.getElementById("myCUPCAKE");
                 if (x.style.display === "none") {
                     x.style.display = "block";
                 } else {
@@ -83,6 +112,51 @@ HVIS ALLE ORDER HVIS VALGT-->
     <div class="col-md-4"></div>
     <div class="col-md-4">
         <br>
+
+        <c:forEach var="addtopping" items="${requestScope.addtopping}">
+            <div style="text-align: center">
+                <h3 class="title">Tilføj cupcake topping</h3>
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="target" value="addtopping">
+                    <div class="form-group">
+                        <label for="InputType">Type</label>
+                        <input type="text" name="type" class="form-control" id="InputType" placeholder="Type">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="InputPrice">Pris kr.</label>
+                        <input type="number" name="amount" class="form-control" id="InputPrice" placeholder="Pris kr.">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn button">Tilføj topping</button>
+                    </div>
+                </form>
+            </div>
+        </c:forEach>
+
+        <c:forEach var="addbottom" items="${requestScope.addbottom}">
+            <div style="text-align: center">
+                <h3 class="title">Tilføj cupcake bund</h3>
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="target" value="addbottom">
+                    <div class="form-group">
+                        <label for="InputBottom">Type</label>
+                        <input type="text" name="type" class="form-control" id="InputBottom" placeholder="Type">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="InputPriceBottom">Pris kr.</label>
+                        <input type="number" name="amount" class="form-control" id="InputPriceBottom" placeholder="Pris kr.">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn button">Tilføj bund</button>
+                    </div>
+                </form>
+            </div>
+        </c:forEach>
+
         <c:forEach var="allorders" items="${requestScope.allorders}">
             <div style="text-align: center">
                 <p>Ordre nr. ${allorders.id} - Bruger nr. ${allorders.userId}</p>

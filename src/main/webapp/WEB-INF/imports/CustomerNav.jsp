@@ -11,15 +11,13 @@
                  style="margin-left: 20px" alt="OlskerLogo">
         </a>
         <div class="btn-group" role="group" aria-label="Main menu">
-            <a class="nav-link" href="FrontController?target=redirect&destination=customerpage"
-               style="font-size: 20px;color: #4b4c4f">Home</a>
+            <a class="nav-link" href="FrontController?target=redirect&destination=customerpage">Home</a>
         </div>
         <div class="btn-group" role="group" aria-label="Bestil">
-            <a class="nav-link" href="FrontController?target=redirect&destination=findcupcakes"
-               style="font-size: 20px;color: #4b4c4f">Bestil</a>
+            <a class="nav-link" href="FrontController?target=redirect&destination=findcupcakes">Bestil</a>
         </div>
         <div class="btn-group" role="group" aria-label="FAQ">
-            <a class="nav-link" href="#" style="font-size: 20px;color: #4b4c4f">FAQ</a>
+            <a class="nav-link" href="#">FAQ</a>
         </div>
 
 
@@ -31,7 +29,7 @@
                 ${sessionScope.user.email} - Pung: ${sessionScope.user.bank} Kr.
             </button>
             <div class="dropdown-menu w-75" aria-labelledby="btnGroupDrop1" style="text-align: center">
-                <button class="dropdown-item" href="FrontController?target=redirect&destination=customerpage">Settings</button>
+                <button class="dropdown-item">Settings</button>
                 <a class="dropdown-item" href="FrontController?target=redirect&destination=findkurv">Orders</a>
                 <button class="dropdown-item" id="myBtn">Logout</button>
             </div>

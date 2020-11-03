@@ -27,6 +27,12 @@ public class AdminSelect extends Command {
             case "Administrer bruger saldo":
                 request.setAttribute("managemoney", select);
                 break;
+            case "Tilføj topping":
+                request.setAttribute("addtopping", select);
+                break;
+            case "Tilføj bund":
+                request.setAttribute("addbottom", select);
+                break;
             default: break;
 
         }

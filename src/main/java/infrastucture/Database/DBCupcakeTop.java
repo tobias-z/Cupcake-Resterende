@@ -1,12 +1,12 @@
 package infrastucture.Database;
 
 import domain.CupcakeTop;
+import exeptions.LoginSampleException;
+import exeptions.UserExists;
+import exeptions.ValidationError;
 import infrastucture.DBSetup.Connector;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -15,19 +15,20 @@ import static infrastucture.DBSetup.Connector.getConnection;
 
 public class DBCupcakeTop {
 
-    private CupcakeTop loadCupcakeTop(ResultSet rs) throws SQLException{
+    private CupcakeTop loadCupcakeTop(ResultSet rs) throws SQLException {
         return new CupcakeTop(
                 rs.getInt("cupcakeTop.id"),
                 rs.getDouble("cupcakeTop.pris"),
                 rs.getString("cupcakeTop.type")
         );
     }
+
     public List<CupcakeTop> findCupcakeTops() {
         try (Connection conn = getConnection()) {
             PreparedStatement s = conn.prepareStatement("SELECT * FROM cupcakeTop;");
             ResultSet rs = s.executeQuery();
             ArrayList<CupcakeTop> cupcakeTops = new ArrayList<>();
-            while(rs.next()) {
+            while (rs.next()) {
                 cupcakeTops.add(loadCupcakeTop(rs));
             }
             return cupcakeTops;
@@ -41,12 +42,12 @@ public class DBCupcakeTop {
 
     public CupcakeTop findCupcakeTopById(int cupcaketopId) {
 
-        try(Connection conn = Connector.getConnection()) {
+        try (Connection conn = Connector.getConnection()) {
             PreparedStatement s = conn.prepareStatement(
                     "SELECT * FROM cupcakeTop  WHERE id = ?;");
             s.setInt(1, cupcaketopId);
             ResultSet rs = s.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 return loadCupcakeTop(rs);
             } else {
                 System.err.println("No version in properties.");
@@ -56,5 +57,24 @@ public class DBCupcakeTop {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void addTopping(String type, double newAmount){
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement ps =
+                    conn.prepareStatement(
+                            "INSERT INTO cupcakeTop (pris, type) " +
+                                    "VALUE (?,?);",
+                            Statement.RETURN_GENERATED_KEYS);
+            ps.setDouble(1, newAmount);
+            ps.setString(2, type);
+            try {
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

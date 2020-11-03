@@ -36,13 +36,11 @@ public class Redirect extends Command {
                 break;
             case "adminpage":
                 user = (User) session.getAttribute("user");
-                /*
-                if(!user.getRole().equals("admin")) {
+
+                if(user == null || !user.getRole().equals("admin")) {
                     request.setAttribute("nicetry", "Nice try :)");
                     return "errorpage";
                 }
-
-                 */
                 break;
             case "Signup":
                 break;

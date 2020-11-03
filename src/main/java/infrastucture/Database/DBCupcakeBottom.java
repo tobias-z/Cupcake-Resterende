@@ -4,10 +4,7 @@ import domain.CupcakeBottom;
 import domain.CupcakeTop;
 import infrastucture.DBSetup.Connector;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -54,6 +51,25 @@ public class DBCupcakeBottom {
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void addBottom(String type, double newAmount) {
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement ps =
+                    conn.prepareStatement(
+                            "INSERT INTO cupcakeBottom (pris, type) " +
+                                    "VALUE (?,?);",
+                            Statement.RETURN_GENERATED_KEYS);
+            ps.setDouble(1, newAmount);
+            ps.setString(2, type);
+            try {
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
         }
     }
 }
