@@ -1,0 +1,13 @@
+
+Z	java:S106%"9Replace this use of System.out or System.err by a logger.(Ò¿éðüÿÿÿÿ8øå­¤Ù.
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(†å’Öýÿÿÿÿ
+Z	java:S106)"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8øå­¤Ù.
+E
+java:S3010"#Remove this assignment of "DB_URL".(ší§ûüÿÿÿÿ8ëÓ³¤Ù.
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ÿ‚“Šùÿÿÿÿ
+?
+java:S1118"Hide this public constructor.(šÆÉªýÿÿÿÿ8ëÓ³¤Ù.
+n
+java:S3008"QRename this field "DB_URL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜŒÃ‚8•Ý¶¤Ù.
+i
+java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(¬ÿÂìøÿÿÿÿ8ß¥“¤Ù.

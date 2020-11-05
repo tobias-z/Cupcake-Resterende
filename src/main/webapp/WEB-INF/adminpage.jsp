@@ -78,6 +78,7 @@
             </form>
         </div>
 
+        <!-- This is supposed to be in buttons.js but for some reason it's not loading when put in there? -->
         <script>
             function getOrders() {
                 var x = document.getElementById("myORDER");

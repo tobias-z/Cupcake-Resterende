@@ -71,7 +71,7 @@ public class Redirect extends Command {
                     List<Cupcake> cupcakesInOrder = api.getCupcakeFacade().getCupcakesInOrder(order);
 
                     request.setAttribute("orderprice", order.getPrice());
-                    request.setAttribute("allcupcakes", cupcakesInOrder);
+                    request.getSession().setAttribute("allcupcakes", cupcakesInOrder);
                     request.setAttribute("order", order);
                 }
                 return "Kurv";

@@ -1,0 +1,44 @@
+@startuml
+
+Title Domænemodel
+
+hide circle
+hide methods
+
+
+class Cupcake {
+    cupcakeBottom
+    cupcakeTop
+    antal
+}
+
+class CupcakeBottom {
+   type
+   pris
+}
+
+class CupcakeTop {
+   type
+   pris
+}
+
+class Order {
+    user
+    cupcake
+    paid
+}
+
+class User {
+    id
+    name
+    email
+    role
+}
+
+User "1" -right-> "*" Order: indsætter
+Cupcake "1" <-right- "1" CupcakeBottom: sendes til
+Cupcake "1" <-right- "1" CupcakeTop: sendes til
+Cupcake "*" --> "1" Order: indsætter
+
+
+@enduml

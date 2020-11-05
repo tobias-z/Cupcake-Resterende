@@ -1,0 +1,11 @@
+
+`	java:S112)"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112;"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+S	java:S1067"9Replace this use of System.out or System.err by a logger.(Ò¿éğüÿÿÿÿ
+l
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Õ¬ø¼8—ËÖûØ.
+W
+java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8±ÓûØ.
+j
+java:S20950"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìãëƒùÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(µñÚ¬

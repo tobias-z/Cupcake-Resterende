@@ -4,10 +4,8 @@ import java.sql.*;
 
 public class Connector {
 
-    // JDBC driver name and database URL
-    private static Connection singleton;
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost/cupcake";
+    private static String DB_URL = null;
 
 
     //  Database credentials
@@ -16,7 +14,8 @@ public class Connector {
     // Database version
     private static final int version = 4;
 
-    public Connector() throws ClassNotFoundException {
+    public Connector(String url) throws ClassNotFoundException {
+        DB_URL = url == null ? "jdbc:mysql://localhost/cupcake?serverTimezone=CET" : url;
         Class.forName(JDBC_DRIVER);
         if (getCurrentVersion() != getVersion()) {
             throw new IllegalStateException("Database in wrong state");
@@ -44,9 +43,12 @@ public class Connector {
         }
     }
 
+
+
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
+        DB_URL = "jdbc:mysql://localhost/cupcake?serverTimezone=CET";
         Class.forName(JDBC_DRIVER);
-        singleton = DriverManager.getConnection(DB_URL, USER, null);
-        return singleton;
+        // JDBC driver name and database URL
+        return DriverManager.getConnection(DB_URL, USER, null);
     }
 }

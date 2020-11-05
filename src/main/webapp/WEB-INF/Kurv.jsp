@@ -28,38 +28,38 @@
 
         </div>
         <div class="col-md-6">
-            <table class="comonfield1" colspan="3%" align="center" width="1000">
+            <table class="table table-striped" style="text-align: center">
+                <thead>
                 <tr style="font-weight:bold">
-                    <td><c:out value="#"/></td>
-                    <td><c:out value="Cupcake top"/></td>
-                    <td><c:out value="Cupcake bund"/></td>
-                    <td><c:out value="Antal"/></td>
-                    <td><c:out value="Pris"/></td>
-                    <td><c:out value="TBA (Fjern cupcake)"/></td>
+                    <th scope="col">#</th>
+                    <th scope="col">Cupcake top</th>
+                    <th scope="col">"Cupcake bund</th>
+                    <th scope="col">Antal</th>
+                    <th scope="col">Pris</th>
+                    <th scope="col">Fjern cupcake</th>
                 </tr>
-
+                </thead>
                 <c:set var="count" value="0" scope="page"/>
-                <c:forEach var="bucket" items="${requestScope.allcupcakes}">
+                <c:forEach var="bucket" items="${sessionScope.allcupcakes}">
                     <form action="FrontController" method="post">
                         <input type="hidden" name="target" value="removefromorder">
-                        <input type="hidden" name="allcupcakes" value="${requestScope.order.cupcakeId}">
                         <input type="hidden" name="userid" value="${sessionScope.user.id}">
                         <input type="hidden" name="cupcakeid" value="${bucket.id}">
                         <input type="hidden" name="cupcakeprice" value="${bucket.pris}">
-                        <div style="text-align: justify">
-                            <tr style="background-color: #999999; border:1px solid black">
+                        <tbody>
+                            <tr>
                                 <c:set var="count" value="${count + 1}" scope="page"/>
-                                <td><c:out value="${count}"/></td>
-                                <td><c:out value="${bucket.cupcakeTopType}"/></td>
-                                <td><c:out value="${bucket.cupcakeBottomType}"/></td>
-                                <td><c:out value="${bucket.antal}"/></td>
-                                <td><c:out value="${bucket.pris}"/></td>
+                                <th scope="row">${count}</th>
+                                <td>${bucket.cupcakeTopType}</td>
+                                <td>${bucket.cupcakeBottomType}</td>
+                                <td>${bucket.antal}</td>
+                                <td>${bucket.pris}</td>
                                 <td>
-                                    <button type="submit" class="button-sm" style="width: auto">Slet (Ikke færdig)
+                                    <button type="submit" class="button-sm" style="width: auto">Slet
                                     </button>
                                 </td>
                             </tr>
-                        </div>
+                        </tbody>>
                     </form>
                     <br>
                 </c:forEach>

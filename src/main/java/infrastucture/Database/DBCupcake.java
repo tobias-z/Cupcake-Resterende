@@ -11,7 +11,6 @@ import java.util.NoSuchElementException;
 
 public class DBCupcake {
 
-
     public Cupcake createCupcake(CupcakeFactory cupcakeFactory) {
         int id;
         try (Connection conn = Connector.getConnection()) {

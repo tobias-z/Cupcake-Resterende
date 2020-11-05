@@ -6,7 +6,8 @@ CREATE TABLE orders
     cupcakeid     varchar(225) DEFAULT NULL,
     price         DOUBLE DEFAULT 0,
     paydate       TIMESTAMP NOT NULL,
-    paid          BOOLEAN DEFAULT FALSE
+    paid          BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (userid) REFERENCES users(id)
 );
 
 UPDATE properties
