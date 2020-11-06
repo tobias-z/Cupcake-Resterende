@@ -1,6 +1,5 @@
 package web;
 
-import exeptions.LoginSampleException;
 import exeptions.NoSuchCupcakeException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +8,7 @@ import javax.servlet.http.HttpSession;
 
 public class Logout extends Command {
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) {
 
           /*
         Called when user clicks the Logout button

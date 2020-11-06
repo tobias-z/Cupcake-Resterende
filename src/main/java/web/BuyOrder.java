@@ -1,20 +1,20 @@
 package web;
 
-import domain.Cupcake;
+
 import domain.Order;
 import domain.User;
-import exeptions.LoginSampleException;
+
 import exeptions.ValidationError;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class BuyOrder extends Command {
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession();
 
@@ -36,7 +36,6 @@ public class BuyOrder extends Command {
         }
 
         Order order = api.getOrderFacade().getOrderById(newUserId);
-        List<Cupcake> allCupcakes = api.getCupcakeFacade().getCupcakesInOrder(order);
 
         if(calculateOrder < 0) {
             request.setAttribute("nomoney", "Du har ikke nok penge på din konto");
@@ -62,9 +61,9 @@ public class BuyOrder extends Command {
 
 
     private double calculateOrder(String userBank, String orderPrice) throws ValidationError {
-        double calculateOrder = 0;
-        double newUserBank = 0;
-        double newOrderPrice = 0;
+        double calculateOrder;
+        double newUserBank;
+        double newOrderPrice;
 
         try {
             newUserBank = Double.parseDouble(userBank);

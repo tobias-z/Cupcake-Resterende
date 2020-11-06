@@ -2,6 +2,7 @@ package domain;
 
 public class Cupcake {
     private final int id;
+    private final int orderid;
     private final int cupcakeBottomId;
     private final int cupcakeTopId;
     private final String cupcakeBottomType;
@@ -9,8 +10,9 @@ public class Cupcake {
     private final double pris;
     private final int antal;
 
-    public Cupcake(int id, int cupcakeBottomId, int cupcakeTopId, String cupcakeBottomType, String cupcakeTopType, double pris, int antal) {
+    public Cupcake(int id, int orderid, int cupcakeBottomId, int cupcakeTopId, String cupcakeBottomType, String cupcakeTopType, double pris, int antal) {
         this.id = id;
+        this.orderid = orderid;
         this.cupcakeBottomId = cupcakeBottomId;
         this.cupcakeTopId = cupcakeTopId;
         this.cupcakeBottomType = cupcakeBottomType;
@@ -29,6 +31,10 @@ public class Cupcake {
 
     public int getId() {
         return id;
+    }
+
+    public int getOrderid() {
+        return orderid;
     }
 
     public int getCupcakeBottomId() {

@@ -26,7 +26,7 @@
             <label for="Cupcaketop">Choose a cupcake top:</label>
             <select class="form-control" name="cupcaketop" id="Cupcaketop" style="width: 350px">
                 <c:forEach var="toppings" items="${requestScope.toppings}">
-                    <option>${toppings.id}, ${toppings.type}</option>
+                    <option value="${toppings.id}">${toppings.id}, ${toppings.type}</option>
                 </c:forEach>
             </select>
         </div>
@@ -34,7 +34,7 @@
             <label for="Cupcakebottom">Choose a cupcake bottom:</label>
             <select class="form-control" name="cupcakebottom" id="Cupcakebottom" style="width: 350px">
                 <c:forEach var="bottoms" items="${requestScope.bottoms}">
-                    <option> ${bottoms.id}, ${bottoms.type}</option>
+                    <option value="${bottoms.id}"> ${bottoms.id}, ${bottoms.type}</option>
                 </c:forEach>
             </select>
         </div>

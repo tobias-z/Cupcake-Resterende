@@ -1,14 +1,13 @@
 package web;
 
 import domain.User;
-import exeptions.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ManageMoney extends Command {
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) {
 
         String email = request.getParameter("email");
         String amount = request.getParameter("amount");

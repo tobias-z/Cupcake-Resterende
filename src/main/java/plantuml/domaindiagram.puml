@@ -24,12 +24,10 @@ class CupcakeTop {
 
 class Order {
     user
-    cupcake
     paid
 }
 
 class User {
-    id
     name
     email
     role
@@ -38,7 +36,7 @@ class User {
 User "1" -right-> "*" Order: indsætter
 Cupcake "1" <-right- "1" CupcakeBottom: sendes til
 Cupcake "1" <-right- "1" CupcakeTop: sendes til
-Cupcake "*" --> "1" Order: indsætter
+Cupcake "*" <-- "1" Order: indeholder
 
 
 @enduml

@@ -39,12 +39,6 @@ public class OrderFacade {
     }
 
 
-    /*
-    public void addCupcakeToOrder(OrderFactory orderFactory) {
-        dbOrder.addCupcakeToOrder(orderFactory);
-    }*/
-
-
     public Order getOrderById(int newUserId) {
         return dbOrder.getOrderByUserId(newUserId);
     }

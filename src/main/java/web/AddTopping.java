@@ -1,13 +1,11 @@
 package web;
 
-import exeptions.LoginSampleException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class AddTopping extends Command {
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) {
 
         String type = request.getParameter("type");
         String amount = request.getParameter("amount");

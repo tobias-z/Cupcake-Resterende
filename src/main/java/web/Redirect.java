@@ -1,7 +1,6 @@
 package web;
 
 import domain.*;
-import exeptions.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +9,7 @@ import java.util.List;
 
 public class Redirect extends Command {
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession();
         String destination = request.getParameter("destination");

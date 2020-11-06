@@ -47,25 +47,6 @@ public class DBOrder {
         );
     }
 
-    /* public Order addCupcakeToOrder(OrderFactory orderFactory) {
-        int id;
-        dbCupcake.saveCupcakes(orderFactory.getCupcakeList());
-        try (Connection conn = Connector.getConnection()) {
-            PreparedStatement ps =
-                    conn.prepareStatement(
-                            "UPDATE orders SET price = ? WHERE userid = ? AND paid = 0;");
-            ps.setDouble(1, orderFactory.getPrice());
-            ps.setInt(2, orderFactory.getUserId());
-            ps.executeUpdate();
-            ps.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
-        }
-        Order order = getOrderById(orderFactory.getUserId());
-        return findOrder(order.getId());
-    }
-     */
-
     Order findOrder(int id) {
         List<Cupcake> cupcakes = dbCupcake.findAllFromOrder(id);
         try (Connection conn = Connector.getConnection()) {
@@ -173,20 +154,6 @@ public class DBOrder {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public Order updateOrder(String cupcakes, double newPrice, int newUserId) {
-        try (Connection conn = Connector.getConnection()) {
-            PreparedStatement ps2 = conn.prepareStatement(
-                    "UPDATE orders SET cupcakeid = ? WHERE userid = ? AND paid = 0;");
-            ps2.setString(1, cupcakes);
-            ps2.setInt(2, newUserId);
-            ps2.executeUpdate();
-            ps2.close();
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
-        }
-        return getOrderByUserId(newUserId);
     }
 
     public void orderDelivered(int newOrderId) {

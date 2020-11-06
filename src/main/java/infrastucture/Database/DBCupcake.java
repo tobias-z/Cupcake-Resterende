@@ -66,6 +66,7 @@ public class DBCupcake {
     private Cupcake loadCupcake(ResultSet rs) throws SQLException {
         return new Cupcake(
                 rs.getInt("cupcake.id"),
+                rs.getInt("cupcake.orderid"),
                 rs.getInt("cupcake.cupcakeBottom"),
                 rs.getInt("cupcake.cupcakeTop"),
                 rs.getString("cupcake.cupcakeBottomType"),

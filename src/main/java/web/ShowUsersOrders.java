@@ -2,7 +2,6 @@ package web;
 
 import domain.Cupcake;
 import domain.Order;
-import exeptions.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +10,7 @@ import java.util.List;
 
 public class ShowUsersOrders extends Command {
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) {
 
         String userid = request.getParameter("userid");
         int newUserId = 0;

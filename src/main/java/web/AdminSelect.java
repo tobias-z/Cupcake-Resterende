@@ -2,7 +2,6 @@ package web;
 
 import domain.Order;
 import domain.User;
-import exeptions.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +9,7 @@ import java.util.List;
 
 public class AdminSelect extends Command {
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) {
         String select = request.getParameter("adminselect");
 
         switch (select) {
