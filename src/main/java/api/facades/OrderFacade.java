@@ -60,6 +60,10 @@ public class OrderFacade {
         return dbOrder.getAllUserOrders(newUserId);
     }
 
+    public List<Order> getAllClosedUserOrders(int newUserId) {
+        return dbOrder.getAllClosedUserOrders(newUserId);
+    }
+
     public void orderDelivered(int newOrderId) {
         dbOrder.orderDelivered(newOrderId);
     }

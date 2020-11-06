@@ -1,6 +1,5 @@
 package infrastucture.Database;
 
-import api.factories.OrderFactory;
 import domain.Cupcake;
 import domain.Order;
 import infrastucture.DBSetup.Connector;
@@ -43,7 +42,9 @@ public class DBOrder {
                 rs.getInt("orders.userid"),
                 cupcakes,
                 rs.getTimestamp("orders.paydate").toLocalDateTime(),
-                rs.getBoolean("orders.paid")
+                rs.getBoolean("orders.paid"),
+                rs.getBoolean("orders.delivered"),
+                rs.getTimestamp("deliverydate").toLocalDateTime()
         );
     }
 
@@ -109,8 +110,9 @@ public class DBOrder {
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps =
                     conn.prepareStatement(
-                            "UPDATE orders SET paid = 1 WHERE userid = ?;");
-            ps.setInt(1, order.getUserId());
+                            "UPDATE orders SET paid = 1 AND paydate = ? WHERE userid = ?;");
+            ps.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
+            ps.setInt(2, order.getUserId());
             ps.executeUpdate();
             ps.close();
         } catch (ClassNotFoundException | SQLException e) {
@@ -137,12 +139,12 @@ public class DBOrder {
         }
     }
 
-    public ArrayList<Order> getAllUserOrders(int newUserId) {
+    public List<Order> getAllUserOrders(int newUserId) {
         try (Connection conn = Connector.getConnection()) {
-            PreparedStatement s = conn.prepareStatement("SELECT * FROM orders WHERE paid = 1 AND userid = ?;");
+            PreparedStatement s = conn.prepareStatement("SELECT * FROM orders WHERE paid = 1 AND delivered = 0 AND userid = ?;");
             s.setInt(1, newUserId);
             ResultSet rs = s.executeQuery();
-            ArrayList<Order> orders = new ArrayList<>();
+            List<Order> orders = new ArrayList<>();
             while (rs.next()) {
                 int orderid = rs.getInt("orders.id");
                 orders.add(loadOrder(rs, dbCupcake.findAllFromOrder(orderid)));
@@ -159,7 +161,7 @@ public class DBOrder {
     public void orderDelivered(int newOrderId) {
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps2 = conn.prepareStatement(
-                    "DELETE FROM orders WHERE id = ?;");
+                    "UPDATE orders SET delivered = 1 WHERE id = ?;");
             ps2.setInt(1, newOrderId);
             ps2.executeUpdate();
             ps2.close();
@@ -173,6 +175,25 @@ public class DBOrder {
             PreparedStatement s = conn.prepareStatement("SELECT * FROM orders;");
             ResultSet rs = s.executeQuery();
             ArrayList<Order> orders = new ArrayList<>();
+            while (rs.next()) {
+                int orderid = rs.getInt("orders.id");
+                orders.add(loadOrder(rs, dbCupcake.findAllFromOrder(orderid)));
+            }
+            return orders;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Order> getAllClosedUserOrders(int newUserId) {
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement s = conn.prepareStatement("SELECT * FROM orders WHERE paid = 1 AND delivered = 1 AND userid = ?;");
+            s.setInt(1, newUserId);
+            ResultSet rs = s.executeQuery();
+            List<Order> orders = new ArrayList<>();
             while (rs.next()) {
                 int orderid = rs.getInt("orders.id");
                 orders.add(loadOrder(rs, dbCupcake.findAllFromOrder(orderid)));

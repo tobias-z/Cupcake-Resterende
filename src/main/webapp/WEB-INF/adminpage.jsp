@@ -157,7 +157,8 @@ HVIS ALLE ORDER HVIS VALGT-->
 
                     <div class="form-group">
                         <label for="InputPriceBottom">Pris kr.</label>
-                        <input type="number" name="amount" class="form-control" id="InputPriceBottom" placeholder="Pris kr.">
+                        <input type="number" name="amount" class="form-control" id="InputPriceBottom"
+                               placeholder="Pris kr.">
                     </div>
 
                     <div class="form-group">
@@ -173,6 +174,7 @@ HVIS ALLE ORDER HVIS VALGT-->
                 <p>Cupcake nr. ${allorders.cupcakes}</p>
                 <p>Købt: ${allorders.paydate}</p>
                 <p>Pris: ${allorders.price}</p>
+                <p>Afleveret: ${allorders.delivered}</p>
             </div>
             <hr>
         </c:forEach>
@@ -180,7 +182,7 @@ HVIS ALLE ORDER HVIS VALGT-->
         <c:forEach var="managemoney" items="${requestScope.managemoney}">
             <br>
             <div style="text-align: center">
-                <h3 class="title">Add Money</h3>
+                <h3 class="title">Administrer saldo</h3>
                 <form action="FrontController" method="post">
                     <input type="hidden" name="target" value="managemoney">
                     <div class="form-group">
@@ -210,13 +212,24 @@ HVIS ALLE ORDER HVIS VALGT-->
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="showuserorders">
                 <input type="hidden" name="userid" value="${showusers.id}">
-                <h3 class="title">Bruger ${showusers.id}</h3>
+                <div style="text-align: center">
+                    <h3 class="title">Bruger ${showusers.id}</h3>
 
-                <c:out value="${showusers.name}: ${showusers.bank}"/>
-                <br>
-                <c:out value="${showusers.email}"/>
-                <br>
-                <button class="button-sm" type="submit">Vis bruger</button>
+                    <c:out value="${showusers.name}: ${showusers.bank}"/>
+                    <br>
+                    <c:out value="${showusers.email}"/>
+                    <br>
+                    <div class="form-group">
+                        <button style="margin:5px; width: 100px" name="answer" value="active" type="submit"
+                                class="button-sm">Vis
+                            aktive ordre
+                        </button>
+                        <button style="margin:5px; width: 125px" name="answer" value="closed" type="submit"
+                                class="button-sm">Vis
+                            afleveret ordre
+                        </button>
+                    </div>
+                </div>
                 <hr>
             </form>
         </c:forEach>
@@ -226,17 +239,23 @@ HVIS ALLE ORDER HVIS VALGT-->
             <h3 style="text-align: center">${noorder}</h3>
         </c:forEach>
 
+        <c:forEach var="chosenuser" items="${requestScope.chosenuser.name}">
+            <h3 style="text-align: center">${chosenuser}</h3>
+        </c:forEach>
+
         <c:forEach var="order" items="${requestScope.userorders}">
             <!-- List of all the users orders -->
             <form action="FrontController" method="post">
-                <input type="hidden" name="target" value="orderdelivered">
-                <input type="hidden" name="orderid" value="${order.order.id}">
-                <br>
-                <p>Order: ${order.order.id}</p>
-                <p>Betalt tidspungt: ${order.order.paydate}</p>
-                <p>${order.cupcakes}</p>
-                <button class="button-sm" style="height: 40px" type="submit">Ordre afleveret</button>
-                <hr>
+                <div style="text-align: center">
+                    <input type="hidden" name="target" value="orderdelivered">
+                    <input type="hidden" name="orderid" value="${order.order.id}">
+                    <br>
+                    <p>Order: ${order.order.id}</p>
+                    <p>Betalt tidspungt: ${order.order.paydate}</p>
+                    <p>${order.cupcakes}</p>
+                    <button class="button-sm" style="height: 40px" type="submit">Ordre afleveret</button>
+                    <hr>
+                </div>
             </form>
         </c:forEach>
     </div>

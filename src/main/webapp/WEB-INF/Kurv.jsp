@@ -59,7 +59,6 @@
                             </tr>
                         </tbody>
                     </form>
-                    <br>
                 </c:forEach>
             </table>
         </div>

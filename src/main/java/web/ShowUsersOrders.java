@@ -2,6 +2,7 @@ package web;
 
 import domain.Cupcake;
 import domain.Order;
+import domain.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ public class ShowUsersOrders extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) {
 
         String userid = request.getParameter("userid");
+        String answer = request.getParameter("answer");
         int newUserId = 0;
 
         try {
@@ -21,8 +23,13 @@ public class ShowUsersOrders extends Command {
             e.printStackTrace();
         }
 
+        List<Order> orders = null;
         //This is the users orders
-        List<Order> orders =  api.getOrderFacade().getAllUserOrders(newUserId);
+        if(answer.equals("active")) {
+            orders = api.getOrderFacade().getAllUserOrders(newUserId);
+        } else {
+            orders = api.getOrderFacade().getAllClosedUserOrders(newUserId);
+        }
 
         if(orders == null || orders.isEmpty()) {
             request.setAttribute("noorder", "Denne bruger har ikke nogen ordre");
@@ -35,6 +42,9 @@ public class ShowUsersOrders extends Command {
             allCupcakes.add(new OrderDTO(o, api.getCupcakeFacade().getCupcakesInOrder(o)));
         }
 
+        User user = api.getUserFacade().findUser(newUserId);
+
+        request.setAttribute("chosenuser", user);
         request.setAttribute("userorders", allCupcakes);
         return "adminpage";
     }

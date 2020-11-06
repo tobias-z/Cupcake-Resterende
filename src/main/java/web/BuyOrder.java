@@ -27,6 +27,10 @@ public class BuyOrder extends Command {
         int newUserId = 0;
         double newOrderPrice = 0;
 
+        if (orderPrice == null || orderPrice.isBlank()){
+            return "Kurv";
+        }
+
         try {
             newOrderPrice = Double.parseDouble(orderPrice);
             newUserId = Integer.parseInt(userid);

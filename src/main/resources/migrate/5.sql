@@ -8,6 +8,9 @@ CREATE TABLE orders
     FOREIGN KEY (userid) REFERENCES users(id)
 );
 
+ALTER TABLE orders ADD delivered BOOLEAN DEFAULT FALSE;
+ALTER TABLE orders ADD deliverydate TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+
 ALTER TABLE cupcake ADD CONSTRAINT FOREIGN KEY (orderid) REFERENCES orders(id);
 
 UPDATE properties

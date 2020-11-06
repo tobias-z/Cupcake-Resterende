@@ -2,8 +2,6 @@ package domain;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class Order {
     private final int id;
@@ -11,14 +9,18 @@ public class Order {
     private final List<Cupcake> cupcakes;
     private final LocalDateTime paydate;
     private final boolean paid;
+    private final boolean delivered;
+    private final LocalDateTime deliverydate;
 
 
-    public Order(int id, int userId, List<Cupcake> cupcakes, LocalDateTime paydate, boolean paid) {
+    public Order(int id, int userId, List<Cupcake> cupcakes, LocalDateTime paydate, boolean paid, boolean delivered, LocalDateTime deliverydate) {
         this.id = id;
         this.userId = userId;
         this.cupcakes = cupcakes;
         this.paydate = paydate;
         this.paid = paid;
+        this.delivered = delivered;
+        this.deliverydate = deliverydate;
     }
 
     public int getId() {
@@ -43,5 +45,13 @@ public class Order {
 
     public double getPrice() {
         return cupcakes.stream().mapToDouble(Cupcake::getPris).sum();
+    }
+
+    public boolean isDelivered() {
+        return delivered;
+    }
+
+    public LocalDateTime getDeliverydate() {
+        return deliverydate;
     }
 }
