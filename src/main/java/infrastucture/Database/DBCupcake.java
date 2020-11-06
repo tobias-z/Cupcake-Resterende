@@ -115,4 +115,29 @@ public class DBCupcake {
             saveCupcake(c);
         }
     }
+
+    public void deleteCupcake(int cupcakeId, int orderid) {
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement ps2 = conn.prepareStatement(
+                    "DELETE FROM cupcake WHERE id = ? AND orderid = ?;");
+            ps2.setInt(1, cupcakeId);
+            ps2.setInt(2, orderid);
+            ps2.executeUpdate();
+            ps2.close();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void deleteAllCupcakesInOrder(int orderid) {
+        try (Connection conn = Connector.getConnection()) {
+            PreparedStatement ps2 = conn.prepareStatement(
+                    "DELETE FROM cupcake WHERE orderid = ?;");
+            ps2.setInt(1, orderid);
+            ps2.executeUpdate();
+            ps2.close();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }

@@ -3,6 +3,7 @@ package api.facades;
 import api.factories.CupcakeFactory;
 import api.factories.OrderFactory;
 import domain.Order;
+import exeptions.NoSuchCupcakeException;
 import infrastucture.Database.DBCupcake;
 import infrastucture.Database.DBOrder;
 
@@ -52,7 +53,8 @@ public class OrderFacade {
         return dbOrder.createOrder(newUserId);
     }
 
-    public void deleteOrder(int newUserId) {
+    public void deleteOrder(int newUserId) throws NoSuchCupcakeException {
+        removeAllCupcakesFromOrder(newUserId);
         dbOrder.deleteOrder(newUserId);
     }
 
@@ -64,15 +66,30 @@ public class OrderFacade {
         return dbOrder.getAllUserOrders(newUserId);
     }
 
-    public Order updateOrder(String cupcakes, double newPrice, int newUserId) {
-        return dbOrder.updateOrder(cupcakes,newPrice, newUserId);
-    }
-
     public void orderDelivered(int newOrderId) {
         dbOrder.orderDelivered(newOrderId);
     }
 
     public List<Order> getAllPaidOrders() {
         return dbOrder.getAllPaidOrders();
+    }
+
+    public void removeCupcakeFromOrder(int newUserId, int cupcakeId) throws NoSuchCupcakeException {
+        Order order = getOrderById(newUserId);
+        if (order == null){
+            throw new NoSuchCupcakeException();
+        } else {
+            dbCupcakes.deleteCupcake(cupcakeId, order.getId());
+        }
+
+    }
+
+    public void removeAllCupcakesFromOrder(int newUserId) throws NoSuchCupcakeException {
+        Order order = getOrderById(newUserId);
+        if(order == null){
+            throw new NoSuchCupcakeException();
+        } else {
+            dbCupcakes.deleteAllCupcakesInOrder(order.getId());
+        }
     }
 }

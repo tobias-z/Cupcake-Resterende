@@ -2,6 +2,8 @@ package domain;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Order {
     private final int id;
@@ -37,5 +39,9 @@ public class Order {
 
     public boolean isPaid() {
         return paid;
+    }
+
+    public double getPrice() {
+        return cupcakes.stream().mapToDouble(Cupcake::getPris).sum();
     }
 }

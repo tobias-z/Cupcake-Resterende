@@ -70,14 +70,6 @@ public class Redirect extends Command {
 
                     List<Cupcake> cupcakesInOrder = api.getCupcakeFacade().getCupcakesInOrder(order);
 
-                    double currentprice = 0;
-                    double oldprice = 0;
-                    for(Cupcake c : cupcakesInOrder){
-                        currentprice = c.getPris();
-                        oldprice = oldprice + currentprice;
-                    }
-
-                    request.setAttribute("orderprice", oldprice);
                     request.getSession().setAttribute("allcupcakes", cupcakesInOrder);
                     request.setAttribute("order", order);
                 }

@@ -40,13 +40,10 @@
                 </tr>
                 </thead>
                 <c:set var="count" value="0" scope="page"/>
-                <c:forEach var="bucket" items="${sessionScope.allcupcakes}">
+                <c:forEach var="bucket" items="${requestScope.order.cupcakes}">
                     <form action="FrontController" method="post">
                         <input type="hidden" name="target" value="removefromorder">
-                        <input type="hidden" name="userid" value="${sessionScope.user.id}">
                         <input type="hidden" name="cupcakeid" value="${bucket.id}">
-                        <input type="hidden" name="cupcakeprice" value="${bucket.pris}">
-                        <input type="hidden" name="orderprice" value="${requestScope.orderprice}">
                         <tbody>
                             <tr>
                                 <c:set var="count" value="${count + 1}" scope="page"/>
@@ -76,11 +73,10 @@
                 <form action="FrontController" method="post">
                     <input type="hidden" name="target" value="buyorder">
                     <input type="hidden" name="userbank" value="${sessionScope.user.bank}">
-                    <input type="hidden" name="orderprice" value="${requestScope.orderprice}">
                     <input type="hidden" name="userid" value="${sessionScope.user.id}">
                     <!-- Values to buy order, maybe userid -->
                     <br>
-                    <h4 style="text-align: right">Pris: ${requestScope.orderprice} Kr. -
+                    <h4 style="text-align: right">Pris: ${requestScope.order.price} Kr. -
                         <button type="submit" class="button" style="width: auto;">Betal ordre</button>
                     </h4>
 

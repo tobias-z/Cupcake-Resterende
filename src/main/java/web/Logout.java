@@ -1,6 +1,7 @@
 package web;
 
 import exeptions.LoginSampleException;
+import exeptions.NoSuchCupcakeException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +27,11 @@ public class Logout extends Command {
         }
 
         if (answer.equals("No") && newUserId > 0) {
-            api.getOrderFacade().deleteOrder(newUserId);
+            try {
+                api.getOrderFacade().deleteOrder(newUserId);
+            } catch (NoSuchCupcakeException e) {
+                e.printStackTrace();
+            }
         }
 
         HttpSession session = request.getSession();
