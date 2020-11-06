@@ -17,24 +17,24 @@
 
 <!-- Sende cupcaketop + cupcakebottom + antal + userid til target=addcupcaketoorder -->
 
-<div class="backgroundcontainer" style="width: 400px; margin: auto">
+<div class="backgroundcontainer" style="width: 400px; margin: auto; text-align: center">
 
     <form action="FrontController" method="post">
         <input type="hidden" name="target" value="addcupcaketoorder">
         <input type="hidden" name="userid" value="${sessionScope.user.id}">
         <div class="form-group">
-            <label for="Cupcaketop">Choose a cupcake top:</label>
+            <label for="Cupcaketop">Vælg en topping:</label>
             <select class="form-control" name="cupcaketop" id="Cupcaketop" style="width: 350px">
                 <c:forEach var="toppings" items="${requestScope.toppings}">
-                    <option value="${toppings.id}">${toppings.id}, ${toppings.type}</option>
+                    <option value="${toppings.id}">${toppings.type}</option>
                 </c:forEach>
             </select>
         </div>
         <div class="form-group">
-            <label for="Cupcakebottom">Choose a cupcake bottom:</label>
+            <label for="Cupcakebottom">Vælg en bund:</label>
             <select class="form-control" name="cupcakebottom" id="Cupcakebottom" style="width: 350px">
                 <c:forEach var="bottoms" items="${requestScope.bottoms}">
-                    <option value="${bottoms.id}"> ${bottoms.id}, ${bottoms.type}</option>
+                    <option value="${bottoms.id}">${bottoms.type}</option>
                 </c:forEach>
             </select>
         </div>
