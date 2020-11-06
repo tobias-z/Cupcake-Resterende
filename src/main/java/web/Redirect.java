@@ -64,13 +64,20 @@ public class Redirect extends Command {
                 } else {
                     Order order = api.getOrderFacade().getOrderById(user.getId());
 
-                    if(order == null || order.getCupcakeId().equals("")){
+                    if(order == null || order.getCupcakes().isEmpty()){
                         return "Kurv";
                     }
 
                     List<Cupcake> cupcakesInOrder = api.getCupcakeFacade().getCupcakesInOrder(order);
 
-                    request.setAttribute("orderprice", order.getPrice());
+                    double currentprice = 0;
+                    double oldprice = 0;
+                    for(Cupcake c : cupcakesInOrder){
+                        currentprice = c.getPris();
+                        oldprice = oldprice + currentprice;
+                    }
+
+                    request.setAttribute("orderprice", oldprice);
                     request.getSession().setAttribute("allcupcakes", cupcakesInOrder);
                     request.setAttribute("order", order);
                 }

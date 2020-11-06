@@ -78,17 +78,14 @@ public class AddCupcakeToOrder extends Command {
             validationError.printStackTrace();
         }
 
-        Cupcake cupcake;
-        if(cupcakeFactory.isValid()){
-            cupcake = api.getCupcakeFacade().createCupcake(cupcakeFactory);
-        } else {
-            request.setAttribute("error", "Your cupcake was not created");
-            return "errorpage";
-        }
-        //Create the actual cupcake with the given top and bottom END
+        api.getOrderFacade().addCupcakeToOrder(Integer.parseInt(userId), cupcakeFactory);
+        List<CupcakeTop> toppings = api.getCupcakeTopFacade().findCupcakeTops();
+        List<CupcakeBottom> bottoms = api.getCupcakeBottomFacade().findCupcakeBottoms();
+        request.setAttribute("toppings", toppings);
+        request.setAttribute("bottoms", bottoms);
+        return "Bestillingsside";
 
-
-        try {
+        /* try {
             //parse the users id to an integer.
             int newUserId = Integer.parseInt(userId);
 
@@ -103,8 +100,14 @@ public class AddCupcakeToOrder extends Command {
                 order = api.getOrderFacade().createOrder(newUserId);
             }
 
-            //insert the new cupcakes id, and the old order.
-            orderFactory.setCupcakeId(cupcake.getId(), order);
+            Cupcake cupcake;
+            if(cupcakeFactory.isValid()){
+                cupcake = api.getCupcakeFacade().createCupcake(cupcakeFactory, order.getId());
+            } else {
+                request.setAttribute("error", "Your cupcake was not created");
+                return "errorpage";
+            }
+            //Create the actual cupcake with the given top and bottom END
 
             //Insert the orders userid
             orderFactory.setUserId(order.getUserId());
@@ -126,10 +129,8 @@ public class AddCupcakeToOrder extends Command {
         } else {
             request.setAttribute("error", "Your order could not be created");
             return "errorpage";
-        }
+        } */
 
-
-        return "Bestillingsside";
     }
 
     private int findCupcakeTopId(String cupcakeTopArray) {

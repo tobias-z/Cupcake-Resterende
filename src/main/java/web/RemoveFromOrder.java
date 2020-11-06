@@ -19,12 +19,15 @@ public class RemoveFromOrder extends Command {
         String userid = request.getParameter("userid");
         int cupcakeId = Integer.parseInt(request.getParameter("cupcakeid"));
         String cupcakePrice = request.getParameter("cupcakeprice");
+        String orderprice = request.getParameter("orderprice");
 
         double newCupcakePrice = 0;
         int newUserId = 0;
+        double newOrderPrice = 0;
 
         //Parse to numbers
         try {
+            newOrderPrice = Double.parseDouble(orderprice);
             newCupcakePrice = Double.parseDouble(cupcakePrice);
             newUserId = Integer.parseInt(userid);
         } catch (NumberFormatException e) {
@@ -32,34 +35,9 @@ public class RemoveFromOrder extends Command {
         }
 
         allcupcakes.removeIf(cupcake -> cupcake.getId() == cupcakeId);
-        /*
-        //Create a string that replaces the chosen number with nothing
-        String replace = allcupcakes.replaceFirst(cupcakeId, "");
 
-        //Split the new string into a stringarray
-        String[] splitCupcakes = replace.split(",");
-
-        //create a new string that will be the one we put our cupcakes in
-        String cupcakes = "";
-        ArrayList<String> newCupcakes = new ArrayList<>();
-
-        //For each element in the string array of our cupcake ids it will add that number to the string.
-        //If a cupcake was removed it will still have the comma which means we have to check for if the s starts with a comma
-        //If it does it will just skip it and not add it to the ArrayLis of Strings.
-        for(String s: splitCupcakes) {
-            String oldCupcake = s + ",";
-            if(!oldCupcake.startsWith(",")) {
-                newCupcakes.add(oldCupcake);
-            }
-        }
-
-        //We now check for the elements in the ArrayList newCupcakes, and add them to the string we created earlier.
-        for(String s: newCupcakes) {
-            cupcakes = cupcakes + s;
-        }
-        */
         Order order = api.getOrderFacade().getOrderById(newUserId);
-        double newPrice = order.getPrice() - newCupcakePrice;
+        double newPrice = newOrderPrice - newCupcakePrice;
 
         List<String> stringids = new ArrayList<>();
         for (Cupcake cupcake : allcupcakes) {
@@ -76,7 +54,7 @@ public class RemoveFromOrder extends Command {
             return "Kurv";
         }
 
-        request.setAttribute("orderprice", newOrder.getPrice());
+        request.setAttribute("orderprice", newPrice);
         // session.setAttribute("allcupcakes", allCupcakes);
         request.setAttribute("order", newOrder);
 

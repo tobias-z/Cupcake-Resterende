@@ -41,49 +41,55 @@
                 </thead>
                 <c:set var="count" value="0" scope="page"/>
                 <c:forEach var="bucket" items="${sessionScope.allcupcakes}">
-                <form action="FrontController" method="post">
-                    <input type="hidden" name="target" value="removefromorder">
-                    <input type="hidden" name="userid" value="${sessionScope.user.id}">
-                    <input type="hidden" name="cupcakeid" value="${bucket.id}">
-                    <input type="hidden" name="cupcakeprice" value="${bucket.pris}">
-                    <tbody>
-                    <tr>
-                        <c:set var="count" value="${count + 1}" scope="page"/>
-                        <th scope="row">${count}</th>
-                        <td>${bucket.cupcakeTopType}</td>
-                        <td>${bucket.cupcakeBottomType}</td>
-                        <td>${bucket.antal}</td>
-                        <td>${bucket.pris}</td>
-                        <td>
-                            <button type="submit" class="button-sm" style="width: auto">Slet
-                            </button>
-                        </td>
-                    </tr>
-                    </c:forEach>
-                    <tr>
-                        <th scope="row"></th>
-                        <td colspan="5">
-                            <br>
-                            <form action="FrontController" method="post">
-                                <input type="hidden" name="target" value="buyorder">
-                                <input type="hidden" name="userbank" value="${sessionScope.user.bank}">
-                                <input type="hidden" name="orderprice" value="${requestScope.orderprice}">
-                                <input type="hidden" name="userid" value="${sessionScope.user.id}">
-                                <!-- Values to buy order, maybe userid -->
-                                <br>
-                                <h4 style="text-align: right">Pris: ${requestScope.orderprice} Kr. -
-                                    <button type="submit" class="button" style="width: auto;">Betal ordre</button>
-                                </h4>
-
-                            </form>
-                        </td>
-                    </tr>
-                    </tbody>
-                </form>
-                <br>
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="target" value="removefromorder">
+                        <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                        <input type="hidden" name="cupcakeid" value="${bucket.id}">
+                        <input type="hidden" name="cupcakeprice" value="${bucket.pris}">
+                        <input type="hidden" name="orderprice" value="${requestScope.orderprice}">
+                        <tbody>
+                            <tr>
+                                <c:set var="count" value="${count + 1}" scope="page"/>
+                                <th scope="row">${count}</th>
+                                <td>${bucket.cupcakeTopType}</td>
+                                <td>${bucket.cupcakeBottomType}</td>
+                                <td>${bucket.antal}</td>
+                                <td>${bucket.pris}</td>
+                                <td>
+                                    <button type="submit" class="button-sm" style="width: auto">Slet
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </form>
+                    <br>
+                </c:forEach>
             </table>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-5">
+
+            <div style="width: 840px;">
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="target" value="buyorder">
+                    <input type="hidden" name="userbank" value="${sessionScope.user.bank}">
+                    <input type="hidden" name="orderprice" value="${requestScope.orderprice}">
+                    <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                    <!-- Values to buy order, maybe userid -->
+                    <br>
+                    <h4 style="text-align: right">Pris: ${requestScope.orderprice} Kr. -
+                        <button type="submit" class="button" style="width: auto;">Betal ordre</button>
+                    </h4>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
 

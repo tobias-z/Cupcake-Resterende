@@ -40,7 +40,7 @@
                 </tr>
 
                 <c:set var="count" value="0" scope="page"/>
-                <c:forEach var="bucket" items="${requestScope.allcupcakes}">
+                <c:forEach var="bucket" items="${requestScope.order.cupcakes}">
                     <div style="text-align: justify">
                         <tr>
                             <c:set var="count" value="${count + 1}" scope="page"/>

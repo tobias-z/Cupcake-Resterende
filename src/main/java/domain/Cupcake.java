@@ -23,7 +23,8 @@ public class Cupcake {
     public String toString() {
         return  "Bottom: " + cupcakeBottomType +
                 " - Topping: " + cupcakeTopType +
-                "\nAntal: " + antal;
+                "\nAntal: " + antal +
+                " - Pris: " + pris;
     }
 
     public int getId() {

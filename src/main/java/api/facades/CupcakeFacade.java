@@ -26,25 +26,12 @@ public class CupcakeFacade {
     }
 
 
-    public Cupcake createCupcake(CupcakeFactory cupcakeFactory) {
-        return dbCupcake.createCupcake(cupcakeFactory);
+    public Cupcake createCupcake(CupcakeFactory cupcakeFactory, int orderid) {
+        return dbCupcake.createCupcake(cupcakeFactory, orderid);
     }
 
     public List<Cupcake> getCupcakesInOrder(Order order) {
-        List<Cupcake> cupcakesInOrder = new ArrayList<>();
-        if(order == null || order.getCupcakeId().equals("")){
-            return cupcakesInOrder;
-        } else {
-            String[] splitCupcakes = order.getCupcakeId().split(",");
-            int cupcakeId;
-
-            for(String s: splitCupcakes){
-                cupcakeId = Integer.parseInt(s);
-                Cupcake cupcake = dbCupcake.findCupcake(cupcakeId);
-                cupcakesInOrder.add(cupcake);
-            }
-        }
-        return cupcakesInOrder;
+        return order.getCupcakes();
     }
 
     public Cupcake getCupcakeById(int id) {

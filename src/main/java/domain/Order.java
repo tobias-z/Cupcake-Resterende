@@ -1,21 +1,20 @@
 package domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Order {
     private final int id;
     private final int userId;
-    private final String cupcakeId;
-    private final double price;
+    private final List<Cupcake> cupcakes;
     private final LocalDateTime paydate;
     private final boolean paid;
 
 
-    public Order(int id, int userId, String cupcakeId, double price, LocalDateTime paydate, boolean paid) {
+    public Order(int id, int userId, List<Cupcake> cupcakes, LocalDateTime paydate, boolean paid) {
         this.id = id;
         this.userId = userId;
-        this.cupcakeId = cupcakeId;
-        this.price = price;
+        this.cupcakes = cupcakes;
         this.paydate = paydate;
         this.paid = paid;
     }
@@ -28,12 +27,8 @@ public class Order {
         return userId;
     }
 
-    public String getCupcakeId() {
-        return cupcakeId;
-    }
-
-    public double getPrice() {
-        return price;
+    public List<Cupcake> getCupcakes() {
+        return cupcakes;
     }
 
     public LocalDateTime getPaydate() {

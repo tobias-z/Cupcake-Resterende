@@ -1,7 +1,9 @@
 package api.facades;
 
+import api.factories.CupcakeFactory;
 import api.factories.OrderFactory;
 import domain.Order;
+import infrastucture.Database.DBCupcake;
 import infrastucture.Database.DBOrder;
 
 import java.util.List;
@@ -11,27 +13,39 @@ public class OrderFacade {
 
     private static OrderFacade instance;
     private final DBOrder dbOrder;
+    private final DBCupcake dbCupcakes;
 
-    public OrderFacade(DBOrder dbOrder) {
+    public OrderFacade(DBOrder dbOrder, DBCupcake dbCupcakes) {
         this.dbOrder = dbOrder;
+        this.dbCupcakes = dbCupcakes;
     }
 
     public static OrderFacade getInstance() {
         if(instance == null) {
-            instance = new OrderFacade(new DBOrder());
+            DBCupcake cupcakes = new DBCupcake();
+            instance = new OrderFacade(new DBOrder(cupcakes), cupcakes);
         }
         return instance;
     }
 
 
-
-    public void addCupcakeToOrder(OrderFactory orderFactory) {
-        dbOrder.addCupcakeToOrder(orderFactory);
+    public void addCupcakeToOrder(int userid, CupcakeFactory cupcake) {
+        Order order = getOrderById(userid);
+        if (order == null) {
+            order = createOrder(userid);
+        }
+        dbCupcakes.createCupcake(cupcake, order.getId());
     }
 
 
+    /*
+    public void addCupcakeToOrder(OrderFactory orderFactory) {
+        dbOrder.addCupcakeToOrder(orderFactory);
+    }*/
+
+
     public Order getOrderById(int newUserId) {
-        return dbOrder.getOrderById(newUserId);
+        return dbOrder.getOrderByUserId(newUserId);
     }
 
     public Order createOrder(int newUserId) {

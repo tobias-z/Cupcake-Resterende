@@ -40,7 +40,7 @@ public class CupcakeFactory {
     }
 
     public void setCupcakeTopId(int cupcakeTopId) throws ValidationError {
-        if(cupcakeTopId< 0) throw new ValidationError("Cupcake top id was less than 0");
+        if(cupcakeTopId < 0) throw new ValidationError("Cupcake top id was less than 0");
         this.cupcakeTopId = cupcakeTopId;
     }
 

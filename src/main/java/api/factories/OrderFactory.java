@@ -1,18 +1,19 @@
 package api.factories;
 
+import domain.Cupcake;
 import domain.Order;
 import exeptions.ValidationError;
 
+import java.util.List;
+
 public class OrderFactory {
     private int userId;
-    private String cupcakeId;
-    private double price;
+    private List<Cupcake> cupcakeList;
 
 
     public boolean isValid () {
         if (this.userId < 0) return false;
-        if(this.cupcakeId == null || this.cupcakeId.isBlank()) return false;
-        if(this.price < 0) return false;
+        if(this.cupcakeList == null || this.cupcakeList.isEmpty()) return false;
         return true;
     }
 
@@ -34,33 +35,13 @@ public class OrderFactory {
 
     }
 
-    public String getCupcakeId() {
-        return cupcakeId;
+    public void setCupcakeList(List<Cupcake> cupcakeList) {
+        this.cupcakeList = cupcakeList;
     }
 
-    public void setCupcakeId(String cupcakeId, String oldCupcakes) {
-        cupcakeId = oldCupcakes + cupcakeId + ",";
-        this.cupcakeId = cupcakeId;
-    }
 
-    public void setCupcakeId(int cupcakeId, Order oldOrder) throws ValidationError {
-        try {
-            setCupcakeId(String.valueOf(cupcakeId), oldOrder.getCupcakeId());
-        } catch (NumberFormatException e) {
-            throw new ValidationError(e.toString());
-        }
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setPrice(double price, double cupcakePrice) {
-        setPrice(price+cupcakePrice);
+    public List<Cupcake> getCupcakeList() {
+        return cupcakeList;
     }
 
 

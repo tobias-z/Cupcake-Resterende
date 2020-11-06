@@ -9,6 +9,7 @@ import exeptions.ValidationError;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BuyOrder extends Command {
@@ -24,8 +25,10 @@ public class BuyOrder extends Command {
         String userid = request.getParameter("userid");
         double calculateOrder = 0;
         int newUserId = 0;
+        double newOrderPrice = 0;
 
         try {
+            newOrderPrice = Double.parseDouble(orderPrice);
             newUserId = Integer.parseInt(userid);
             calculateOrder = calculateOrder(userBank, orderPrice);
         } catch (ValidationError validationError) {
@@ -37,8 +40,7 @@ public class BuyOrder extends Command {
 
         if(calculateOrder < 0) {
             request.setAttribute("nomoney", "Du har ikke nok penge på din konto");
-            request.setAttribute("orderprice", order.getPrice());
-            request.setAttribute("allcupcakes", allCupcakes);
+            request.setAttribute("orderprice", newOrderPrice);
             request.setAttribute("preorder", order);
             return "Kurv";
         } else {
@@ -49,8 +51,8 @@ public class BuyOrder extends Command {
             session.setAttribute("bank", user.getBank());
             request.setAttribute("order", orderPurchased);
             request.setAttribute("user", user);
-            request.setAttribute("orderprice", orderPurchased.getPrice());
-            request.setAttribute("allcupcakes", allCupcakes);
+            request.setAttribute("orderprice", newOrderPrice);
+            request.getSession().setAttribute("allcupcakes", new ArrayList<>());
         }
 
         return "Kvitering";

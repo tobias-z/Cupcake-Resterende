@@ -97,6 +97,15 @@
                     x.style.display = "none";
                 }
             }
+
+            function getUsers() {
+                var x = document.getElementById("myUSER");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
         </script>
 
 
@@ -161,7 +170,7 @@ HVIS ALLE ORDER HVIS VALGT-->
         <c:forEach var="allorders" items="${requestScope.allorders}">
             <div style="text-align: center">
                 <p>Ordre nr. ${allorders.id} - Bruger nr. ${allorders.userId}</p>
-                <p>Cupcake nr. ${allorders.cupcakeId}</p>
+                <p>Cupcake nr. ${allorders.cupcakes}</p>
                 <p>Købt: ${allorders.paydate}</p>
                 <p>Pris: ${allorders.price}</p>
             </div>
@@ -223,9 +232,8 @@ HVIS ALLE ORDER HVIS VALGT-->
                 <input type="hidden" name="target" value="orderdelivered">
                 <input type="hidden" name="orderid" value="${order.order.id}">
                 <br>
-                <p>Order: ${order.order.id} - Cupcake nr. ${order.order.cupcakeId}</p>
+                <p>Order: ${order.order.id}</p>
                 <p>Betalt tidspungt: ${order.order.paydate}</p>
-                <p>Pris: ${order.order.price}</p>
                 <p>${order.cupcakes}</p>
                 <button class="button-sm" style="height: 40px" type="submit">Ordre afleveret</button>
                 <hr>

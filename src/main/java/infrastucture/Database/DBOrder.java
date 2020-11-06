@@ -1,8 +1,8 @@
 package infrastucture.Database;
 
 import api.factories.OrderFactory;
+import domain.Cupcake;
 import domain.Order;
-import domain.User;
 import infrastucture.DBSetup.Connector;
 
 import java.sql.*;
@@ -12,7 +12,14 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class DBOrder {
-    public Order getOrderById(int newUserId) {
+
+    private final DBCupcake dbCupcake;
+
+    public DBOrder(DBCupcake dbCupcake) {
+        this.dbCupcake = dbCupcake;
+    }
+
+    public Order getOrderByUserId(int newUserId) {
 
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement s = conn.prepareStatement(
@@ -20,7 +27,8 @@ public class DBOrder {
             s.setInt(1, newUserId);
             ResultSet rs = s.executeQuery();
             if (rs.next()) {
-                return loadOrder(rs);
+                int orderid = rs.getInt("orders.id");
+                return loadOrder(rs, dbCupcake.findAllFromOrder(orderid));
             } else {
                 return null;
             }
@@ -29,26 +37,25 @@ public class DBOrder {
         }
     }
 
-    private Order loadOrder(ResultSet rs) throws SQLException {
+    private Order loadOrder(ResultSet rs, List<Cupcake> cupcakes) throws SQLException {
         return new Order(
                 rs.getInt("orders.id"),
                 rs.getInt("orders.userid"),
-                rs.getString("orders.cupcakeid"),
-                rs.getInt("orders.price"),
+                cupcakes,
                 rs.getTimestamp("orders.paydate").toLocalDateTime(),
                 rs.getBoolean("orders.paid")
         );
     }
 
-    public Order addCupcakeToOrder(OrderFactory orderFactory) {
+    /* public Order addCupcakeToOrder(OrderFactory orderFactory) {
         int id;
+        dbCupcake.saveCupcakes(orderFactory.getCupcakeList());
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps =
                     conn.prepareStatement(
-                            "UPDATE orders SET cupcakeid = ?, price = ? WHERE userid = ? AND paid = 0;");
-            ps.setString(1, orderFactory.getCupcakeId());
-            ps.setDouble(2, orderFactory.getPrice());
-            ps.setInt(3, orderFactory.getUserId());
+                            "UPDATE orders SET price = ? WHERE userid = ? AND paid = 0;");
+            ps.setDouble(1, orderFactory.getPrice());
+            ps.setInt(2, orderFactory.getUserId());
             ps.executeUpdate();
             ps.close();
         } catch (ClassNotFoundException | SQLException e) {
@@ -57,15 +64,17 @@ public class DBOrder {
         Order order = getOrderById(orderFactory.getUserId());
         return findOrder(order.getId());
     }
+     */
 
     Order findOrder(int id) {
+        List<Cupcake> cupcakes = dbCupcake.findAllFromOrder(id);
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement s = conn.prepareStatement(
                     "SELECT * FROM orders WHERE id = ? AND paid = 0;");
             s.setInt(1, id);
             ResultSet rs = s.executeQuery();
             if (rs.next()) {
-                return loadOrder(rs);
+                return loadOrder(rs, cupcakes);
             } else {
                 System.err.println("No version in properties.");
                 throw new NoSuchElementException("findes ikke");
@@ -80,12 +89,11 @@ public class DBOrder {
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps =
                     conn.prepareStatement(
-                            "INSERT INTO orders (userid, cupcakeid, paydate) " +
-                                    "VALUE (?,?,?);",
+                            "INSERT INTO orders (userid, paydate) " +
+                                    "VALUE (?,?);",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, newUserId);
-            ps.setString(2, "");
-            ps.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+            ps.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
             try {
                 ps.executeUpdate();
             } catch (SQLIntegrityConstraintViolationException e) {
@@ -137,7 +145,8 @@ public class DBOrder {
             s.setInt(1, id);
             ResultSet rs = s.executeQuery();
             if (rs.next()) {
-                return loadOrder(rs);
+                int orderid = rs.getInt("orders.id");
+                return loadOrder(rs, dbCupcake.findAllFromOrder(orderid));
             } else {
                 System.err.println("No version in properties.");
                 throw new NoSuchElementException("findes ikke");
@@ -154,7 +163,8 @@ public class DBOrder {
             ResultSet rs = s.executeQuery();
             ArrayList<Order> orders = new ArrayList<>();
             while (rs.next()) {
-                orders.add(loadOrder(rs));
+                int orderid = rs.getInt("orders.id");
+                orders.add(loadOrder(rs, dbCupcake.findAllFromOrder(orderid)));
             }
             return orders;
         } catch (SQLException e) {
@@ -168,16 +178,15 @@ public class DBOrder {
     public Order updateOrder(String cupcakes, double newPrice, int newUserId) {
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps2 = conn.prepareStatement(
-                    "UPDATE orders SET cupcakeid = ?, price = ? WHERE userid = ? AND paid = 0;");
+                    "UPDATE orders SET cupcakeid = ? WHERE userid = ? AND paid = 0;");
             ps2.setString(1, cupcakes);
-            ps2.setDouble(2, newPrice);
-            ps2.setInt(3, newUserId);
+            ps2.setInt(2, newUserId);
             ps2.executeUpdate();
             ps2.close();
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
-        return getOrderById(newUserId);
+        return getOrderByUserId(newUserId);
     }
 
     public void orderDelivered(int newOrderId) {
@@ -198,7 +207,8 @@ public class DBOrder {
             ResultSet rs = s.executeQuery();
             ArrayList<Order> orders = new ArrayList<>();
             while (rs.next()) {
-                orders.add(loadOrder(rs));
+                int orderid = rs.getInt("orders.id");
+                orders.add(loadOrder(rs, dbCupcake.findAllFromOrder(orderid)));
             }
             return orders;
         } catch (SQLException e) {
