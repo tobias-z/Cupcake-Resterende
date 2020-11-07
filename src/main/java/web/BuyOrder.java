@@ -16,8 +16,6 @@ public class BuyOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) {
 
-        HttpSession session = request.getSession();
-
         User user = (User) request.getSession().getAttribute("user");
         //Double
 
@@ -26,7 +24,7 @@ public class BuyOrder extends Command {
         double calculateOrder = 0;
         double newOrderPrice = 0;
 
-        if (orderPrice == null || orderPrice.isBlank()){
+        if (orderPrice == null || orderPrice.isBlank() || orderPrice.equals("")){
             return "Kurv";
         }
 
@@ -48,7 +46,7 @@ public class BuyOrder extends Command {
             api.getUserFacade().updateUserBank(user.getId(), calculateOrder);
             Order orderPurchased = api.getOrderFacade().orderPurchased(order);
 
-            session.setAttribute("bank", user.getBank());
+            request.getSession().setAttribute("user", user);
             request.setAttribute("order", orderPurchased);
             request.setAttribute("orderprice", newOrderPrice);
             request.getSession().setAttribute("allcupcakes", new ArrayList<>());

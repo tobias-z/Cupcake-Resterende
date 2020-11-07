@@ -35,13 +35,6 @@ cupcake -> DBOrder: OK
 DBOrder -> OrderFacade: OK
 OrderFacade -> BuyOrder: OK
 
-BuyOrder -> UserFacade: findUser()
-UserFacade -> DBUser: findUser()
-DBUser -> cupcake: executeQuery()
-cupcake -> DBUser: OK
-DBUser -> UserFacade: OK
-UserFacade -> BuyOrder: OK
-
 BuyOrder -> UserFacade: updateUserBank()
 UserFacade -> DBUser: updateUserBank()
 DBUser -> cupcake: executeUpdate()

@@ -71,8 +71,6 @@
             <div style="width: 840px;">
                 <form action="FrontController" method="post">
                     <input type="hidden" name="target" value="buyorder">
-                    <input type="hidden" name="userbank" value="${sessionScope.user.bank}">
-                    <input type="hidden" name="userid" value="${sessionScope.user.id}">
                     <input type="hidden" name="orderprice" value="${requestScope.order.price}">
                     <!-- Values to buy order, maybe userid -->
                     <br>
