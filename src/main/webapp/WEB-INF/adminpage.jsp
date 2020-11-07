@@ -267,7 +267,6 @@ HVIS ALLE ORDER HVIS VALGT-->
                     <p>Order: ${order.order.id}</p>
                     <p>Pris: ${order.order.price}</p>
                     <p>Betalt tidspunkt: ${order.order.paydate}</p>
-                    <p>Afleveret tidspunkt: ${order.order.deliverydate}</p>
                     <p>${order.cupcakes}</p>
                     <hr>
                 </div>

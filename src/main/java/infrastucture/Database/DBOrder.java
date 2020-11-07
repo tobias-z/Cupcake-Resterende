@@ -43,8 +43,7 @@ public class DBOrder {
                 cupcakes,
                 rs.getTimestamp("orders.paydate").toLocalDateTime(),
                 rs.getBoolean("orders.paid"),
-                rs.getBoolean("orders.delivered"),
-                rs.getTimestamp("deliverydate").toLocalDateTime()
+                rs.getBoolean("orders.delivered")
         );
     }
 
@@ -110,9 +109,8 @@ public class DBOrder {
         try (Connection conn = Connector.getConnection()) {
             PreparedStatement ps =
                     conn.prepareStatement(
-                            "UPDATE orders SET paid = 1 AND paydate = ? WHERE userid = ?;");
-            ps.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
-            ps.setInt(2, order.getUserId());
+                            "UPDATE orders SET paid = 1 WHERE userid = ?;");
+            ps.setInt(1, order.getUserId());
             ps.executeUpdate();
             ps.close();
         } catch (ClassNotFoundException | SQLException e) {

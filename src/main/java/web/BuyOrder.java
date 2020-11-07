@@ -18,13 +18,12 @@ public class BuyOrder extends Command {
 
         HttpSession session = request.getSession();
 
+        User user = (User) request.getSession().getAttribute("user");
         //Double
-        String userBank = request.getParameter("userbank");
+
         //double
         String orderPrice = request.getParameter("orderprice");
-        String userid = request.getParameter("userid");
         double calculateOrder = 0;
-        int newUserId = 0;
         double newOrderPrice = 0;
 
         if (orderPrice == null || orderPrice.isBlank()){
@@ -33,13 +32,12 @@ public class BuyOrder extends Command {
 
         try {
             newOrderPrice = Double.parseDouble(orderPrice);
-            newUserId = Integer.parseInt(userid);
-            calculateOrder = calculateOrder(userBank, orderPrice);
+            calculateOrder = calculateOrder(user.getBank(), orderPrice);
         } catch (ValidationError validationError) {
             validationError.printStackTrace();
         }
 
-        Order order = api.getOrderFacade().getOrderById(newUserId);
+        Order order = api.getOrderFacade().getOrderById(user.getId());
 
         if(calculateOrder < 0) {
             request.setAttribute("nomoney", "Du har ikke nok penge på din konto");
@@ -47,13 +45,11 @@ public class BuyOrder extends Command {
             request.setAttribute("preorder", order);
             return "Kurv";
         } else {
-            User user = api.getUserFacade().findUser(newUserId);
-            api.getUserFacade().updateUserBank(newUserId, calculateOrder);
+            api.getUserFacade().updateUserBank(user.getId(), calculateOrder);
             Order orderPurchased = api.getOrderFacade().orderPurchased(order);
 
             session.setAttribute("bank", user.getBank());
             request.setAttribute("order", orderPurchased);
-            request.setAttribute("user", user);
             request.setAttribute("orderprice", newOrderPrice);
             request.getSession().setAttribute("allcupcakes", new ArrayList<>());
         }
@@ -64,19 +60,17 @@ public class BuyOrder extends Command {
 
 
 
-    private double calculateOrder(String userBank, String orderPrice) throws ValidationError {
+    private double calculateOrder(double userBank, String orderPrice) throws ValidationError {
         double calculateOrder;
-        double newUserBank;
         double newOrderPrice;
 
         try {
-            newUserBank = Double.parseDouble(userBank);
             newOrderPrice = Double.parseDouble(orderPrice);
         } catch (NumberFormatException e) {
             throw new ValidationError(e.toString());
         }
 
-        calculateOrder = newUserBank - newOrderPrice;
+        calculateOrder = userBank - newOrderPrice;
 
         return calculateOrder;
     }

@@ -10,17 +10,15 @@ public class Order {
     private final LocalDateTime paydate;
     private final boolean paid;
     private final boolean delivered;
-    private final LocalDateTime deliverydate;
 
 
-    public Order(int id, int userId, List<Cupcake> cupcakes, LocalDateTime paydate, boolean paid, boolean delivered, LocalDateTime deliverydate) {
+    public Order(int id, int userId, List<Cupcake> cupcakes, LocalDateTime paydate, boolean paid, boolean delivered) {
         this.id = id;
         this.userId = userId;
         this.cupcakes = cupcakes;
         this.paydate = paydate;
         this.paid = paid;
         this.delivered = delivered;
-        this.deliverydate = deliverydate;
     }
 
     public int getId() {
@@ -49,9 +47,5 @@ public class Order {
 
     public boolean isDelivered() {
         return delivered;
-    }
-
-    public LocalDateTime getDeliverydate() {
-        return deliverydate;
     }
 }
