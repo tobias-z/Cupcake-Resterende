@@ -1,0 +1,40 @@
+
+d
+java:S2095c"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿°şs
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(µñÚ¬
+e
+java:S2095£"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿°şs
+h	java:S112Ë"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Ì¢şùÙ.
+a	java:S112Š"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+e
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(„¿Ÿv
+j
+java:S20956"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìãëƒùÿÿÿÿ
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìãëƒùÿÿÿÿ
+`	java:S112\"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+S	java:S106="9Replace this use of System.out or System.err by a logger.(Ò¿éğüÿÿÿÿ
+g
+java:S1192"JDefine a constant instead of duplicating this literal "orders.id" 6 times.(ÚÇÓğ8·åæÙ.
+e
+java:S2095I"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Õ¬ø¼
+a	java:S112¸"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112w"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+B
+java:S1168"+Return an empty collection instead of null.(¥¹ï
+m
+java:S2095Á"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¤ı“ô8Ì¢şùÙ.
+k
+java:S2095¯"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(œé¨¦ıÿÿÿÿ
+P
+java:S1141O"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+B
+java:S1168¼"+Return an empty collection instead of null.(¥¹ï
+T	java:S106†"9Replace this use of System.out or System.err by a logger.(Ò¿éğüÿÿÿÿ
+j
+java:S2095~"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìãëƒùÿÿÿÿ
+I
+java:S1168Ï"+Return an empty collection instead of null.(¥¹ï8Ì¢şùÙ.
+`	java:S112A"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112š"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112#"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ

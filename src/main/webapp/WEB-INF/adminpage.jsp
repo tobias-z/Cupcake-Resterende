@@ -243,7 +243,7 @@ HVIS ALLE ORDER HVIS VALGT-->
             <h3 style="text-align: center">${chosenuser}</h3>
         </c:forEach>
 
-        <c:forEach var="order" items="${requestScope.userorders}">
+        <c:forEach var="order" items="${requestScope.activeorders}">
             <!-- List of all the users orders -->
             <form action="FrontController" method="post">
                 <div style="text-align: center">
@@ -251,12 +251,26 @@ HVIS ALLE ORDER HVIS VALGT-->
                     <input type="hidden" name="orderid" value="${order.order.id}">
                     <br>
                     <p>Order: ${order.order.id}</p>
-                    <p>Betalt tidspungt: ${order.order.paydate}</p>
+                    <p>Pris: ${order.order.price}</p>
+                    <p>Betalt tidspunkt: ${order.order.paydate}</p>
                     <p>${order.cupcakes}</p>
                     <button class="button-sm" style="height: 40px" type="submit">Ordre afleveret</button>
                     <hr>
                 </div>
             </form>
+        </c:forEach>
+
+        <c:forEach var="order" items="${requestScope.closedorders}">
+            <!-- List of all the users orders -->
+                <div style="text-align: center">
+                    <br>
+                    <p>Order: ${order.order.id}</p>
+                    <p>Pris: ${order.order.price}</p>
+                    <p>Betalt tidspunkt: ${order.order.paydate}</p>
+                    <p>Afleveret tidspunkt: ${order.order.deliverydate}</p>
+                    <p>${order.cupcakes}</p>
+                    <hr>
+                </div>
         </c:forEach>
     </div>
 </div>

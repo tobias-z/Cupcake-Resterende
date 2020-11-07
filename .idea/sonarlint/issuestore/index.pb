@@ -87,3 +87,17 @@ P
  src/main/webapp/WEB-INF/Kurv.jsp,c/d/cd8cd2a4b33f8eb0962b8bd5c274c7a1a406d813
 Y
 )src/main/java/plantuml/domaindiagram.puml,7/a/7af5332f622e9407a1c6ef6083c3bb5ad7492e24
+`
+0src/main/java/infrastucture/DBSetup/Migrate.java,b/d/bd934408d6e8544f0b014c3cc39450e5ff0ea69c
+i
+9src/main/java/infrastucture/Database/DBCupcakeBottom.java,a/3/a3e5e5ae64fa7cb451f0040005884c899ac441d4
+U
+%src/main/webapp/WEB-INF/Kvitering.jsp,1/2/12ed1b4fa88bf8676cdb8937426153f1b250aef5
+c
+3src/main/java/exeptions/NoSuchCupcakeException.java,3/0/3064ccf9775c38b848f8880b84e91d0a102b84fe
+`
+0src/main/java/infrastucture/Database/DBUser.java,1/6/160a1ff2c762b63c663bcc53f107800ea41805ee
+a
+1src/main/java/infrastucture/Database/DBOrder.java,3/d/3dc95c91fc79bb3f60dac3e327c2dd8acd8a6ec6
+[
++src/main/webapp/WEB-INF/Bestillingsside.jsp,b/b/bb7610c589f8869e827b2f62989cb6e8bc0162a2

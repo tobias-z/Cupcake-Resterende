@@ -1,0 +1,17 @@
+
+j
+java:S2095*"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìãëƒùÿÿÿÿ
+e
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ëêˆŒ
+P
+java:S1141B"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+S	java:S1061"9Replace this use of System.out or System.err by a logger.(Ò¿éğüÿÿÿÿ
+D
+java:S1128".Remove this unused import 'domain.CupcakeTop'.(¹ Ç
+e
+java:S2095<"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Õ¬ø¼
+`	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+A
+java:S1168$"+Return an empty collection instead of null.(¥¹ï
+`	java:S1125"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(µñÚ¬

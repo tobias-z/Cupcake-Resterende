@@ -34,6 +34,7 @@ public class Login extends Command {
         getrank = user.isRanked();
         String ranked = Integer.toString(getrank);
 
+        //NOT IN USE YET
         if(getrank == 10){
             session.setAttribute("rank10", ranked);
         } else if (getrank == 50) {

@@ -1,0 +1,11 @@
+
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ïÍ£È
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÒõ†
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(†å’Öýÿÿÿÿ
+l
+java:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(º‹ÁÒüÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(º‹ÁÒüÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¹‘üÀ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(à‘ñ´
+S	java:S106""9Replace this use of System.out or System.err by a logger.(ª¡§èÿÿÿÿÿ
+S	java:S106."9Replace this use of System.out or System.err by a logger.(Ò“âÙûÿÿÿÿ

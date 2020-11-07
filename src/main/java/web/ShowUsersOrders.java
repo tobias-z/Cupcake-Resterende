@@ -45,7 +45,12 @@ public class ShowUsersOrders extends Command {
         User user = api.getUserFacade().findUser(newUserId);
 
         request.setAttribute("chosenuser", user);
-        request.setAttribute("userorders", allCupcakes);
+
+        if(answer.equals("active")){
+            request.setAttribute("activeorders", allCupcakes);
+        } else {
+            request.setAttribute("closedorders", allCupcakes);
+        }
         return "adminpage";
     }
 

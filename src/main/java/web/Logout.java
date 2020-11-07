@@ -22,7 +22,7 @@ public class Logout extends Command {
         try {
             newUserId = Integer.parseInt(userid);
         } catch (NumberFormatException e){
-            e.getMessage();
+            e.printStackTrace();
         }
 
         if (answer.equals("No") && newUserId > 0) {

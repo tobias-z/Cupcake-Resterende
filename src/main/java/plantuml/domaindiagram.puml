@@ -25,6 +25,7 @@ class CupcakeTop {
 class Order {
     user
     paid
+    delivered
 }
 
 class User {

@@ -1,11 +1,21 @@
 
-`	java:S112)"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112;"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-S	java:S1067"9Replace this use of System.out or System.err by a logger.(Ò¿éğüÿÿÿÿ
+`	java:S112>"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+S	java:S106:"9Replace this use of System.out or System.err by a logger.(Ò¿éğüÿÿÿÿ
+`	java:S112,"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
 l
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Õ¬ø¼8—ËÖûØ.
-W
-java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8±ÓûØ.
+java:S2095‡"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿°şs8ï­èéÙ.
 j
-java:S20950"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìãëƒùÿÿÿÿ
+java:S20953"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìãëƒùÿÿÿÿ
+g	java:S112["FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8—®ùåÙ.
+k
+java:S2095z"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿°şs8ûŠéÙ.
+g	java:S112n"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ñÇ’æÙ.
+W
+java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8±ÓûØ.
+l
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Õ¬ø¼8—ËÖûØ.
+q
+java:S2095Q"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìãëƒùÿÿÿÿ8—®ùåÙ.
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(µñÚ¬
+l
+java:S2095b"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Õ¬ø¼8ñÇ’æÙ.
