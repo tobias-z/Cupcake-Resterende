@@ -1,7 +1,19 @@
 @startuml
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Title Logging in
+State Login.jsp
+State "Error Login.jsp" as error
+State customerpage.jsp
+
+note left of customerpage.jsp
+Brugernavn og role
+er gemt i session
+end note
+
+[*] -> Login.jsp
+Login.jsp --> customerpage.jsp : user og pw OK
+error --> Login.jsp : prøv-igen
+Login.jsp --> error : user eller pw ikke OK
+customerpage.jsp --> [*]
+
 @enduml

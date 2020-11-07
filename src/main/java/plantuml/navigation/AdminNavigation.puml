@@ -1,0 +1,19 @@
+@startuml
+
+Title Adminside
+State customerpage.jsp
+State "Error NotAdmin" as error
+State adminpage.jsp
+
+note left of customerpage.jsp
+Kan forsøge at komme ind
+på adminsiden overalt
+end note
+
+[*] -> customerpage.jsp
+customerpage.jsp --> adminpage.jsp : Bruger har admin role
+error --> error.jsp : Du har forsøgt at snyde
+customerpage.jsp --> error : Du er ikke en admin
+adminpage.jsp --> [*]
+
+@enduml
