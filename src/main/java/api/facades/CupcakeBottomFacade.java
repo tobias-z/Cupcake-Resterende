@@ -25,8 +25,6 @@ public class CupcakeBottomFacade {
         return dbCupcakeBottom.findCupcakeBottoms();
     }
     public CupcakeBottom findCupcakeById(int id){
-
-
         return dbCupcakeBottom.findCupcakeById(id);
     }
 

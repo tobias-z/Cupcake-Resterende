@@ -38,9 +38,7 @@ public class ShowUsersOrders extends Command {
 
         List<OrderDTO> allCupcakes = new ArrayList<>();
 
-        for (Order o: orders) {
-            allCupcakes.add(new OrderDTO(o, api.getCupcakeFacade().getCupcakesInOrder(o)));
-        }
+        orders.forEach(o -> allCupcakes.add(new OrderDTO(o, api.getCupcakeFacade().getCupcakesInOrder(o))));
 
         User user = api.getUserFacade().findUser(newUserId);
 
