@@ -1,0 +1,43 @@
+@startuml
+
+autonumber
+Title Login Sekvensdiagram
+actor Bruger
+
+boundary Login.jsp
+boundary customerpage.jsp
+
+Bruger -> Login.jsp: start
+
+
+box web
+control FrontController
+Login.jsp -> FrontController: doPost()
+FrontController -> FrontController: processRequest()
+FrontController -> Command: from()
+Command --> FrontController: Login
+FrontController -> Login: execute()
+end box
+
+box api
+
+Login -> UserFacade: login()
+end box
+
+box Database
+UserFacade -> DBUser: login()
+
+end box
+
+database cupcake
+DBUser -> cupcake: executeQuery()
+cupcake -> DBUser: OK
+DBUser -> UserFacade: OK
+UserFacade -> Login: OK
+Login -> FrontController: customerpage
+FrontController -> customerpage.jsp: forward()
+
+
+
+
+@enduml

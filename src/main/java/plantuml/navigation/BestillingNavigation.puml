@@ -1,0 +1,32 @@
+@startuml
+
+Title Bestilling af cupcake
+State Bestillingsside.jsp
+State "Error Bestillingsside.jsp" as error
+State "Betal Error.jsp" as Error2
+State Login.jsp
+State Kurv.jsp
+State Kvitering.jsp
+
+
+note right of Kurv.jsp
+Viser brugerens
+valgte cupcakes
+end note
+
+[*] -> Bestillingsside.jsp
+Bestillingsside.jsp --> Kurv.jsp : Brugeren er logged ind
+Bestillingsside.jsp --> error : Bruger er ikke logged ind
+
+error --> Login.jsp : Login for at bestille
+Login.jsp --> Bestillingsside.jsp
+
+Kurv.jsp --> Kvitering.jsp : Betaling gennemført
+Kurv.jsp --> Error2 : Ikke nok penge
+Error2 --> Kurv.jsp : Tilføj penge og prøv igen
+
+Kvitering.jsp --> [*]
+
+
+
+@enduml
