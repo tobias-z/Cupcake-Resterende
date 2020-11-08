@@ -1,0 +1,42 @@
+@startuml
+
+title Domænemodel
+
+hide circle
+hide methods
+
+class Cupcake {
+  id
+  cupcakeBottom
+  cupcakeTop
+  antal
+}
+
+class CupcakeBottom {
+  pris
+  type
+}
+
+class CupcakeTop {
+  pris
+  type
+}
+
+class Order {
+  cupcakeId
+  paid
+}
+
+class User {
+  id
+}
+
+CupcakeBottom "1" --> "1" Cupcake : to >
+CupcakeTop "1" --> "1" Cupcake : to >
+Cupcake "*" -right-> "1" Order : in >
+User "1" --> "*" Order : places >
+
+
+
+
+@enduml

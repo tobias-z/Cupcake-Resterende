@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="projektskabelon" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
+      <module name="projektskabelon" options="-endorseddirs C:\Users\jonas\Desktop\Random\Programering\Cupcake-Resterende\target/endorsed" />
     </option>
   </component>
 </project>
