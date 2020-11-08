@@ -53,7 +53,6 @@ public class Register extends Command {
 
 
                 session.setAttribute("email", userFactory.getEmail());
-                session.setAttribute("username", userFactory.getName());
                 session.setAttribute("user", user);
                 session.setAttribute("role", user.getRole());
 

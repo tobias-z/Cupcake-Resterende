@@ -85,8 +85,6 @@ M
 src/main/webapp/js/buttons.js,2/4/24129caff5511c509d47032aec51b8d599ff2d32
 P
  src/main/webapp/WEB-INF/Kurv.jsp,c/d/cd8cd2a4b33f8eb0962b8bd5c274c7a1a406d813
-Y
-)src/main/java/plantuml/domaindiagram.puml,7/a/7af5332f622e9407a1c6ef6083c3bb5ad7492e24
 `
 0src/main/java/infrastucture/DBSetup/Migrate.java,b/d/bd934408d6e8544f0b014c3cc39450e5ff0ea69c
 i
@@ -101,3 +99,19 @@ a
 1src/main/java/infrastucture/Database/DBOrder.java,3/d/3dc95c91fc79bb3f60dac3e327c2dd8acd8a6ec6
 [
 +src/main/webapp/WEB-INF/Bestillingsside.jsp,b/b/bb7610c589f8869e827b2f62989cb6e8bc0162a2
+X
+(src/main/webapp/WEB-INF/customerpage.jsp,f/f/ff987aff2a76e57b94fe187c7c306119999cddc5
+f
+6src/main/java/plantuml/navigation/LoginNavigation.puml,5/0/50bd090b8a16835e662a1b40e95a889a97e86df8
+f
+6src/main/java/plantuml/navigation/AdminNavigation.puml,c/3/c30fa6c7215466ebe027ed61c5f09ad3e3836a94
+g
+7src/main/java/plantuml/domaindiagram/domaindiagram.puml,7/1/71f4b2c0bc41645109e0c59a940ff49f0b5786f2
+Q
+!src/main/webapp/WEB-INF/Login.jsp,e/e/eef7bcc66618f5df56f9687f658c0b979b60aea4
+d
+4src/main/java/plantuml/sekvens/BetalingsSekvens.puml,2/a/2ab5c85f853c8da5af085fd524fac3adb8302853
+`
+0src/main/java/plantuml/sekvens/LoginSekvens.puml,6/b/6b70bf7a007ba11cd0f5580d75ebd7954e219b9c
+T
+$src/main/webapp/META-INF/context.xml,c/b/cbfb0d2e9b2b9fbf9d54374577c894a38643c6d0

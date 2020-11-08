@@ -1,3 +1,7 @@
 
 h
-java:S1192"KDefine a constant instead of duplicating this literal "orderprice" 3 times.(ªšğ8¤õ–òÙ.
+java:S1192"KDefine a constant instead of duplicating this literal "orderprice" 3 times.(ªšğ8çÒ´¨Ú.
+X
+java:S1128";Remove this unused import 'javax.servlet.http.HttpSession'.(í¨ô8çÒ´¨Ú.
+W
+java:S24411":Make "User" serializable or don't store it in the session.(úÆè“8çÒ´¨Ú.
